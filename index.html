@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Europa 2025 ✈️</title>
+<title>Europa 2026 ✈️</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -34,11 +34,9 @@
     font-family: var(--font-body);
     font-size: 17px;
     line-height: 1.7;
-    background-image:
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
   }
 
-  /* HERO */
   .hero {
     position: relative;
     min-height: 100vh;
@@ -91,10 +89,7 @@
     margin-bottom: 0.5rem;
   }
 
-  .hero h1 em {
-    font-style: italic;
-    color: var(--accent);
-  }
+  .hero h1 em { font-style: italic; color: var(--accent); }
 
   .hero-subtitle {
     font-family: var(--font-body);
@@ -115,17 +110,12 @@
     letter-spacing: 0.08em;
   }
 
-  .hero-dates .sep {
-    width: 40px;
-    height: 1px;
-    background: var(--paper-darker);
-  }
+  .hero-dates .sep { width: 40px; height: 1px; background: var(--paper-darker); }
 
   .stamp {
     position: absolute;
     border: 3px solid var(--red-stamp);
     border-radius: 50%;
-    padding: 1rem;
     text-align: center;
     color: var(--red-stamp);
     opacity: 0.18;
@@ -133,33 +123,35 @@
     font-size: 0.6rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    transform: rotate(-22deg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
-  .stamp-1 { top: 8%; right: 8%; width: 110px; height: 110px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-  .stamp-2 { bottom: 12%; left: 6%; width: 90px; height: 90px; display: flex; flex-direction: column; align-items: center; justify-content: center; transform: rotate(15deg); }
+  .stamp-1 { top: 8%; right: 8%; width: 110px; height: 110px; transform: rotate(-22deg); }
+  .stamp-2 { bottom: 12%; left: 6%; width: 90px; height: 90px; transform: rotate(15deg); }
 
-  /* NAVIGATION */
   nav {
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(245,240,232,0.95);
+    background: rgba(245,240,232,0.96);
     backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--paper-darker);
     display: flex;
     justify-content: center;
-    gap: 0;
+    flex-wrap: wrap;
   }
 
   nav a {
     font-family: var(--font-mono);
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--muted);
     text-decoration: none;
-    padding: 1rem 1.2rem;
+    padding: 1rem 1.1rem;
     border-right: 1px solid var(--paper-darker);
     transition: color 0.2s, background 0.2s;
   }
@@ -167,7 +159,6 @@
   nav a:first-child { border-left: 1px solid var(--paper-darker); }
   nav a:hover { color: var(--accent); background: var(--paper-dark); }
 
-  /* SECTIONS */
   section {
     max-width: 900px;
     margin: 0 auto;
@@ -175,7 +166,7 @@
     border-bottom: 1px solid var(--paper-darker);
   }
 
-  section:last-child { border-bottom: none; }
+  section:last-of-type { border-bottom: none; }
 
   .section-label {
     font-family: var(--font-mono);
@@ -206,21 +197,6 @@
     border-radius: 4px;
     padding: 1.5rem 2rem;
     margin-bottom: 1.5rem;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .flight-card::after {
-    content: '';
-    position: absolute;
-    right: -30px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background: var(--paper);
-    opacity: 0.4;
   }
 
   .flight-header {
@@ -236,9 +212,6 @@
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--accent-blue);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
   }
 
   .flight-status {
@@ -260,9 +233,8 @@
     margin-bottom: 1rem;
   }
 
-  .flight-city { font-family: var(--font-display); }
-
   .flight-city .iata {
+    font-family: var(--font-display);
     font-size: 2.5rem;
     font-weight: 700;
     color: var(--ink);
@@ -270,45 +242,35 @@
   }
 
   .flight-city .city-name {
-    font-size: 0.85rem;
-    color: var(--muted);
     font-family: var(--font-mono);
-    font-size: 0.65rem;
+    font-size: 0.62rem;
     letter-spacing: 0.08em;
+    color: var(--muted);
     margin-top: 2px;
   }
 
   .flight-city .time {
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: var(--accent);
     font-family: var(--font-mono);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--accent);
   }
 
   .flight-city .date {
-    font-size: 0.7rem;
-    color: var(--muted-light);
     font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--muted-light);
   }
 
   .flight-arrow {
     text-align: center;
     color: var(--muted-light);
-    font-size: 0.7rem;
     font-family: var(--font-mono);
-    letter-spacing: 0.05em;
   }
 
-  .flight-arrow .plane {
-    font-size: 1.2rem;
-    display: block;
-    margin-bottom: 2px;
-  }
-
-  .flight-arrow .duration {
-    font-size: 0.65rem;
-    color: var(--muted-light);
-  }
+  .flight-arrow .plane { font-size: 1.2rem; display: block; margin-bottom: 2px; }
+  .flight-arrow .arrow-line { width: 60px; height: 1px; background: var(--paper-darker); margin: 4px auto; }
+  .flight-arrow .duration { font-size: 0.62rem; color: var(--muted-light); }
 
   .flight-meta {
     display: flex;
@@ -318,36 +280,33 @@
     flex-wrap: wrap;
   }
 
-  .flight-meta-item {
-    font-size: 0.8rem;
-    font-family: var(--font-mono);
-  }
-
   .flight-meta-item .label {
-    color: var(--muted-light);
-    font-size: 0.6rem;
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
+    color: var(--muted-light);
     display: block;
     margin-bottom: 2px;
   }
 
   .flight-meta-item .value {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
     color: var(--ink);
     font-weight: 700;
-    letter-spacing: 0.05em;
   }
 
   .flight-links {
     display: flex;
-    gap: 0.75rem;
+    gap: 0.6rem;
     margin-top: 1rem;
     flex-wrap: wrap;
   }
 
   .btn-link {
     font-family: var(--font-mono);
-    font-size: 0.62rem;
+    font-size: 0.6rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--accent-blue);
@@ -359,20 +318,10 @@
     display: inline-block;
   }
 
-  .btn-link:hover {
-    background: var(--accent-blue);
-    color: var(--paper);
-  }
+  .btn-link:hover { background: var(--accent-blue); color: var(--paper); }
 
-  .btn-link.gold {
-    color: var(--accent-gold);
-    border-color: var(--accent-gold);
-  }
-
-  .btn-link.gold:hover {
-    background: var(--accent-gold);
-    color: var(--ink);
-  }
+  .btn-link.gold { color: var(--accent-gold); border-color: var(--accent-gold); }
+  .btn-link.gold:hover { background: var(--accent-gold); color: var(--ink); }
 
   /* ITINERARY */
   .itinerary-note {
@@ -403,8 +352,6 @@
     padding-top: 4px;
   }
 
-  .dest-content {}
-
   .dest-header {
     display: flex;
     align-items: baseline;
@@ -413,20 +360,8 @@
     flex-wrap: wrap;
   }
 
-  .dest-city {
-    font-family: var(--font-display);
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: var(--ink);
-  }
-
-  .dest-country {
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--muted-light);
-  }
+  .dest-city { font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; color: var(--ink); }
+  .dest-country { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted-light); }
 
   .dest-badge {
     font-family: var(--font-mono);
@@ -438,106 +373,53 @@
     margin-left: auto;
   }
 
-  .badge-confirmed {
-    background: rgba(45,90,39,0.15);
-    color: var(--confirmed);
-    border: 1px solid rgba(45,90,39,0.3);
-  }
+  .badge-confirmed { background: rgba(45,90,39,0.15); color: var(--confirmed); border: 1px solid rgba(45,90,39,0.3); }
+  .badge-pending { background: rgba(122,92,26,0.15); color: var(--pending); border: 1px solid rgba(122,92,26,0.3); }
 
-  .badge-pending {
-    background: rgba(122,92,26,0.15);
-    color: var(--pending);
-    border: 1px solid rgba(122,92,26,0.3);
-  }
-
-  .dest-dates {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.08em;
-    color: var(--muted-light);
-    margin-bottom: 0.75rem;
-  }
-
-  .dest-desc {
-    font-size: 0.95rem;
-    color: var(--muted);
-    margin-bottom: 0.75rem;
-    font-style: italic;
-  }
-
-  .dest-details {
-    font-size: 0.9rem;
-    color: var(--ink);
-  }
+  .dest-dates { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.08em; color: var(--muted-light); margin-bottom: 0.75rem; }
+  .dest-desc { font-size: 0.95rem; color: var(--muted); margin-bottom: 0.75rem; font-style: italic; }
 
   .dest-details li {
     list-style: none;
-    padding: 2px 0;
-    padding-left: 1rem;
+    font-size: 0.9rem;
+    color: var(--ink);
+    padding: 2px 0 2px 1rem;
     position: relative;
   }
 
-  .dest-details li::before {
-    content: '—';
-    position: absolute;
-    left: 0;
-    color: var(--muted-light);
-  }
+  .dest-details li::before { content: '—'; position: absolute; left: 0; color: var(--muted-light); }
 
-  .separator {
-    border: none;
-    border-top: 1px dashed var(--paper-darker);
-    margin: 2rem 0;
-  }
+  .separator { border: none; border-top: 1px dashed var(--paper-darker); margin: 2rem 0; }
 
-  /* TRANSPORT CARDS */
+  /* TRANSPORT */
   .transport-item {
     display: grid;
-    grid-template-columns: 60px 1fr;
+    grid-template-columns: 50px 1fr;
     gap: 1rem;
     padding: 1rem 0;
     border-bottom: 1px dashed var(--paper-darker);
     align-items: start;
   }
 
-  .transport-icon {
-    font-size: 1.5rem;
-    text-align: center;
-    padding-top: 2px;
-  }
-
-  .transport-body {}
-
-  .transport-route {
-    font-family: var(--font-display);
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--ink);
-  }
-
-  .transport-meta {
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    letter-spacing: 0.08em;
-    color: var(--muted-light);
-    margin-top: 2px;
-  }
+  .transport-icon { font-size: 1.4rem; text-align: center; padding-top: 2px; }
+  .transport-route { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--ink); }
+  .transport-meta { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.06em; color: var(--muted-light); margin-top: 2px; }
 
   .transport-status {
     font-family: var(--font-mono);
-    font-size: 0.6rem;
+    font-size: 0.58rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     padding: 2px 8px;
     border-radius: 2px;
     display: inline-block;
-    margin-top: 4px;
+    margin-top: 5px;
   }
 
   /* PHOTOS */
   .photos-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
     gap: 1rem;
     margin-top: 1rem;
   }
@@ -561,88 +443,24 @@
     text-decoration: none;
   }
 
-  .photo-slot:hover {
-    border-color: var(--accent-gold);
-    color: var(--accent-gold);
-    background: rgba(201,168,76,0.05);
-  }
+  .photo-slot:hover { border-color: var(--accent-gold); color: var(--accent-gold); background: rgba(201,168,76,0.05); }
+  .photo-slot-icon { font-size: 2rem; margin-bottom: 0.5rem; opacity: 0.5; }
 
-  .photo-slot-icon {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-    opacity: 0.5;
-  }
-
-  .photo-album {
-    aspect-ratio: 4/3;
-    border-radius: 4px;
-    overflow: hidden;
-    text-decoration: none;
-    display: block;
-    position: relative;
-    background: var(--paper-dark);
-    border: 1px solid var(--paper-darker);
-    transition: transform 0.2s;
-  }
-
-  .photo-album:hover { transform: scale(1.02); }
-
-  .photo-album-label {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(transparent, rgba(26,23,20,0.85));
-    color: #f5f0e8;
-    padding: 1rem 0.75rem 0.75rem;
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-
-  /* NEWS / SOCIAL */
-  .news-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-  }
-
+  /* NEWS */
+  .news-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
   @media (max-width: 600px) { .news-grid { grid-template-columns: 1fr; } }
 
-  .company-panel {
-    background: var(--paper-dark);
-    border: 1px solid var(--paper-darker);
-    border-radius: 4px;
-    overflow: hidden;
-  }
+  .company-panel { background: var(--paper-dark); border: 1px solid var(--paper-darker); border-radius: 4px; overflow: hidden; }
 
   .company-panel-header {
     padding: 1rem 1.25rem;
     border-bottom: 1px solid var(--paper-darker);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
   }
 
-  .company-name {
-    font-family: var(--font-display);
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--ink);
-  }
+  .company-name { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--ink); }
+  .company-type { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted-light); }
 
-  .company-type {
-    font-family: var(--font-mono);
-    font-size: 0.6rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--muted-light);
-  }
-
-  .company-panel-body {
-    padding: 1.25rem;
-  }
+  .company-panel-body { padding: 1.25rem; }
 
   .social-link {
     display: flex;
@@ -658,37 +476,12 @@
 
   .social-link:last-child { border-bottom: none; }
   .social-link:hover { color: var(--accent); }
+  .social-icon { font-size: 1rem; width: 24px; text-align: center; color: var(--muted-light); }
+  .social-label { flex: 1; font-size: 0.9rem; }
+  .social-arrow { font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted-light); }
+  .news-disclaimer { margin-top: 1rem; font-family: var(--font-mono); font-size: 0.65rem; color: var(--muted-light); font-style: italic; text-align: center; line-height: 1.8; }
 
-  .social-icon {
-    font-size: 1rem;
-    width: 24px;
-    text-align: center;
-    color: var(--muted-light);
-  }
-
-  .social-label {
-    flex: 1;
-    font-family: var(--font-body);
-    font-size: 0.9rem;
-  }
-
-  .social-arrow {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    color: var(--muted-light);
-  }
-
-  .news-disclaimer {
-    margin-top: 1rem;
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    letter-spacing: 0.05em;
-    color: var(--muted-light);
-    font-style: italic;
-    text-align: center;
-  }
-
-  /* SCRAPING / FLIGHT STATUS */
+  /* FLIGHT STATUS */
   .scrape-card {
     background: var(--paper-dark);
     border: 1px solid var(--paper-darker);
@@ -698,26 +491,10 @@
     margin-bottom: 1rem;
   }
 
-  .scrape-title {
-    font-family: var(--font-display);
-    font-size: 1.1rem;
-    font-weight: 700;
-    margin-bottom: 0.25rem;
-  }
+  .scrape-title { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; margin-bottom: 0.25rem; }
+  .scrape-number { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em; color: var(--muted-light); margin-bottom: 1rem; }
 
-  .scrape-number {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
-    color: var(--muted-light);
-    margin-bottom: 1rem;
-  }
-
-  .scrape-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
+  .scrape-links { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem; }
 
   .scrape-link {
     font-family: var(--font-mono);
@@ -732,27 +509,32 @@
     transition: all 0.2s;
   }
 
-  .scrape-link:hover {
-    background: var(--accent-olive);
+  .scrape-link:hover { background: var(--accent-olive); color: var(--paper); }
+
+  .open-all-btn {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--ink);
     color: var(--paper);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 2px;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: opacity 0.2s;
   }
+
+  .open-all-btn:hover { opacity: 0.8; }
 
   .scrape-note {
     margin-top: 1rem;
     font-family: var(--font-mono);
     font-size: 0.62rem;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.04em;
     color: var(--muted-light);
-    line-height: 1.6;
-  }
-
-  /* DIVIDERS */
-  .ornament {
-    text-align: center;
-    color: var(--paper-darker);
-    font-size: 1.2rem;
-    margin: 1.5rem 0;
-    letter-spacing: 0.5rem;
+    line-height: 1.7;
   }
 
   /* COUNTDOWN */
@@ -765,44 +547,13 @@
     margin-bottom: 2rem;
   }
 
-  .countdown-numbers {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin-top: 0.5rem;
-  }
+  .countdown-numbers { display: flex; justify-content: center; gap: 2rem; margin-top: 1rem; }
 
-  .countdown-unit {
-    font-family: var(--font-mono);
-    text-align: center;
-  }
+  .countdown-unit { font-family: var(--font-mono); text-align: center; }
+  .countdown-unit .num { font-size: 2.5rem; font-weight: 700; color: var(--accent-gold); display: block; line-height: 1; }
+  .countdown-unit .unit-label { font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted-light); margin-top: 4px; display: block; }
+  .countdown-title { font-family: var(--font-display); font-size: 1rem; font-style: italic; color: var(--muted-light); }
 
-  .countdown-unit .num {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--accent-gold);
-    display: block;
-    line-height: 1;
-  }
-
-  .countdown-unit .unit-label {
-    font-size: 0.6rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--muted-light);
-    margin-top: 4px;
-    display: block;
-  }
-
-  .countdown-title {
-    font-family: var(--font-display);
-    font-size: 1rem;
-    font-style: italic;
-    color: var(--muted-light);
-    margin-bottom: 1rem;
-  }
-
-  /* FOOTER */
   footer {
     text-align: center;
     padding: 3rem 2rem;
@@ -816,19 +567,10 @@
 
   footer .heart { color: var(--red-stamp); }
 
-  /* RESPONSIVE */
   @media (max-width: 640px) {
     .flight-route { grid-template-columns: 1fr; gap: 0.5rem; }
-    .flight-arrow { transform: rotate(90deg); }
     .destination-block { grid-template-columns: 40px 1fr; }
     nav a { padding: 0.75rem 0.6rem; font-size: 0.6rem; }
-    .news-grid { grid-template-columns: 1fr; }
-  }
-
-  /* PRINT */
-  @media print {
-    nav { display: none; }
-    .hero { min-height: auto; }
   }
 </style>
 </head>
@@ -839,9 +581,9 @@
   <div class="passport-stamp-bg">Europa</div>
   <div class="stamp stamp-1">
     <div>Buenos Aires</div>
-    <div style="font-size:1.2rem; margin: 4px 0;">✈</div>
+    <div style="font-size:1.2rem; margin:4px 0;">✈</div>
     <div>Europa</div>
-    <div>2025</div>
+    <div>2026</div>
   </div>
   <div class="stamp stamp-2">
     <div>Plus Ultra</div>
@@ -849,23 +591,22 @@
     <div>EZE→MAD</div>
   </div>
 
-  <div class="route-line">Buenos Aires → Madrid → Porto → Camino de Santiago → Costa Azul → Italia</div>
+  <div class="route-line">Buenos Aires → Madrid → Camino de Santiago → Costa Azul → Florencia → Roma → Amalfi → Madrid → Buenos Aires</div>
 
   <h1>Nuestro <em>Gran</em><br>Viaje Europeo</h1>
-
   <p class="hero-subtitle">El primero de muchos, el más especial de todos</p>
 
   <div class="hero-dates">
     <div>
       <div style="font-size:0.7rem; letter-spacing:0.05em;">Partida</div>
-      <div style="font-weight:700; color: var(--ink); font-size:0.9rem;">01 AGO 2025</div>
+      <div style="font-weight:700; color:var(--ink); font-size:0.9rem;">01 AGO 2026</div>
     </div>
     <div class="sep"></div>
-    <div style="font-family:var(--font-display); font-style:italic; font-size:1.1rem; color:var(--accent);">23 noches</div>
+    <div style="font-family:var(--font-display); font-style:italic; font-size:1.1rem; color:var(--accent);">22 noches</div>
     <div class="sep"></div>
     <div>
       <div style="font-size:0.7rem; letter-spacing:0.05em;">Regreso</div>
-      <div style="font-weight:700; color: var(--ink); font-size:0.9rem;">23 AGO 2025</div>
+      <div style="font-weight:700; color:var(--ink); font-size:0.9rem;">23 AGO 2026</div>
     </div>
   </div>
 </div>
@@ -881,22 +622,13 @@
 </nav>
 
 <!-- COUNTDOWN -->
-<section style="padding: 3rem 2rem;">
+<section style="padding:3rem 2rem;">
   <div class="countdown-box" id="countdown-box">
     <div class="countdown-title">Faltan para despegar de Ezeiza...</div>
-    <div class="countdown-numbers" id="countdown-numbers">
-      <div class="countdown-unit">
-        <span class="num" id="cd-dias">–</span>
-        <span class="unit-label">días</span>
-      </div>
-      <div class="countdown-unit">
-        <span class="num" id="cd-horas">–</span>
-        <span class="unit-label">horas</span>
-      </div>
-      <div class="countdown-unit">
-        <span class="num" id="cd-min">–</span>
-        <span class="unit-label">minutos</span>
-      </div>
+    <div class="countdown-numbers">
+      <div class="countdown-unit"><span class="num" id="cd-dias">–</span><span class="unit-label">días</span></div>
+      <div class="countdown-unit"><span class="num" id="cd-horas">–</span><span class="unit-label">horas</span></div>
+      <div class="countdown-unit"><span class="num" id="cd-min">–</span><span class="unit-label">minutos</span></div>
     </div>
   </div>
 </section>
@@ -906,108 +638,78 @@
   <div class="section-label">Documentación confirmada</div>
   <div class="section-title">Nuestros <em>Vuelos</em></div>
 
-  <!-- IDA -->
   <div class="flight-card">
     <div class="flight-header">
-      <div class="flight-type">✈ &nbsp; Vuelo de ida</div>
+      <div class="flight-type">✈ &nbsp;Vuelo de ida</div>
       <div class="flight-status">Confirmado</div>
     </div>
     <div class="flight-route">
       <div class="flight-city">
         <div class="iata">EZE</div>
-        <div class="city-name">Buenos Aires · Ezeiza</div>
+        <div class="city-name">Buenos Aires · Ministro Pistarini</div>
         <div class="time">13:25</div>
-        <div class="date">Sábado 01 Ago 2025</div>
+        <div class="date">Sábado 01 Ago 2026</div>
       </div>
       <div class="flight-arrow">
         <span class="plane">✈</span>
-        <div style="width:60px; height:1px; background:var(--paper-darker); margin:4px auto;"></div>
+        <div class="arrow-line"></div>
         <div class="duration">12h 05m</div>
       </div>
       <div class="flight-city" style="text-align:right;">
         <div class="iata">MAD</div>
-        <div class="city-name">Madrid · Barajas T4</div>
+        <div class="city-name">Madrid · Adolfo Suárez Barajas</div>
         <div class="time">06:30</div>
-        <div class="date">Domingo 02 Ago 2025</div>
+        <div class="date">Domingo 02 Ago 2026</div>
       </div>
     </div>
     <div class="flight-meta">
-      <div class="flight-meta-item">
-        <span class="label">Aerolínea</span>
-        <span class="value">Plus Ultra</span>
-      </div>
-      <div class="flight-meta-item">
-        <span class="label">Vuelo</span>
-        <span class="value">PU502</span>
-      </div>
-      <div class="flight-meta-item">
-        <span class="label">Referencia</span>
-        <span class="value">WAMKPP</span>
-      </div>
-      <div class="flight-meta-item">
-        <span class="label">Clase</span>
-        <span class="value">Turista</span>
-      </div>
-      <div class="flight-meta-item">
-        <span class="label">Reservado via</span>
-        <span class="value">eDreams</span>
-      </div>
+      <div class="flight-meta-item"><span class="label">Aerolínea</span><span class="value">Plus Ultra</span></div>
+      <div class="flight-meta-item"><span class="label">Vuelo</span><span class="value">PU502</span></div>
+      <div class="flight-meta-item"><span class="label">Clase</span><span class="value">Turista</span></div>
+      <div class="flight-meta-item"><span class="label">Reservado vía</span><span class="value">eDreams</span></div>
     </div>
     <div class="flight-links">
-      <a class="btn-link" href="https://www.plusultra.com/es/informacion-de-vuelo" target="_blank">Web Plus Ultra</a>
       <a class="btn-link" href="https://www.flightradar24.com/data/flights/pu502" target="_blank">FlightRadar24 PU502</a>
       <a class="btn-link" href="https://flightaware.com/live/flight/PU502" target="_blank">FlightAware PU502</a>
-      <a class="btn-link gold" href="https://www.edreams.com.ar/my-trips/" target="_blank">Mi reserva eDreams</a>
+      <a class="btn-link" href="https://www.flightstats.com/v2/flight-tracker/PU/502" target="_blank">FlightStats PU502</a>
+      <a class="btn-link gold" href="https://www.edreams.com.ar/my-trips/" target="_blank">Mi reserva en eDreams</a>
     </div>
   </div>
 
-  <!-- REGRESO -->
   <div class="flight-card" style="border-left-color: var(--accent);">
     <div class="flight-header">
-      <div class="flight-type" style="color:var(--accent);">✈ &nbsp; Vuelo de regreso</div>
+      <div class="flight-type" style="color:var(--accent);">✈ &nbsp;Vuelo de regreso</div>
       <div class="flight-status">Confirmado</div>
     </div>
     <div class="flight-route">
       <div class="flight-city">
         <div class="iata">MAD</div>
-        <div class="city-name">Madrid · Barajas</div>
+        <div class="city-name">Madrid · Adolfo Suárez Barajas</div>
         <div class="time">23:10</div>
-        <div class="date">Sábado 22 Ago 2025</div>
+        <div class="date">Sábado 22 Ago 2026</div>
       </div>
       <div class="flight-arrow">
         <span class="plane">✈</span>
-        <div style="width:60px; height:1px; background:var(--paper-darker); margin:4px auto;"></div>
+        <div class="arrow-line"></div>
         <div class="duration">12h 35m</div>
       </div>
       <div class="flight-city" style="text-align:right;">
         <div class="iata">EZE</div>
-        <div class="city-name">Buenos Aires · Ezeiza</div>
+        <div class="city-name">Buenos Aires · Ministro Pistarini</div>
         <div class="time">06:45</div>
-        <div class="date">Domingo 23 Ago 2025</div>
+        <div class="date">Domingo 23 Ago 2026</div>
       </div>
     </div>
     <div class="flight-meta">
-      <div class="flight-meta-item">
-        <span class="label">Aerolínea</span>
-        <span class="value">Plus Ultra</span>
-      </div>
-      <div class="flight-meta-item">
-        <span class="label">Vuelo</span>
-        <span class="value">PU501</span>
-      </div>
-      <div class="flight-meta-item">
-        <span class="label">Referencia</span>
-        <span class="value">WAMKPP</span>
-      </div>
-      <div class="flight-meta-item">
-        <span class="label">Clase</span>
-        <span class="value">Turista</span>
-      </div>
+      <div class="flight-meta-item"><span class="label">Aerolínea</span><span class="value">Plus Ultra</span></div>
+      <div class="flight-meta-item"><span class="label">Vuelo</span><span class="value">PU501</span></div>
+      <div class="flight-meta-item"><span class="label">Clase</span><span class="value">Turista</span></div>
     </div>
     <div class="flight-links">
       <a class="btn-link" href="https://www.flightradar24.com/data/flights/pu501" target="_blank">FlightRadar24 PU501</a>
       <a class="btn-link" href="https://flightaware.com/live/flight/PU501" target="_blank">FlightAware PU501</a>
-      <a class="btn-link gold" href="https://www.edreams.com.ar/my-trips/" target="_blank">Mi reserva eDreams</a>
+      <a class="btn-link" href="https://www.flightstats.com/v2/flight-tracker/PU/501" target="_blank">FlightStats PU501</a>
+      <a class="btn-link gold" href="https://www.edreams.com.ar/my-trips/" target="_blank">Mi reserva en eDreams</a>
     </div>
   </div>
 </section>
@@ -1018,9 +720,10 @@
   <div class="section-title"><em>Itinerario</em> del Viaje</div>
 
   <div class="itinerary-note">
-    ⚠ Este itinerario es una propuesta inicial. Los datos de alojamiento, transporte interno y actividades están siendo confirmados. Lo que está marcado como "A confirmar" puede cambiar.
+    ⚠ Este itinerario es una propuesta inicial. Los datos de alojamiento, transporte interno y actividades están siendo confirmados. Todo lo marcado como "A confirmar" puede cambiar.
   </div>
 
+  <!-- 01 MADRID LLEGADA -->
   <div class="destination-block">
     <div class="dest-number">01</div>
     <div class="dest-content">
@@ -1029,91 +732,74 @@
         <div class="dest-country">España</div>
         <div class="dest-badge badge-confirmed">Llegada confirmada</div>
       </div>
-      <div class="dest-dates">02 Ago (llegada 06:30) → ~ 03 Ago</div>
-      <div class="dest-desc">Llegada al amanecer. Día de acomodarse, primer paseo y descanso tras el vuelo.</div>
+      <div class="dest-dates">02 Ago (llegada 06:30) → ~03 Ago</div>
+      <div class="dest-desc">Llegada al amanecer. Día de acomodarse, primer paseo por la ciudad y descanso tras el vuelo nocturno.</div>
       <ul class="dest-details">
         <li>Alojamiento: A confirmar</li>
-        <li>Actividades: llegada, descanso, primer paseo por la ciudad</li>
-        <li>Transporte interno: Metro desde T4 al centro</li>
+        <li>Metro desde T4 al centro (~30 min)</li>
+        <li>Actividades: Retiro, Gran Vía, primer café con leche madrileño</li>
       </ul>
     </div>
   </div>
 
   <hr class="separator">
 
+  <!-- 02 CAMINO DE SANTIAGO -->
   <div class="destination-block">
     <div class="dest-number">02</div>
-    <div class="dest-content">
-      <div class="dest-header">
-        <div class="dest-city">Porto</div>
-        <div class="dest-country">Portugal</div>
-        <div class="dest-badge badge-pending">A confirmar</div>
-      </div>
-      <div class="dest-dates">~04 Ago → ~06 Ago · aprox. 3 noches</div>
-      <div class="dest-desc">Ciudad de vino, azulejos y el río Duero. Una de las más lindas de Europa.</div>
-      <ul class="dest-details">
-        <li>Traslado desde Madrid: tren o vuelo low-cost (A confirmar)</li>
-        <li>Alojamiento: A confirmar</li>
-        <li>Actividades: Ribeira, bodegas, Librería Lello, Puente Don Luis</li>
-      </ul>
-    </div>
-  </div>
-
-  <hr class="separator">
-
-  <div class="destination-block">
-    <div class="dest-number">03</div>
     <div class="dest-content">
       <div class="dest-header">
         <div class="dest-city">Camino de Santiago</div>
         <div class="dest-country">España · Galicia</div>
         <div class="dest-badge badge-pending">A confirmar</div>
       </div>
-      <div class="dest-dates">~07 Ago → ~13 Ago · 7 días de camino</div>
-      <div class="dest-desc">El tramo portugués del Camino. Una experiencia única, espiritual y físicamente desafiante.</div>
+      <div class="dest-dates">~04 Ago → ~10 Ago · 7 días de camino</div>
+      <div class="dest-desc">El Camino Portugués o el Francés — una experiencia única, espiritual y físicamente desafiante. Una de las mejores decisiones del viaje.</div>
       <ul class="dest-details">
-        <li>Punto de partida: A definir (Porto o Tui)</li>
-        <li>Alojamiento: Albergues de peregrinos</li>
-        <li>Llegada estimada a Santiago: ~13 Ago</li>
-        <li>Equipaje: A coordinar logística</li>
+        <li>Punto de partida: A definir</li>
+        <li>Alojamiento: Albergues de peregrinos a lo largo del camino</li>
+        <li>Llegada estimada a Santiago de Compostela: ~10 Ago</li>
+        <li>Logística del equipaje: A coordinar</li>
       </ul>
     </div>
   </div>
 
   <hr class="separator">
 
+  <!-- 03 NIZA -->
   <div class="destination-block">
-    <div class="dest-number">04</div>
+    <div class="dest-number">03</div>
     <div class="dest-content">
       <div class="dest-header">
         <div class="dest-city">Niza · Costa Azul</div>
         <div class="dest-country">Francia</div>
         <div class="dest-badge badge-pending">A confirmar</div>
       </div>
-      <div class="dest-dates">~14 Ago → ~15 Ago · 1-2 noches</div>
-      <div class="dest-desc">El Mediterráneo francés. Playa, Promenade des Anglais, y base para explorar Mónaco.</div>
+      <div class="dest-dates">~11 Ago → ~12 Ago · 1-2 noches</div>
+      <div class="dest-desc">El Mediterráneo francés. La Promenade des Anglais, el mar turquesa y Mónaco a 30 minutos en tren.</div>
       <ul class="dest-details">
-        <li>Traslado desde Santiago: A confirmar (vuelo)</li>
+        <li>Traslado desde Santiago: vuelo low-cost (A confirmar)</li>
         <li>Alojamiento: A confirmar</li>
-        <li>Posible excursión: Mónaco (30 min en tren)</li>
+        <li>Posible excursión a Mónaco y Eze village</li>
       </ul>
     </div>
   </div>
 
   <hr class="separator">
 
+  <!-- 04 MARSELLA -->
   <div class="destination-block">
-    <div class="dest-number">05</div>
+    <div class="dest-number">04</div>
     <div class="dest-content">
       <div class="dest-header">
         <div class="dest-city">Marsella</div>
         <div class="dest-country">Francia</div>
         <div class="dest-badge badge-pending">A confirmar</div>
       </div>
-      <div class="dest-dates">~15 Ago · 1 noche o escala</div>
-      <div class="dest-desc">Ciudad portuaria mediterránea. Las Calanques, el puerto viejo y la bouillabaisse.</div>
+      <div class="dest-dates">~13 Ago · 1 noche</div>
+      <div class="dest-desc">Ciudad portuaria con carácter propio. Las Calanques, el Vieux-Port y la bouillabaisse.</div>
       <ul class="dest-details">
-        <li>Traslado desde Niza: tren (~2.5hs)</li>
+        <li>Traslado desde Niza: tren TER (~2.5hs)</li>
         <li>Alojamiento: A confirmar</li>
       </ul>
     </div>
@@ -1121,58 +807,61 @@
 
   <hr class="separator">
 
+  <!-- 05 FLORENCIA -->
   <div class="destination-block">
-    <div class="dest-number">06</div>
+    <div class="dest-number">05</div>
     <div class="dest-content">
       <div class="dest-header">
         <div class="dest-city">Florencia</div>
         <div class="dest-country">Italia · Toscana</div>
         <div class="dest-badge badge-pending">A confirmar</div>
       </div>
-      <div class="dest-dates">~16 Ago → ~17 Ago · 1-2 noches</div>
-      <div class="dest-desc">El Renacimiento hecho ciudad. Uffizi, David, Ponte Vecchio, Piazzale Michelangelo.</div>
+      <div class="dest-dates">~14 Ago → ~15 Ago · 2 noches</div>
+      <div class="dest-desc">El Renacimiento hecho ciudad. Uffizi, el David de Miguel Ángel, Ponte Vecchio y el Piazzale Michelangelo al atardecer.</div>
       <ul class="dest-details">
         <li>Traslado desde Marsella: tren o vuelo (A confirmar)</li>
         <li>Alojamiento: A confirmar</li>
-        <li>Visitas sugeridas: Galleria degli Uffizi (reservar online), Catedral</li>
+        <li>Reservar Uffizi y Academia online con anticipación</li>
       </ul>
     </div>
   </div>
 
   <hr class="separator">
 
+  <!-- 06 ROMA -->
   <div class="destination-block">
-    <div class="dest-number">07</div>
+    <div class="dest-number">06</div>
     <div class="dest-content">
       <div class="dest-header">
         <div class="dest-city">Roma</div>
         <div class="dest-country">Italia · Lazio</div>
         <div class="dest-badge badge-pending">A confirmar</div>
       </div>
-      <div class="dest-dates">~18 Ago → ~19 Ago · 2 noches</div>
-      <div class="dest-desc">La Ciudad Eterna. El Coliseo, el Vaticano, la Fontana di Trevi y la pasta cacio e pepe.</div>
+      <div class="dest-dates">~16 Ago → ~17 Ago · 2 noches</div>
+      <div class="dest-desc">La Ciudad Eterna. El Coliseo, el Vaticano, la Fontana di Trevi y la pasta cacio e pepe en Trastevere.</div>
       <ul class="dest-details">
         <li>Traslado desde Florencia: tren Frecciarossa (~1.5hs)</li>
         <li>Alojamiento: A confirmar</li>
-        <li>Visitas sugeridas: Coliseo (reservar), Vaticano (reservar), Trastevere</li>
+        <li>Reservar Coliseo y Museos Vaticanos online</li>
       </ul>
     </div>
   </div>
 
   <hr class="separator">
 
+  <!-- 07 COSTA AMALFITANA -->
   <div class="destination-block">
-    <div class="dest-number">08</div>
+    <div class="dest-number">07</div>
     <div class="dest-content">
       <div class="dest-header">
         <div class="dest-city">Costa Amalfitana</div>
         <div class="dest-country">Italia · Campania</div>
         <div class="dest-badge badge-pending">A confirmar</div>
       </div>
-      <div class="dest-dates">~20 Ago → ~21 Ago · 2 noches (base en Sorrento)</div>
-      <div class="dest-desc">Acantilados y pueblos de colores sobre el Mediterráneo. Uno de los paisajes más espectaculares del mundo.</div>
+      <div class="dest-dates">~18 Ago → ~20 Ago · 2-3 noches (base en Sorrento)</div>
+      <div class="dest-desc">Acantilados y pueblos de colores sobre el Mediterráneo. Uno de los paisajes más espectaculares del planeta.</div>
       <ul class="dest-details">
-        <li>Traslado desde Roma: tren a Nápoles + ferry a Sorrento (~3hs)</li>
+        <li>Traslado desde Roma: tren a Nápoles + Circumvesuviana o ferry a Sorrento (~3hs)</li>
         <li>Alojamiento: A confirmar en Sorrento</li>
         <li>Excursiones: Positano, Amalfi, posible visita a Pompeya</li>
       </ul>
@@ -1181,20 +870,42 @@
 
   <hr class="separator">
 
+  <!-- 08 MADRID REGRESO -->
+  <div class="destination-block">
+    <div class="dest-number">08</div>
+    <div class="dest-content">
+      <div class="dest-header">
+        <div class="dest-city">Madrid</div>
+        <div class="dest-country">España</div>
+        <div class="dest-badge badge-pending">A confirmar traslado</div>
+      </div>
+      <div class="dest-dates">~21 Ago → 22 Ago · última noche antes del vuelo</div>
+      <div class="dest-desc">El cierre del viaje. Una noche en Madrid antes de tomar el vuelo de regreso a Buenos Aires. Cena de despedida, maletas listas.</div>
+      <ul class="dest-details">
+        <li>Traslado desde Sorrento a Madrid: A confirmar (vuelo desde Nápoles o Roma)</li>
+        <li>Alojamiento: A confirmar (cerca del aeropuerto o centro)</li>
+        <li>Vuelo PU501 sale el 22 Ago a las 23:10hs desde MAD</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr class="separator">
+
+  <!-- 09 REGRESO -->
   <div class="destination-block">
     <div class="dest-number">09</div>
     <div class="dest-content">
       <div class="dest-header">
-        <div class="dest-city">Roma → Madrid → Casa</div>
-        <div class="dest-country">Italia / España / Argentina</div>
-        <div class="dest-badge badge-confirmed">Vuelo confirmado desde MAD</div>
+        <div class="dest-city">Buenos Aires</div>
+        <div class="dest-country">Argentina</div>
+        <div class="dest-badge badge-confirmed">Vuelo confirmado</div>
       </div>
-      <div class="dest-dates">22 Ago (Madrid) → 23 Ago (llegada EZE 06:45)</div>
-      <div class="dest-desc">Última noche. Vuelo PU501 Madrid → Buenos Aires.</div>
+      <div class="dest-dates">23 Ago · llegada EZE 06:45hs</div>
+      <div class="dest-desc">De vuelta a casa. Con miles de fotos, las piernas cansadas y el Camino en el cuerpo.</div>
       <ul class="dest-details">
-        <li>Traslado Sorrento → Roma → Madrid: A confirmar</li>
-        <li>Check-in en MAD: 22 Ago, vuelo 23:10hs</li>
-        <li>Llegada EZE: 23 Ago, 06:45hs</li>
+        <li>Vuelo PU501 · salida MAD 22 Ago 23:10hs</li>
+        <li>Duración: 12hs 35min</li>
+        <li>Llegada Ezeiza: 23 Ago 06:45hs</li>
       </ul>
     </div>
   </div>
@@ -1207,23 +918,23 @@
   <div class="section-title">Transporte <em>entre ciudades</em></div>
 
   <div class="itinerary-note">
-    Los traslados entre ciudades están mayormente por confirmar. Abajo se detallan las opciones más probables y los tiempos estimados.
+    Los traslados internos están mayormente por confirmar. Se detallan las opciones más probables con tiempos estimados.
   </div>
 
   <div class="transport-item">
     <div class="transport-icon">✈</div>
     <div class="transport-body">
-      <div class="transport-route">EZE → MAD — Plus Ultra PU502</div>
-      <div class="transport-meta">01 Ago · 13:25hs · 12h 05m · Ref. WAMKPP</div>
+      <div class="transport-route">EZE → MAD · Plus Ultra PU502</div>
+      <div class="transport-meta">01 Ago 2026 · 13:25hs · 12h 05m</div>
       <div class="transport-status badge-confirmed">Confirmado</div>
     </div>
   </div>
 
   <div class="transport-item">
-    <div class="transport-icon">🚄</div>
+    <div class="transport-icon">✈</div>
     <div class="transport-body">
-      <div class="transport-route">Madrid → Porto</div>
-      <div class="transport-meta">Tren o vuelo low-cost · ~3-4hs en tren o ~1h en avión</div>
+      <div class="transport-route">Madrid → inicio del Camino</div>
+      <div class="transport-meta">Bus o tren según punto de partida · ~04 Ago</div>
       <div class="transport-status badge-pending">A confirmar</div>
     </div>
   </div>
@@ -1231,9 +942,9 @@
   <div class="transport-item">
     <div class="transport-icon">🚶</div>
     <div class="transport-body">
-      <div class="transport-route">Porto → Santiago de Compostela (Camino Portugués)</div>
-      <div class="transport-meta">~7 días · ~200 km caminando · Salida ~07 Ago</div>
-      <div class="transport-status badge-pending">A confirmar</div>
+      <div class="transport-route">Camino de Santiago (~7 etapas)</div>
+      <div class="transport-meta">~200 km caminando · 04 Ago → 10 Ago</div>
+      <div class="transport-status badge-pending">A confirmar tramo</div>
     </div>
   </div>
 
@@ -1241,7 +952,7 @@
     <div class="transport-icon">✈</div>
     <div class="transport-body">
       <div class="transport-route">Santiago → Niza</div>
-      <div class="transport-meta">Vuelo low-cost · ~2hs · ~14 Ago</div>
+      <div class="transport-meta">Vuelo low-cost · ~2hs · ~11 Ago</div>
       <div class="transport-status badge-pending">A confirmar</div>
     </div>
   </div>
@@ -1250,7 +961,7 @@
     <div class="transport-icon">🚄</div>
     <div class="transport-body">
       <div class="transport-route">Niza → Marsella</div>
-      <div class="transport-meta">Tren TER · ~2.5hs · ~15 Ago</div>
+      <div class="transport-meta">Tren TER · ~2.5hs · ~13 Ago</div>
       <div class="transport-status badge-pending">A confirmar</div>
     </div>
   </div>
@@ -1259,7 +970,7 @@
     <div class="transport-icon">🚄</div>
     <div class="transport-body">
       <div class="transport-route">Marsella → Florencia</div>
-      <div class="transport-meta">Tren o vuelo · ~6hs en tren · ~16 Ago</div>
+      <div class="transport-meta">Tren o vuelo · ~6hs en tren · ~14 Ago</div>
       <div class="transport-status badge-pending">A confirmar</div>
     </div>
   </div>
@@ -1268,7 +979,7 @@
     <div class="transport-icon">🚄</div>
     <div class="transport-body">
       <div class="transport-route">Florencia → Roma</div>
-      <div class="transport-meta">Tren Frecciarossa · ~1.5hs · ~18 Ago</div>
+      <div class="transport-meta">Tren Frecciarossa · ~1.5hs · ~16 Ago</div>
       <div class="transport-status badge-pending">A confirmar</div>
     </div>
   </div>
@@ -1276,8 +987,8 @@
   <div class="transport-item">
     <div class="transport-icon">🚢</div>
     <div class="transport-body">
-      <div class="transport-route">Roma → Nápoles → Sorrento (Costa Amalfitana)</div>
-      <div class="transport-meta">Tren Roma-Nápoles + Circumvesuviana o ferry · ~3hs · ~20 Ago</div>
+      <div class="transport-route">Roma → Nápoles → Sorrento</div>
+      <div class="transport-meta">Tren + Circumvesuviana o ferry · ~3hs · ~18 Ago</div>
       <div class="transport-status badge-pending">A confirmar</div>
     </div>
   </div>
@@ -1285,8 +996,17 @@
   <div class="transport-item">
     <div class="transport-icon">✈</div>
     <div class="transport-body">
-      <div class="transport-route">Sorrento/Roma → Madrid · Plus Ultra PU501</div>
-      <div class="transport-meta">22 Ago · Salida MAD 23:10hs · Llegada EZE 23 Ago 06:45hs</div>
+      <div class="transport-route">Sorrento/Nápoles → Madrid</div>
+      <div class="transport-meta">Vuelo desde NAP o FCO · ~21 Ago</div>
+      <div class="transport-status badge-pending">A confirmar</div>
+    </div>
+  </div>
+
+  <div class="transport-item">
+    <div class="transport-icon">✈</div>
+    <div class="transport-body">
+      <div class="transport-route">MAD → EZE · Plus Ultra PU501</div>
+      <div class="transport-meta">22 Ago 2026 · 23:10hs · 12h 35m · llegada 23 Ago 06:45hs</div>
       <div class="transport-status badge-confirmed">Confirmado</div>
     </div>
   </div>
@@ -1298,55 +1018,61 @@
   <div class="section-label">Memorias del viaje</div>
   <div class="section-title">Nuestras <em>Fotos</em></div>
 
-  <p style="color: var(--muted); margin-bottom: 2rem; font-style: italic;">
+  <p style="color:var(--muted); margin-bottom:2rem; font-style:italic;">
     Acá van a ir apareciendo los álbumes de Google Photos a medida que el viaje avance. Por ahora, todo está esperando ser vivido.
   </p>
 
-  <div class="photos-grid" id="photos-grid">
-    <a class="photo-slot" href="#" onclick="alert('Agregar link al álbum de Madrid aquí'); return false;">
+  <div class="photos-grid">
+    <a class="photo-slot" href="#" onclick="return false;">
       <div class="photo-slot-icon">📷</div>
-      <div>Madrid</div>
+      <div>Madrid · llegada</div>
       <div style="margin-top:4px; font-size:0.55rem; opacity:0.6;">Álbum por agregar</div>
     </a>
-    <a class="photo-slot" href="#" onclick="alert('Agregar link al álbum de Porto aquí'); return false;">
-      <div class="photo-slot-icon">📷</div>
-      <div>Porto</div>
-      <div style="margin-top:4px; font-size:0.55rem; opacity:0.6;">Álbum por agregar</div>
-    </a>
-    <a class="photo-slot" href="#" onclick="alert('Agregar link al álbum del Camino aquí'); return false;">
+    <a class="photo-slot" href="#" onclick="return false;">
       <div class="photo-slot-icon">📷</div>
       <div>Camino de Santiago</div>
       <div style="margin-top:4px; font-size:0.55rem; opacity:0.6;">Álbum por agregar</div>
     </a>
-    <a class="photo-slot" href="#" onclick="alert('Agregar link al álbum de Niza / Costa Azul aquí'); return false;">
+    <a class="photo-slot" href="#" onclick="return false;">
       <div class="photo-slot-icon">📷</div>
       <div>Niza · Costa Azul</div>
       <div style="margin-top:4px; font-size:0.55rem; opacity:0.6;">Álbum por agregar</div>
     </a>
-    <a class="photo-slot" href="#" onclick="alert('Agregar link al álbum de Florencia aquí'); return false;">
+    <a class="photo-slot" href="#" onclick="return false;">
+      <div class="photo-slot-icon">📷</div>
+      <div>Marsella</div>
+      <div style="margin-top:4px; font-size:0.55rem; opacity:0.6;">Álbum por agregar</div>
+    </a>
+    <a class="photo-slot" href="#" onclick="return false;">
       <div class="photo-slot-icon">📷</div>
       <div>Florencia</div>
       <div style="margin-top:4px; font-size:0.55rem; opacity:0.6;">Álbum por agregar</div>
     </a>
-    <a class="photo-slot" href="#" onclick="alert('Agregar link al álbum de Roma aquí'); return false;">
+    <a class="photo-slot" href="#" onclick="return false;">
       <div class="photo-slot-icon">📷</div>
       <div>Roma</div>
       <div style="margin-top:4px; font-size:0.55rem; opacity:0.6;">Álbum por agregar</div>
     </a>
-    <a class="photo-slot" href="#" onclick="alert('Agregar link al álbum de la Costa Amalfitana aquí'); return false;">
+    <a class="photo-slot" href="#" onclick="return false;">
       <div class="photo-slot-icon">📷</div>
       <div>Costa Amalfitana</div>
       <div style="margin-top:4px; font-size:0.55rem; opacity:0.6;">Álbum por agregar</div>
     </a>
-    <a class="photo-slot" href="#" onclick="alert('Agregar link al álbum general del viaje aquí'); return false;">
+    <a class="photo-slot" href="#" onclick="return false;">
+      <div class="photo-slot-icon">📷</div>
+      <div>Madrid · despedida</div>
+      <div style="margin-top:4px; font-size:0.55rem; opacity:0.6;">Álbum por agregar</div>
+    </a>
+    <a class="photo-slot" href="#" onclick="return false;">
       <div class="photo-slot-icon">📷</div>
       <div>Momentos varios</div>
       <div style="margin-top:4px; font-size:0.55rem; opacity:0.6;">Álbum por agregar</div>
     </a>
   </div>
 
-  <p style="margin-top: 1.5rem; font-family: var(--font-mono); font-size: 0.62rem; color: var(--muted-light); letter-spacing: 0.05em;">
-    Para agregar un álbum: reemplazar el href="#" de cada ciudad con el link de Google Photos correspondiente, y reemplazar el texto "Álbum por agregar" por la cantidad de fotos.
+  <p style="margin-top:1.5rem; font-family:var(--font-mono); font-size:0.62rem; color:var(--muted-light); letter-spacing:0.05em; line-height:1.7;">
+    Para agregar un álbum: reemplazar el <code>href="#"</code> de cada ciudad con el link de Google Photos correspondiente.<br>
+    Ejemplo: <code>href="https://photos.google.com/share/..."</code>
   </p>
 </section>
 
@@ -1355,29 +1081,25 @@
   <div class="section-label">Seguimiento en redes</div>
   <div class="section-title"><em>Novedades</em> de Plus Ultra y eDreams</div>
 
-  <p style="color: var(--muted); margin-bottom: 2rem; font-style: italic; font-size: 0.95rem;">
-    Links directos a búsquedas en X/Twitter con las menciones más relevantes de cada empresa. Hacé clic en cada link para ver los tweets más recientes y con más interacciones.
+  <p style="color:var(--muted); margin-bottom:2rem; font-style:italic; font-size:0.95rem;">
+    Links directos a búsquedas en X/Twitter con las menciones más relevantes de cada empresa. "Top" muestra los tweets con más likes; "Recientes" los últimos publicados.
   </p>
 
   <div class="news-grid">
-
-    <!-- PLUS ULTRA -->
     <div class="company-panel">
       <div class="company-panel-header">
-        <div>
-          <div class="company-name">Plus Ultra</div>
-          <div class="company-type">Aerolínea · Madrid</div>
-        </div>
+        <div class="company-name">Plus Ultra</div>
+        <div class="company-type">Aerolínea · Madrid</div>
       </div>
       <div class="company-panel-body">
-        <a class="social-link" href="https://twitter.com/search?q=Plus%20Ultra%20aerolinea&f=top&src=typed_query" target="_blank">
+        <a class="social-link" href="https://twitter.com/search?q=plus%20ultra%20aerolinea&f=top" target="_blank">
           <span class="social-icon">𝕏</span>
-          <span class="social-label">Tweets top: "Plus Ultra aerolinea"</span>
+          <span class="social-label">Tweets top: "plus ultra aerolinea"</span>
           <span class="social-arrow">→</span>
         </a>
-        <a class="social-link" href="https://twitter.com/search?q=%22Plus%20Ultra%22%20vuelo&f=live&src=typed_query" target="_blank">
+        <a class="social-link" href="https://twitter.com/search?q=plus%20ultra%20aerolinea&f=live" target="_blank">
           <span class="social-icon">𝕏</span>
-          <span class="social-label">Tweets recientes: "Plus Ultra vuelo"</span>
+          <span class="social-label">Tweets recientes: "plus ultra aerolinea"</span>
           <span class="social-arrow">→</span>
         </a>
         <a class="social-link" href="https://twitter.com/PlusUltraAir" target="_blank">
@@ -1390,31 +1112,23 @@
           <span class="social-label">Noticias oficiales Plus Ultra</span>
           <span class="social-arrow">→</span>
         </a>
-        <a class="social-link" href="https://www.plusultra.com/es/" target="_blank">
-          <span class="social-icon">🌐</span>
-          <span class="social-label">Web Plus Ultra</span>
-          <span class="social-arrow">→</span>
-        </a>
       </div>
     </div>
 
-    <!-- EDREAMS -->
     <div class="company-panel">
       <div class="company-panel-header">
-        <div>
-          <div class="company-name">eDreams</div>
-          <div class="company-type">Agencia online · Barcelona</div>
-        </div>
+        <div class="company-name">eDreams</div>
+        <div class="company-type">Agencia online · Barcelona</div>
       </div>
       <div class="company-panel-body">
-        <a class="social-link" href="https://twitter.com/search?q=edreams%20agencia&f=top&src=typed_query" target="_blank">
+        <a class="social-link" href="https://twitter.com/search?q=edreams%20agencia&f=top" target="_blank">
           <span class="social-icon">𝕏</span>
           <span class="social-label">Tweets top: "edreams agencia"</span>
           <span class="social-arrow">→</span>
         </a>
-        <a class="social-link" href="https://twitter.com/search?q=%22edreams%22%20vuelo&f=live&src=typed_query" target="_blank">
+        <a class="social-link" href="https://twitter.com/search?q=edreams%20agencia&f=live" target="_blank">
           <span class="social-icon">𝕏</span>
-          <span class="social-label">Tweets recientes: "edreams vuelo"</span>
+          <span class="social-label">Tweets recientes: "edreams agencia"</span>
           <span class="social-arrow">→</span>
         </a>
         <a class="social-link" href="https://twitter.com/eDreams_ES" target="_blank">
@@ -1427,113 +1141,127 @@
           <span class="social-label">Mis viajes en eDreams</span>
           <span class="social-arrow">→</span>
         </a>
-        <a class="social-link" href="https://www.edreams.com.ar/" target="_blank">
-          <span class="social-icon">🌐</span>
-          <span class="social-label">Web eDreams Argentina</span>
-          <span class="social-arrow">→</span>
-        </a>
       </div>
     </div>
-
   </div>
 
   <p class="news-disclaimer">
-    Los links de búsqueda en X/Twitter muestran resultados en tiempo real.<br>
-    "Top" = más likes · "Recientes" = los últimos publicados.
+    Los links abren búsquedas en tiempo real en X/Twitter.<br>
+    "Top" = más interacciones · "Recientes" = últimos publicados.
   </p>
 </section>
 
-<!-- ESTADO DE VUELOS -->
+<!-- ESTADO VUELOS -->
 <section id="estado-vuelos">
-  <div class="section-label">Control semanal recomendado · +100 días para el vuelo</div>
+  <div class="section-label">Control manual recomendado · faltan más de 100 días</div>
   <div class="section-title">Estado de <em>Vuelos</em></div>
 
-  <p style="color: var(--muted); margin-bottom: 2rem; font-style: italic; font-size: 0.95rem;">
-    Como el pasaje fue comprado con una tarifa sin notificaciones de cambios de parte de eDreams, se recomienda revisar el estado de los vuelos al menos una vez por semana, especialmente en las 4 semanas previas. Usá estos links directos a múltiples fuentes:
+  <p style="color:var(--muted); margin-bottom:0.5rem; font-style:italic; font-size:0.95rem;">
+    Al ser una tarifa sin notificaciones de eDreams, cualquier cambio de horario, fecha o cancelación <strong>no llega automáticamente</strong>. Revisá estas fuentes una vez por semana, y a diario en la semana previa al vuelo.
   </p>
 
-  <!-- VUELO IDA -->
+  <p style="color:var(--muted); margin-bottom:2rem; font-size:0.88rem; font-family:var(--font-mono); letter-spacing:0.04em;">
+    El botón "Abrir todo" abre todas las fuentes a la vez en pestañas separadas.
+  </p>
+
+  <!-- IDA -->
   <div class="scrape-card">
     <div class="scrape-title">PU502 · Buenos Aires → Madrid</div>
-    <div class="scrape-number">Vuelo de ida · 01 Ago 2025 · Ref. WAMKPP</div>
+    <div class="scrape-number">Vuelo de ida · 01 Ago 2026 · salida 13:25 EZE · llegada 06:30 MAD</div>
     <div class="scrape-links">
       <a class="scrape-link" href="https://www.flightradar24.com/data/flights/pu502" target="_blank">FlightRadar24</a>
       <a class="scrape-link" href="https://flightaware.com/live/flight/PU502" target="_blank">FlightAware</a>
-      <a class="scrape-link" href="https://www.aerolineas.com.ar/ar/vuelo-estado" target="_blank">Estado general vuelos</a>
-      <a class="scrape-link" href="https://www.plusultra.com/es/informacion-de-vuelo" target="_blank">Plus Ultra oficial</a>
-      <a class="scrape-link" href="https://www.aeropuertos.gob.ar/vuelo/PU502" target="_blank">Aeropuertos Argentina</a>
       <a class="scrape-link" href="https://www.flightstats.com/v2/flight-tracker/PU/502" target="_blank">FlightStats</a>
+      <a class="scrape-link" href="https://www.plusultra.com/es/informacion-de-vuelo" target="_blank">Plus Ultra oficial</a>
+      <a class="scrape-link" href="https://www.edreams.com.ar/my-trips/" target="_blank">eDreams · mis viajes</a>
     </div>
+    <button class="open-all-btn" onclick="openAll502()">Abrir todo en pestañas ↗</button>
     <div class="scrape-note">
-      → Usar FlightRadar24 o FlightAware para ver histórico del vuelo y ver si suele salir puntual.<br>
-      → Consultar la referencia WAMKPP directamente en <strong>edreams.com.ar/my-trips/</strong> para ver si eDreams detecta cambios en el booking.
+      → FlightRadar24 y FlightAware muestran el historial del vuelo y si suele salir puntual.<br>
+      → FlightStats agrega datos de aeropuerto y estadísticas de puntualidad histórica.<br>
+      → Revisá también "Mis viajes" en eDreams directamente para ver si el booking registró algún cambio.
     </div>
   </div>
 
-  <!-- VUELO REGRESO -->
+  <!-- REGRESO -->
   <div class="scrape-card" style="border-top-color: var(--accent);">
     <div class="scrape-title">PU501 · Madrid → Buenos Aires</div>
-    <div class="scrape-number">Vuelo de regreso · 22 Ago 2025 · Ref. WAMKPP</div>
+    <div class="scrape-number">Vuelo de regreso · 22 Ago 2026 · salida 23:10 MAD · llegada 06:45 EZE</div>
     <div class="scrape-links">
       <a class="scrape-link" href="https://www.flightradar24.com/data/flights/pu501" target="_blank">FlightRadar24</a>
       <a class="scrape-link" href="https://flightaware.com/live/flight/PU501" target="_blank">FlightAware</a>
-      <a class="scrape-link" href="https://www.plusultra.com/es/informacion-de-vuelo" target="_blank">Plus Ultra oficial</a>
-      <a class="scrape-link" href="https://www.aeropuertos.gob.ar/vuelo/PU501" target="_blank">Aeropuertos Argentina</a>
       <a class="scrape-link" href="https://www.flightstats.com/v2/flight-tracker/PU/501" target="_blank">FlightStats</a>
+      <a class="scrape-link" href="https://www.plusultra.com/es/informacion-de-vuelo" target="_blank">Plus Ultra oficial</a>
+      <a class="scrape-link" href="https://www.edreams.com.ar/my-trips/" target="_blank">eDreams · mis viajes</a>
     </div>
+    <button class="open-all-btn" onclick="openAll501()">Abrir todo en pestañas ↗</button>
     <div class="scrape-note">
-      → Revisar periódicamente. Si el vuelo cambia de horario o día, lo verás reflejado en el historial de FlightAware antes de que eDreams lo notifique.<br>
-      → También podés buscar "PU501" en <strong>X/Twitter</strong> para ver si otros pasajeros reportan cambios.
+      → Igual lógica que el vuelo de ida.<br>
+      → También podés buscar "PU501" en X/Twitter para ver si otros pasajeros reportan novedades.
     </div>
   </div>
 
-  <div style="background: rgba(139,26,26,0.08); border-left: 3px solid var(--red-stamp); padding: 1rem 1.5rem; border-radius: 0 4px 4px 0; margin-top: 1rem;">
-    <div style="font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--red-stamp); margin-bottom: 0.5rem;">Recordatorio importante</div>
-    <div style="font-size: 0.9rem; color: var(--muted);">
-      Al ser una tarifa sin avisos, cualquier cambio de horario, fecha o cancelación NO llega automáticamente. Se sugiere revisar estas fuentes <strong>una vez por semana</strong> hasta el vuelo, y con más frecuencia en la semana previa.
+  <div style="background:rgba(139,26,26,0.08); border-left:3px solid var(--red-stamp); padding:1rem 1.5rem; border-radius:0 4px 4px 0; margin-top:1rem;">
+    <div style="font-family:var(--font-mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--red-stamp); margin-bottom:0.5rem;">Recordatorio importante</div>
+    <div style="font-size:0.9rem; color:var(--muted);">
+      La referencia de tu reserva es información personal sensible. No la compartas públicamente ni la incluyas en links o capturas de pantalla. Para consultas, ingresá directamente a eDreams con tu cuenta.
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div style="font-size: 1.5rem; font-family: var(--font-display); font-style: italic; color: var(--accent); margin-bottom: 1rem;">Europa 2025</div>
-  <div>Hecho con <span class="heart">♥</span> para nuestro primer gran viaje</div>
-  <div style="margin-top: 0.5rem; opacity: 0.6;">Buenos Aires → Madrid · Porto · Camino de Santiago · Costa Azul · Florencia · Roma · Amalfi → Buenos Aires</div>
+  <div style="font-size:1.5rem; font-family:var(--font-display); font-style:italic; color:var(--accent); margin-bottom:1rem;">Europa 2026</div>
+  <div>Hecho con <span class="heart">♥</span> para nuestro primer gran viaje juntos</div>
+  <div style="margin-top:0.5rem; opacity:0.6;">Buenos Aires → Madrid → Camino de Santiago → Costa Azul → Florencia → Roma → Amalfi → Madrid → Buenos Aires</div>
 </footer>
 
 <script>
-  // COUNTDOWN
   function updateCountdown() {
-    const departure = new Date('2025-08-01T13:25:00-03:00');
+    const departure = new Date('2026-08-01T13:25:00-03:00');
     const now = new Date();
     const diff = departure - now;
-
     if (diff <= 0) {
-      document.getElementById('countdown-box').innerHTML = '<div class="countdown-title" style="font-size:1.4rem; color: var(--accent-gold);">¡El viaje ya comenzó! ✈</div>';
+      document.getElementById('countdown-box').innerHTML = '<div style="font-family:var(--font-display); font-style:italic; font-size:1.4rem; color:var(--accent-gold);">¡El viaje ya comenzó! ✈</div>';
       return;
     }
-
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-
+    const days = Math.floor(diff / (1000*60*60*24));
+    const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+    const minutes = Math.floor((diff % (1000*60*60)) / (1000*60));
     document.getElementById('cd-dias').textContent = days;
     document.getElementById('cd-horas').textContent = hours;
     document.getElementById('cd-min').textContent = minutes;
   }
 
   updateCountdown();
-  setInterval(updateCountdown, 60000);
+  setInterval(updateCountdown, 30000);
 
-  // SMOOTH SCROLL
+  function openAll502() {
+    const urls = [
+      'https://www.flightradar24.com/data/flights/pu502',
+      'https://flightaware.com/live/flight/PU502',
+      'https://www.flightstats.com/v2/flight-tracker/PU/502',
+      'https://www.plusultra.com/es/informacion-de-vuelo',
+      'https://www.edreams.com.ar/my-trips/'
+    ];
+    urls.forEach(u => window.open(u, '_blank'));
+  }
+
+  function openAll501() {
+    const urls = [
+      'https://www.flightradar24.com/data/flights/pu501',
+      'https://flightaware.com/live/flight/PU501',
+      'https://www.flightstats.com/v2/flight-tracker/PU/501',
+      'https://www.plusultra.com/es/informacion-de-vuelo',
+      'https://www.edreams.com.ar/my-trips/'
+    ];
+    urls.forEach(u => window.open(u, '_blank'));
+  }
+
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       const target = document.querySelector(a.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
     });
   });
 </script>
