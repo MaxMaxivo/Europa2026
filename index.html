@@ -555,6 +555,120 @@
   .countdown-title { font-family: var(--font-display); font-size: 1rem; font-style: italic; color: var(--muted-light); }
 
 
+
+  /* TRIP PROGRESS */
+  .trip-progress {
+    background: linear-gradient(135deg, rgba(44,74,110,0.12), rgba(201,168,76,0.2) 55%, rgba(92,107,46,0.13));
+    border: 1px solid var(--paper-darker);
+    border-top: 4px solid var(--accent-gold);
+    border-radius: 4px;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .trip-progress::after {
+    content: 'Loading Europa 2026...';
+    position: absolute;
+    right: 1rem;
+    top: 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(107,92,69,0.45);
+  }
+
+  .progress-head {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    align-items: end;
+    margin-bottom: 1rem;
+  }
+
+  .progress-title {
+    font-family: var(--font-display);
+    font-size: 1.55rem;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.15;
+  }
+
+  .progress-title em { color: var(--accent); font-style: italic; }
+
+  .progress-percent {
+    font-family: var(--font-mono);
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: var(--accent-blue);
+    line-height: 1;
+  }
+
+  .progress-track {
+    height: 16px;
+    border: 1px solid rgba(107,92,69,0.25);
+    background: rgba(245,240,232,0.75);
+    border-radius: 999px;
+    overflow: hidden;
+    box-shadow: inset 0 1px 2px rgba(26,23,20,0.08);
+  }
+
+  .progress-fill {
+    width: 22%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-blue), var(--accent-olive), var(--accent-gold));
+    border-radius: inherit;
+  }
+
+  .progress-caption {
+    margin-top: 0.75rem;
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+
+  .progress-caption strong { color: var(--ink); }
+
+  .progress-metrics {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+  }
+
+  .progress-metric {
+    background: rgba(245,240,232,0.7);
+    border: 1px dashed rgba(107,92,69,0.28);
+    border-radius: 4px;
+    padding: 0.85rem;
+  }
+
+  .progress-metric .num {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .progress-metric .label {
+    font-family: var(--font-mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted-light);
+    margin-top: 0.4rem;
+  }
+
+  .progress-fineprint {
+    margin-top: 0.9rem;
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    line-height: 1.7;
+    letter-spacing: 0.04em;
+    color: var(--muted-light);
+  }
   /* ORGANIZATION DASHBOARD */
   .ops-grid {
     display: grid;
@@ -722,7 +836,10 @@
   @media (max-width: 760px) {
     .ops-grid,
     .money-summary,
-    .checklist-grid { grid-template-columns: 1fr; }
+    .checklist-grid,
+    .progress-metrics { grid-template-columns: 1fr; }
+    .progress-head { grid-template-columns: 1fr; align-items: start; }
+    .trip-progress::after { position: static; display: block; margin-bottom: 0.75rem; }
     .ops-panel.wide { grid-column: auto; }
     .data-table { display: block; overflow-x: auto; white-space: nowrap; }
     .decision-card { grid-template-columns: 1fr; gap: 0.35rem; }
@@ -808,6 +925,33 @@
       <div class="countdown-unit"><span class="num" id="cd-dias">–</span><span class="unit-label">días</span></div>
       <div class="countdown-unit"><span class="num" id="cd-horas">–</span><span class="unit-label">horas</span></div>
       <div class="countdown-unit"><span class="num" id="cd-min">–</span><span class="unit-label">minutos</span></div>
+    </div>
+  </div>
+</section>
+<!-- PROGRESO -->
+<section style="padding:0 2rem 3rem;">
+  <div class="trip-progress">
+    <div class="progress-head">
+      <div>
+        <div class="ops-kicker">Bitácora de organización</div>
+        <div class="progress-title">Viaje cargando: <em>ya despegó en serio</em></div>
+      </div>
+      <div class="progress-percent">22%</div>
+    </div>
+    <div class="progress-track" aria-label="Progreso de organización del viaje">
+      <div class="progress-fill"></div>
+    </div>
+    <div class="progress-caption">
+      <strong>Lo más importante ya está:</strong> los vuelos internacionales están comprados. También quedó cerrado el salto Madrid → Sarria y la primera noche del Camino. Ahora estamos en modo fino: dormir, movernos, caminar y no llegar tarde a nada.
+    </div>
+    <div class="progress-metrics">
+      <div class="progress-metric"><div class="num">5/23</div><div class="label">bloques cerrados</div></div>
+      <div class="progress-metric"><div class="num">2/2</div><div class="label">vuelos grandes</div></div>
+      <div class="progress-metric"><div class="num">1/22</div><div class="label">noches pagadas</div></div>
+      <div class="progress-metric"><div class="num">1</div><div class="label">tramo bravo a decidir</div></div>
+    </div>
+    <div class="progress-fineprint">
+      Criterio usado: vuelos internacionales, vuelos internos, trenes/traslados principales, hospedajes, etapas del Camino, posible auto y regreso a Madrid. El porcentaje mide organización operativa, no importancia: tener los aviones comprados vale medio viaje en tranquilidad.
     </div>
   </div>
 </section>
@@ -1701,6 +1845,7 @@
 </script>
 </body>
 </html>
+
 
 
 
