@@ -833,12 +833,155 @@
   .decision-title { font-family: var(--font-display); font-size: 1.08rem; font-weight: 700; color: var(--ink); }
   .decision-meta { font-size: 0.88rem; color: var(--muted); margin-top: 0.25rem; }
 
+
+  /* MISSION BOARD */
+  .mission-board {
+    background: #fbf7ee;
+    border: 1px solid var(--paper-darker);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 12px 30px rgba(26,23,20,0.06);
+  }
+
+  .mission-top {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    align-items: center;
+    padding: 1.4rem 1.5rem;
+    background: linear-gradient(90deg, rgba(139,69,19,0.08), rgba(44,74,110,0.11));
+    border-bottom: 1px solid var(--paper-darker);
+  }
+
+  .mission-title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.15;
+  }
+
+  .mission-title em { color: var(--accent-blue); font-style: italic; }
+
+  .mission-subtitle {
+    color: var(--muted);
+    font-size: 0.93rem;
+    margin-top: 0.35rem;
+    line-height: 1.45;
+  }
+
+  .mission-score {
+    min-width: 150px;
+    text-align: right;
+    font-family: var(--font-mono);
+    color: var(--accent-blue);
+  }
+
+  .mission-score .big {
+    display: block;
+    font-size: 1.35rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .mission-score .small {
+    display: block;
+    font-size: 0.55rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted-light);
+    margin-top: 0.35rem;
+  }
+
+  .mission-mini-track {
+    height: 8px;
+    background: rgba(217,208,188,0.7);
+    border-radius: 999px;
+    overflow: hidden;
+    margin-top: 0.65rem;
+  }
+
+  .mission-mini-fill {
+    width: 15%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-blue), var(--accent-gold));
+    border-radius: inherit;
+  }
+
+  .mission-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-mono);
+    font-size: 0.64rem;
+    letter-spacing: 0.03em;
+  }
+
+  .mission-table th,
+  .mission-table td {
+    padding: 0.72rem 0.65rem;
+    border-bottom: 1px solid rgba(217,208,188,0.8);
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .mission-table th {
+    color: var(--muted-light);
+    text-transform: uppercase;
+    font-size: 0.54rem;
+    letter-spacing: 0.12em;
+    background: rgba(235,229,213,0.55);
+  }
+
+  .mission-table tr:last-child td { border-bottom: none; }
+  .mission-table td strong { font-family: var(--font-body); font-size: 0.95rem; letter-spacing: 0; color: var(--ink); }
+
+  .check-dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    border: 1px solid var(--paper-darker);
+    background: var(--paper);
+    color: var(--muted-light);
+  }
+
+  .check-dot.done { background: var(--confirmed); border-color: var(--confirmed); color: var(--paper); }
+  .check-dot.next { background: var(--accent-gold); border-color: var(--accent-gold); color: var(--ink); }
+
+  .mission-tag {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.54rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 999px;
+    border: 1px solid rgba(107,92,69,0.22);
+    color: var(--muted);
+    background: rgba(245,240,232,0.75);
+    white-space: nowrap;
+  }
+
+  .mission-note {
+    padding: 0.8rem 1.5rem 1rem;
+    font-size: 0.82rem;
+    color: var(--muted);
+    border-top: 1px dashed var(--paper-darker);
+  }
   @media (max-width: 760px) {
     .ops-grid,
     .money-summary,
     .checklist-grid,
     .progress-metrics { grid-template-columns: 1fr; }
-    .progress-head { grid-template-columns: 1fr; align-items: start; }
+    .progress-head,
+    .mission-top { grid-template-columns: 1fr; align-items: start; }
+    .mission-score { text-align: left; }
+    .mission-table { display: block; overflow-x: auto; white-space: nowrap; }
     .trip-progress::after { position: static; display: block; margin-bottom: 0.75rem; }
     .ops-panel.wide { grid-column: auto; }
     .data-table { display: block; overflow-x: auto; white-space: nowrap; }
@@ -905,6 +1048,7 @@
 <!-- NAV -->
 <nav>
   <a href="#panel">Panel</a>
+  <a href="#misiones">Misiones</a>
   <a href="#vuelos">Vuelos</a>
   <a href="#itinerario">Itinerario</a>
   <a href="#reservas">Reservas</a>
@@ -953,6 +1097,130 @@
     <div class="progress-fineprint">
       Criterio usado: vuelos internacionales, vuelos internos, trenes/traslados principales, hospedajes, etapas del Camino, posible auto y regreso a Madrid. El porcentaje mide organización operativa, no importancia: tener los aviones comprados vale medio viaje en tranquilidad.
     </div>
+  </div>
+</section>
+
+<!-- MISIONES -->
+<section id="misiones" style="padding:0 2rem 3rem;">
+  <div class="mission-board">
+    <div class="mission-top">
+      <div>
+        <div class="ops-kicker">No olvidar / reservar</div>
+        <div class="mission-title">Misiones de <em>viaje</em></div>
+        <div class="mission-subtitle">Reservas, rituales y trámites chicos que después se vuelven enormes si quedan para último minuto.</div>
+      </div>
+      <div class="mission-score">
+        <span class="big">2/13</span>
+        <span class="small">misiones listas</span>
+        <div class="mission-mini-track"><div class="mission-mini-fill"></div></div>
+      </div>
+    </div>
+
+    <table class="mission-table">
+      <thead>
+        <tr>
+          <th>OK</th>
+          <th>Misión</th>
+          <th>Cuándo</th>
+          <th>Estado</th>
+          <th>Nota rápida</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="check-dot done">✓</span></td>
+          <td><strong>Avisar llegada tarde a il nonno</strong><br><span class="mission-tag">Sarria</span></td>
+          <td>Hecho</td>
+          <td><span class="status-pill pill-ok">Listo</span></td>
+          <td>Tren llega 21:02; check-in hasta 22:00.</td>
+        </tr>
+        <tr>
+          <td><span class="check-dot done">✓</span></td>
+          <td><strong>Pasajes Renfe a mano</strong><br><span class="mission-tag">QR / PDF</span></td>
+          <td>02 Ago</td>
+          <td><span class="status-pill pill-ok">Listo base</span></td>
+          <td>PDFs guardados. Falta sumar capturas QR cuando las tengan.</td>
+        </tr>
+        <tr>
+          <td><span class="check-dot next">!</span></td>
+          <td><strong>Assist Card / seguro de viaje</strong><br><span class="mission-tag">obligatorio práctico</span></td>
+          <td>Jun-Jul</td>
+          <td><span class="status-pill pill-warn">Pendiente</span></td>
+          <td>Guardar póliza, teléfonos y cobertura Schengen offline.</td>
+        </tr>
+        <tr>
+          <td><span class="check-dot">□</span></td>
+          <td><strong>Credencial del peregrino</strong><br><span class="mission-tag">Camino</span></td>
+          <td>Antes de caminar</td>
+          <td><span class="status-pill pill-warn">Pendiente</span></td>
+          <td>Necesaria para sellos y Compostela al llegar a Santiago.</td>
+        </tr>
+        <tr>
+          <td><span class="check-dot">□</span></td>
+          <td><strong>Sellos del Camino</strong><br><span class="mission-tag">ritual</span></td>
+          <td>03-07/08</td>
+          <td><span class="status-pill pill-info">Recordar</span></td>
+          <td>Iglesias, bares, albergues y puntos del Camino. No dejarlo para el final.</td>
+        </tr>
+        <tr>
+          <td><span class="check-dot">□</span></td>
+          <td><strong>Hospedaje Portomarín</strong><br><span class="mission-tag">noche 03 Ago</span></td>
+          <td>Reservar ya</td>
+          <td><span class="status-pill pill-warn">Pendiente</span></td>
+          <td>Primera noche caminando; ideal cancelable si aparece mejor opción.</td>
+        </tr>
+        <tr>
+          <td><span class="check-dot">□</span></td>
+          <td><strong>Hospedaje Palas de Rei</strong><br><span class="mission-tag">noche 04 Ago</span></td>
+          <td>Reservar ya</td>
+          <td><span class="status-pill pill-warn">Pendiente</span></td>
+          <td>Clave antes de decidir si el día siguiente se hace completo o partido.</td>
+        </tr>
+        <tr>
+          <td><span class="check-dot">□</span></td>
+          <td><strong>Arzúa o etapa intermedia</strong><br><span class="mission-tag">29 km</span></td>
+          <td>Decidir antes de reservar</td>
+          <td><span class="status-pill pill-info">Evaluar</span></td>
+          <td>Si no van por 29 km, sumar noche y correr Santiago al 08 Ago.</td>
+        </tr>
+        <tr>
+          <td><span class="check-dot">□</span></td>
+          <td><strong>Hospedaje O Pedrouzo</strong><br><span class="mission-tag">última etapa</span></td>
+          <td>Según plan 5/6</td>
+          <td><span class="status-pill pill-warn">Pendiente</span></td>
+          <td>Define llegada final a Santiago sin improvisar.</td>
+        </tr>
+        <tr>
+          <td><span class="check-dot">□</span></td>
+          <td><strong>Vuelo Santiago → Niza</strong><br><span class="mission-tag">salto europeo</span></td>
+          <td>Después de cerrar Camino</td>
+          <td><span class="status-pill pill-warn">Pendiente</span></td>
+          <td>No comprar hasta fijar si llegan a Santiago el 07 o el 08.</td>
+        </tr>
+        <tr>
+          <td><span class="check-dot">□</span></td>
+          <td><strong>Entradas Roma</strong><br><span class="mission-tag">Coliseo / Vaticano</span></td>
+          <td>Cuando haya fechas firmes</td>
+          <td><span class="status-pill pill-warn">Pendiente</span></td>
+          <td>Reservar con horario apenas esté fijo el tramo Italia.</td>
+        </tr>
+        <tr>
+          <td><span class="check-dot">□</span></td>
+          <td><strong>Entradas Florencia</strong><br><span class="mission-tag">Uffizi / Academia</span></td>
+          <td>Cuando haya fechas firmes</td>
+          <td><span class="status-pill pill-warn">Pendiente</span></td>
+          <td>David, Uffizi y horarios: mejor evitar comprar tarde.</td>
+        </tr>
+        <tr>
+          <td><span class="check-dot">□</span></td>
+          <td><strong>Pompeya / Amalfi / ferry</strong><br><span class="mission-tag">sur de Italia</span></td>
+          <td>Según base final</td>
+          <td><span class="status-pill pill-info">Evaluar</span></td>
+          <td>Depende de Sorrento, Nápoles, Roma y regreso a Madrid.</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="mission-note">Esta tabla es deliberadamente viva: cada museo, iglesia, tour, seguro, auto o entrada con horario fijo debería caer acá antes de perderse en el ruido.</div>
   </div>
 </section>
 <!-- PANEL DE CONTROL -->
@@ -1845,6 +2113,8 @@
 </script>
 </body>
 </html>
+
+
 
 
 
