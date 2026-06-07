@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -554,6 +554,180 @@
   .countdown-unit .unit-label { font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted-light); margin-top: 4px; display: block; }
   .countdown-title { font-family: var(--font-display); font-size: 1rem; font-style: italic; color: var(--muted-light); }
 
+
+  /* ORGANIZATION DASHBOARD */
+  .ops-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .ops-panel {
+    background: var(--paper-dark);
+    border: 1px solid var(--paper-darker);
+    border-radius: 4px;
+    padding: 1.2rem;
+  }
+
+  .ops-panel.wide { grid-column: span 2; }
+  .ops-panel.full { grid-column: 1 / -1; }
+
+  .ops-kicker {
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted-light);
+    margin-bottom: 0.35rem;
+  }
+
+  .ops-value {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+
+  .ops-note {
+    font-size: 0.88rem;
+    color: var(--muted);
+    margin-top: 0.45rem;
+    line-height: 1.55;
+  }
+
+  .ops-list {
+    list-style: none;
+    margin-top: 0.5rem;
+  }
+
+  .ops-list li {
+    border-top: 1px dashed var(--paper-darker);
+    padding: 0.55rem 0;
+    font-size: 0.9rem;
+    color: var(--ink);
+  }
+
+  .ops-list li:first-child { border-top: none; }
+
+  .status-pill {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.56rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 2px;
+    margin-right: 0.35rem;
+    white-space: nowrap;
+  }
+
+  .pill-ok { background: rgba(45,90,39,0.15); color: var(--confirmed); border: 1px solid rgba(45,90,39,0.25); }
+  .pill-warn { background: rgba(122,92,26,0.15); color: var(--pending); border: 1px solid rgba(122,92,26,0.25); }
+  .pill-private { background: rgba(139,26,26,0.1); color: var(--red-stamp); border: 1px solid rgba(139,26,26,0.25); }
+  .pill-info { background: rgba(44,74,110,0.12); color: var(--accent-blue); border: 1px solid rgba(44,74,110,0.25); }
+
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.03em;
+    margin-top: 1rem;
+  }
+
+  .data-table th,
+  .data-table td {
+    border-bottom: 1px dashed var(--paper-darker);
+    padding: 0.65rem 0.45rem;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .data-table th {
+    color: var(--muted-light);
+    text-transform: uppercase;
+    font-size: 0.56rem;
+    letter-spacing: 0.12em;
+  }
+
+  .data-table td strong { font-family: var(--font-body); font-size: 0.95rem; letter-spacing: 0; }
+
+  .money-summary {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .money-box {
+    border-top: 3px solid var(--accent-gold);
+    background: var(--paper-dark);
+    padding: 1rem;
+    border-radius: 0 0 4px 4px;
+  }
+
+  .money-box:nth-child(2) { border-top-color: var(--accent-blue); }
+  .money-box:nth-child(3) { border-top-color: var(--accent-olive); }
+  .money-box:nth-child(4) { border-top-color: var(--accent); }
+
+  .checklist-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+
+  .check-group {
+    border-left: 3px solid var(--accent-olive);
+    padding-left: 1rem;
+  }
+
+  .check-group h3 {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .check-item {
+    display: grid;
+    grid-template-columns: 18px 1fr;
+    gap: 0.55rem;
+    padding: 0.35rem 0;
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+
+  .box-mark {
+    width: 14px;
+    height: 14px;
+    border: 1px solid var(--paper-darker);
+    background: rgba(255,255,255,0.22);
+    margin-top: 6px;
+  }
+
+  .decision-card {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px dashed var(--paper-darker);
+  }
+
+  .decision-card:last-child { border-bottom: none; }
+  .decision-date { font-family: var(--font-mono); font-size: 0.62rem; color: var(--muted-light); letter-spacing: 0.08em; text-transform: uppercase; }
+  .decision-title { font-family: var(--font-display); font-size: 1.08rem; font-weight: 700; color: var(--ink); }
+  .decision-meta { font-size: 0.88rem; color: var(--muted); margin-top: 0.25rem; }
+
+  @media (max-width: 760px) {
+    .ops-grid,
+    .money-summary,
+    .checklist-grid { grid-template-columns: 1fr; }
+    .ops-panel.wide { grid-column: auto; }
+    .data-table { display: block; overflow-x: auto; white-space: nowrap; }
+    .decision-card { grid-template-columns: 1fr; gap: 0.35rem; }
+  }
+
   footer {
     text-align: center;
     padding: 3rem 2rem;
@@ -613,9 +787,14 @@
 
 <!-- NAV -->
 <nav>
+  <a href="#panel">Panel</a>
   <a href="#vuelos">Vuelos</a>
   <a href="#itinerario">Itinerario</a>
+  <a href="#reservas">Reservas</a>
   <a href="#transporte">Transporte</a>
+  <a href="#gastos">Gastos</a>
+  <a href="#checklist">Checklist</a>
+  <a href="#decisiones">Decisiones</a>
   <a href="#fotos">Fotos</a>
   <a href="#novedades">Novedades</a>
   <a href="#estado-vuelos">Estado Vuelos</a>
@@ -632,7 +811,43 @@
     </div>
   </div>
 </section>
+<!-- PANEL DE CONTROL -->
+<section id="panel">
+  <div class="section-label">Organización viva</div>
+  <div class="section-title">Panel de <em>Control</em></div>
 
+  <div class="ops-grid">
+    <div class="ops-panel">
+      <div class="ops-kicker">Estado general</div>
+      <div class="ops-value">Ruta abierta</div>
+      <div class="ops-note">Vuelos internacionales confirmados. Destinos internos todavía ajustables según precios, cansancio y logística.</div>
+    </div>
+    <div class="ops-panel">
+      <div class="ops-kicker">Próxima decisión</div>
+      <div class="ops-value">Camino</div>
+      <div class="ops-note">Definir tramo real, cantidad de etapas, mochilas y alojamientos.</div>
+    </div>
+    <div class="ops-panel">
+      <div class="ops-kicker">Prioridad alta</div>
+      <div class="ops-value">Pasajes internos</div>
+      <div class="ops-note">Comparar Santiago → Niza y Nápoles/Roma → Madrid antes de reservar hoteles no reembolsables.</div>
+    </div>
+    <div class="ops-panel wide">
+      <div class="ops-kicker">Próximas acciones</div>
+      <ul class="ops-list">
+        <li><span class="status-pill pill-warn">Pendiente</span>Elegir tramo del Camino y ciudad de inicio.</li>
+        <li><span class="status-pill pill-warn">Pendiente</span>Buscar vuelos internos que fijen la Costa Azul e Italia.</li>
+        <li><span class="status-pill pill-info">Evaluar</span>Decidir si Marsella suma valor o conviene cambiar por más noches en Niza, Florencia, Roma o Amalfi.</li>
+        <li><span class="status-pill pill-private">Privado</span>Cargar números de reserva en una copia local, no en una versión compartida.</li>
+      </ul>
+    </div>
+    <div class="ops-panel">
+      <div class="ops-kicker">Modo ejecución</div>
+      <div class="ops-value">Día por día</div>
+      <div class="ops-note">Cuando estén las reservas, este sitio debería responder rápido: dónde dormimos, a qué hora salimos, cómo llegamos y qué falta pagar.</div>
+    </div>
+  </div>
+</section>
 <!-- VUELOS -->
 <section id="vuelos">
   <div class="section-label">Documentación confirmada</div>
@@ -713,7 +928,78 @@
     </div>
   </div>
 </section>
+<!-- RESERVAS Y PASAJES -->
+<section id="reservas">
+  <div class="section-label">Información reservada</div>
+  <div class="section-title">Reservas, <em>pasajes</em> y horarios</div>
 
+  <div class="itinerary-note">
+    Usá esta sección como tablero maestro. Si después vas a publicar o compartir la página, dejá ocultos los códigos de reserva, números de ticket, documentos y teléfonos personales.
+  </div>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Fecha</th>
+        <th>Tramo / servicio</th>
+        <th>Horario</th>
+        <th>Reserva</th>
+        <th>Pago</th>
+        <th>Notas de ejecución</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>01 Ago</td>
+        <td><strong>PU502 · EZE → MAD</strong><br>Plus Ultra vía eDreams</td>
+        <td>13:25 → 06:30 +1</td>
+        <td><span class="status-pill pill-private">Privado</span>Código eDreams / PNR</td>
+        <td><span class="status-pill pill-ok">Comprado</span>Importe a cargar</td>
+        <td>Check-in, equipaje, asientos, seguro y documentación.</td>
+      </tr>
+      <tr>
+        <td>02-04 Ago</td>
+        <td><strong>Madrid</strong><br>Alojamiento llegada</td>
+        <td>Check-in a confirmar</td>
+        <td><span class="status-pill pill-warn">Pendiente</span>Hotel / Airbnb</td>
+        <td>ARS / EUR a cargar</td>
+        <td>Ideal cerca de conexión al inicio del Camino.</td>
+      </tr>
+      <tr>
+        <td>04-10 Ago</td>
+        <td><strong>Camino de Santiago</strong><br>Etapas y albergues</td>
+        <td>Salidas temprano</td>
+        <td><span class="status-pill pill-warn">Pendiente</span>Credencial / alojamientos</td>
+        <td>Presupuesto diario</td>
+        <td>Definir mochila, transporte de equipaje y etapas realistas.</td>
+      </tr>
+      <tr>
+        <td>~11 Ago</td>
+        <td><strong>Santiago → Niza</strong><br>Vuelo interno</td>
+        <td>A confirmar</td>
+        <td><span class="status-pill pill-warn">Buscar</span>Aerolínea / localizador</td>
+        <td>Objetivo máximo a definir</td>
+        <td>Este pasaje fija Costa Azul y condiciona el resto.</td>
+      </tr>
+      <tr>
+        <td>~14-21 Ago</td>
+        <td><strong>Italia</strong><br>Florencia, Roma, Amalfi</td>
+        <td>Trenes / ferries</td>
+        <td><span class="status-pill pill-warn">Pendiente</span>Trenitalia / Italo / ferry</td>
+        <td>EUR a cargar</td>
+        <td>Reservar trenes cuando esté cerrada la cantidad de noches.</td>
+      </tr>
+      <tr>
+        <td>22 Ago</td>
+        <td><strong>PU501 · MAD → EZE</strong><br>Plus Ultra vía eDreams</td>
+        <td>23:10 → 06:45 +1</td>
+        <td><span class="status-pill pill-private">Privado</span>Código eDreams / PNR</td>
+        <td><span class="status-pill pill-ok">Comprado</span>Importe a cargar</td>
+        <td>Estar en Madrid con margen. No arriesgar conexión el mismo día.</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
 <!-- ITINERARIO -->
 <section id="itinerario">
   <div class="section-label">Propuesta en construcción</div>
@@ -1012,7 +1298,124 @@
   </div>
 
 </section>
+<!-- GASTOS -->
+<section id="gastos">
+  <div class="section-label">Presupuesto y control</div>
+  <div class="section-title">Gastos del <em>Viaje</em></div>
 
+  <div class="money-summary">
+    <div class="money-box">
+      <div class="ops-kicker">Comprado</div>
+      <div class="ops-value">$ / €</div>
+      <div class="ops-note">Vuelos internacionales y reservas ya pagadas.</div>
+    </div>
+    <div class="money-box">
+      <div class="ops-kicker">Pendiente</div>
+      <div class="ops-value">$ / €</div>
+      <div class="ops-note">Vuelos internos, trenes, hoteles y entradas.</div>
+    </div>
+    <div class="money-box">
+      <div class="ops-kicker">Diario</div>
+      <div class="ops-value">€/día</div>
+      <div class="ops-note">Comidas, transporte urbano y extras.</div>
+    </div>
+    <div class="money-box">
+      <div class="ops-kicker">Reserva</div>
+      <div class="ops-value">10-15%</div>
+      <div class="ops-note">Colchón para cambios, equipaje, taxis o imprevistos.</div>
+    </div>
+  </div>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Categoría</th>
+        <th>Estimado</th>
+        <th>Pagado</th>
+        <th>Falta</th>
+        <th>Notas</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Vuelos internacionales</td><td>A cargar</td><td>A cargar</td><td>0 / revisar extras</td><td>Incluye eDreams, equipaje, asientos y tasas.</td></tr>
+      <tr><td>Vuelos internos</td><td>A definir</td><td>0</td><td>A definir</td><td>Santiago → Niza y Nápoles/Roma → Madrid.</td></tr>
+      <tr><td>Alojamientos</td><td>A definir</td><td>0</td><td>A definir</td><td>Separar cancelables y no reembolsables.</td></tr>
+      <tr><td>Trenes / ferries / buses</td><td>A definir</td><td>0</td><td>A definir</td><td>España, Francia, Italia y Costa Amalfitana.</td></tr>
+      <tr><td>Entradas y tours</td><td>A definir</td><td>0</td><td>A definir</td><td>Coliseo, Vaticano, museos, Pompeya si aplica.</td></tr>
+      <tr><td>Comidas y efectivo</td><td>A definir</td><td>0</td><td>A definir</td><td>Presupuesto por día y por ciudad.</td></tr>
+    </tbody>
+  </table>
+</section>
+<!-- CHECKLIST -->
+<section id="checklist">
+  <div class="section-label">Antes y durante</div>
+  <div class="section-title">Checklist de <em>Ejecución</em></div>
+
+  <div class="checklist-grid">
+    <div class="check-group">
+      <h3>Documentos</h3>
+      <div class="check-item"><span class="box-mark"></span><span>Pasaportes vigentes y fotos digitales guardadas offline.</span></div>
+      <div class="check-item"><span class="box-mark"></span><span>Seguro de viaje con póliza, teléfonos y cobertura Schengen.</span></div>
+      <div class="check-item"><span class="box-mark"></span><span>Reservas exportadas a PDF: vuelos, hoteles, trenes y entradas.</span></div>
+      <div class="check-item"><span class="box-mark"></span><span>Tarjetas habilitadas para exterior y plan B de pago.</span></div>
+    </div>
+    <div class="check-group">
+      <h3>Equipaje</h3>
+      <div class="check-item"><span class="box-mark"></span><span>Verificar franquicia real de Plus Ultra y low-cost internos.</span></div>
+      <div class="check-item"><span class="box-mark"></span><span>Lista Camino: calzado probado, medias, botiquín y capas livianas.</span></div>
+      <div class="check-item"><span class="box-mark"></span><span>Adaptadores, cargadores, power bank y etiquetas de equipaje.</span></div>
+      <div class="check-item"><span class="box-mark"></span><span>Bolsa de día para documentos, agua, remedios y abrigo.</span></div>
+    </div>
+    <div class="check-group">
+      <h3>Reservas críticas</h3>
+      <div class="check-item"><span class="box-mark"></span><span>Check-in ida y regreso apenas abra la aerolínea.</span></div>
+      <div class="check-item"><span class="box-mark"></span><span>Confirmar horarios de trenes/ferries 48 hs antes.</span></div>
+      <div class="check-item"><span class="box-mark"></span><span>Guardar teléfonos de hoteles y direcciones en Google Maps.</span></div>
+      <div class="check-item"><span class="box-mark"></span><span>Entradas con horario fijo: llegar con margen y plan de traslado.</span></div>
+    </div>
+    <div class="check-group">
+      <h3>Durante el viaje</h3>
+      <div class="check-item"><span class="box-mark"></span><span>Cada noche: revisar hora de salida del día siguiente.</span></div>
+      <div class="check-item"><span class="box-mark"></span><span>Actualizar gastos reales y reservas usadas.</span></div>
+      <div class="check-item"><span class="box-mark"></span><span>Subir fotos importantes a la nube con Wi-Fi.</span></div>
+      <div class="check-item"><span class="box-mark"></span><span>Mantener efectivo chico para buses, baños, lockers y propinas.</span></div>
+    </div>
+  </div>
+</section>
+<!-- DECISIONES -->
+<section id="decisiones">
+  <div class="section-label">Cambios de destino</div>
+  <div class="section-title">Decisiones <em>abiertas</em></div>
+
+  <div class="decision-card">
+    <div class="decision-date">Alta prioridad</div>
+    <div>
+      <div class="decision-title">¿Mantener Marsella o mover noches?</div>
+      <div class="decision-meta">Criterio sugerido: si el traslado complica o encarece, sumar una noche a Niza, Florencia, Roma o Amalfi puede mejorar el ritmo.</div>
+    </div>
+  </div>
+  <div class="decision-card">
+    <div class="decision-date">Camino</div>
+    <div>
+      <div class="decision-title">Elegir tramo exacto del Camino de Santiago</div>
+      <div class="decision-meta">Comparar distancia real, alojamientos, conexión desde Madrid y salida hacia Santiago / aeropuerto.</div>
+    </div>
+  </div>
+  <div class="decision-card">
+    <div class="decision-date">Costa Azul</div>
+    <div>
+      <div class="decision-title">Base en Niza vs. dividir Niza / Marsella</div>
+      <div class="decision-meta">Niza funciona mejor como base liviana para Mónaco, Èze, Antibes o Cannes; Marsella suma si interesa Calanques y puerto viejo.</div>
+    </div>
+  </div>
+  <div class="decision-card">
+    <div class="decision-date">Final del viaje</div>
+    <div>
+      <div class="decision-title">Volver a Madrid desde Nápoles o Roma</div>
+      <div class="decision-meta">No reservar la última noche hasta confirmar vuelo interno. Prioridad: llegar a Madrid con margen para PU501.</div>
+    </div>
+  </div>
+</section>
 <!-- FOTOS -->
 <section id="fotos">
   <div class="section-label">Memorias del viaje</div>
@@ -1267,3 +1670,4 @@
 </script>
 </body>
 </html>
+
