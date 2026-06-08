@@ -8,16 +8,16 @@
 <style>
   :root {
     --ink: #1a1714;
-    --paper: #f5f0e8;
-    --paper-dark: #ebe5d5;
-    --paper-darker: #d9d0bc;
-    --accent: #8b4513;
+    --paper: #ece2d0;
+    --paper-dark: #ded2bb;
+    --paper-darker: #c6b796;
+    --accent: #7b3f1d;
     --accent-light: #c4762a;
-    --accent-gold: #c9a84c;
+    --accent-gold: #b88d2f;
     --accent-olive: #5c6b2e;
     --accent-blue: #2c4a6e;
-    --muted: #6b5c45;
-    --muted-light: #9a8a72;
+    --muted: #5f503c;
+    --muted-light: #84735b;
     --red-stamp: #8b1a1a;
     --confirmed: #2d5a27;
     --pending: #7a5c1a;
@@ -34,7 +34,7 @@
     font-family: var(--font-body);
     font-size: 17px;
     line-height: 1.7;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noise)' opacity='0.055'/%3E%3C/svg%3E");
   }
 
   .hero {
@@ -834,6 +834,51 @@
   .decision-meta { font-size: 0.88rem; color: var(--muted); margin-top: 0.25rem; }
 
 
+
+  .lodging-strip {
+    margin-top: 1.25rem;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0.65rem;
+  }
+
+  .lodging-chip {
+    background: rgba(236,226,208,0.82);
+    border: 1px solid rgba(95,80,60,0.22);
+    border-radius: 6px;
+    padding: 0.75rem;
+    min-height: 92px;
+  }
+
+  .lodging-chip.ok { border-top: 4px solid var(--confirmed); }
+  .lodging-chip.warn { border-top: 4px solid var(--pending); background: rgba(184,141,47,0.16); }
+  .lodging-chip.flex { border-top: 4px solid var(--accent-blue); }
+
+  .lodging-day {
+    font-family: var(--font-mono);
+    font-size: 0.54rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted-light);
+  }
+
+  .lodging-place {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.15;
+    margin-top: 0.25rem;
+  }
+
+  .lodging-state {
+    font-family: var(--font-mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 0.55rem;
+    color: var(--muted);
+  }
   /* MISSION BOARD */
   .mission-board {
     background: #fbf7ee;
@@ -977,7 +1022,8 @@
     .ops-grid,
     .money-summary,
     .checklist-grid,
-    .progress-metrics { grid-template-columns: 1fr; }
+    .progress-metrics,
+    .lodging-strip { grid-template-columns: 1fr; }
     .progress-head,
     .mission-top { grid-template-columns: 1fr; align-items: start; }
     .mission-score { text-align: left; }
@@ -1080,21 +1126,27 @@
         <div class="ops-kicker">Bitácora de organización</div>
         <div class="progress-title">Viaje cargando: <em>ya despegó en serio</em></div>
       </div>
-      <div class="progress-percent">22%</div>
+      <div class="progress-percent">35%</div>
     </div>
     <div class="progress-track" aria-label="Progreso de organización del viaje">
-      <div class="progress-fill"></div>
+      <div class="progress-fill" style="width:35%;"></div>
     </div>
     <div class="progress-caption">
-      <strong>Lo más importante ya está:</strong> los vuelos internacionales están comprados. También quedó cerrado el salto Madrid → Sarria, la primera noche del Camino y reservas flexibles en Palas de Rei, Arzúa y O Pedrouzo. Ahora estamos en modo fino: dormir, movernos, caminar y no llegar tarde a nada.
+      <strong>Lo más importante ya está:</strong> los vuelos internacionales están comprados. Además, el Camino ya tiene anclas fuertes: Sarria, Palas de Rei, Arzúa y O Pedrouzo. El hueco grande sigue siendo Portomarín; todo lo demás empieza a ordenarse alrededor de esa pieza.
     </div>
     <div class="progress-metrics">
-      <div class="progress-metric"><div class="num">5/23</div><div class="label">bloques cerrados</div></div>
+      <div class="progress-metric"><div class="num">8/23</div><div class="label">bloques cerrados</div></div>
       <div class="progress-metric"><div class="num">2/2</div><div class="label">vuelos grandes</div></div>
-      <div class="progress-metric"><div class="num">4/22</div><div class="label">noches reservadas</div></div>
-      <div class="progress-metric"><div class="num">1</div><div class="label">tramo bravo a decidir</div></div>
+      <div class="progress-metric"><div class="num">4/5</div><div class="label">noches Camino</div></div>
+      <div class="progress-metric"><div class="num">1</div><div class="label">hueco crítico</div></div>
     </div>
-    <div class="progress-fineprint">
+    <div class="lodging-strip" aria-label="Hospedajes principales del Camino">
+      <div class="lodging-chip ok"><div class="lodging-day">02 Ago</div><div class="lodging-place">Sarria</div><div class="lodging-state">pagado · il nonno</div></div>
+      <div class="lodging-chip warn"><div class="lodging-day">03 Ago</div><div class="lodging-place">Portomarín</div><div class="lodging-state">pendiente crítico</div></div>
+      <div class="lodging-chip flex"><div class="lodging-day">04 Ago</div><div class="lodging-place">Palas de Rei</div><div class="lodging-state">flexible · Casa Camiño II</div></div>
+      <div class="lodging-chip flex"><div class="lodging-day">05 Ago</div><div class="lodging-place">Arzúa</div><div class="lodging-state">flexible · check-in 18:00</div></div>
+      <div class="lodging-chip ok"><div class="lodging-day">06 Ago</div><div class="lodging-place">O Pedrouzo</div><div class="lodging-state">pagado · check-in 16:30</div></div>
+    </div>    <div class="progress-fineprint">
       Criterio usado: vuelos internacionales, vuelos internos, trenes/traslados principales, hospedajes, etapas del Camino, posible auto y regreso a Madrid. El porcentaje mide organización operativa, no importancia: tener los aviones comprados vale medio viaje en tranquilidad.
     </div>
   </div>
@@ -1110,9 +1162,9 @@
         <div class="mission-subtitle">Reservas, rituales y trámites chicos que después se vuelven enormes si quedan para último minuto.</div>
       </div>
       <div class="mission-score">
-        <span class="big">6/13</span>
+        <span class="big">3/10</span>
         <span class="small">misiones listas</span>
-        <div class="mission-mini-track"><div class="mission-mini-fill" style="width:46%;"></div></div>
+        <div class="mission-mini-track"><div class="mission-mini-fill" style="width:30%;"></div></div>
       </div>
     </div>
 
@@ -1164,32 +1216,14 @@
         </tr>
         <tr>
           <td><span class="check-dot">□</span></td>
-          <td><strong>Hospedaje Portomarín</strong><br><span class="mission-tag">noche 03 Ago</span></td>
+          <td><strong>Resolver Portomarín</strong><br><span class="mission-tag">hospedaje crítico</span></td>
           <td>Reservar ya</td>
           <td><span class="status-pill pill-warn">Pendiente</span></td>
           <td>Primera noche caminando; ideal cancelable si aparece mejor opción.</td>
         </tr>
-        <tr>
-          <td><span class="check-dot done">✓</span></td>
-          <td><strong>Hospedaje Palas de Rei</strong><br><span class="mission-tag">noche 04 Ago</span></td>
-          <td>Reservado flexible</td>
-          <td><span class="status-pill pill-ok">Confirmado</span></td>
-          <td>Casa Camiño II · 77,70 € · sin pago adelantado · cancelación gratis hasta 02/08 23:59 CEST.</td>
-        </tr>
-        <tr>
-          <td><span class="check-dot done">✓</span></td>
-          <td><strong>Arzúa o etapa intermedia</strong><br><span class="mission-tag">29 km</span></td>
-          <td>Reservado flexible</td>
-          <td><span class="status-pill pill-ok">Confirmado</span></td>
-          <td>Hotel La Puerta de Arzúa · 80 € · sin pago adelantado · cancelación gratis hasta 03/08 23:59 CEST. Si dividen los 29 km, cancelar/mover.</td>
-        </tr>
-        <tr>
-          <td><span class="check-dot done">✓</span></td>
-          <td><strong>Hospedaje O Pedrouzo</strong><br><span class="mission-tag">última etapa</span></td>
-          <td>Reservado</td>
-          <td><span class="status-pill pill-ok">Confirmado</span></td>
-          <td>Pension 23-Vinte e Tres · 106 € · cancelación gratis hasta 15/07 23:59 CEST · check-in 13:00-16:30.</td>
-        </tr>
+
+
+
         <tr>
           <td><span class="check-dot">□</span></td>
           <td><strong>Vuelo Santiago → Niza</strong><br><span class="mission-tag">salto europeo</span></td>
@@ -2144,6 +2178,7 @@
 </script>
 </body>
 </html>
+
 
 
 
