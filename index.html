@@ -669,6 +669,71 @@
     letter-spacing: 0.04em;
     color: var(--muted-light);
   }
+
+  .stay-gallery,
+  .city-plan-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .stay-visual,
+  .city-plan {
+    border: 1px solid var(--paper-darker);
+    background: var(--paper-dark);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .stay-map {
+    width: 100%;
+    height: 190px;
+    border: 0;
+    display: block;
+    background: var(--paper-darker);
+  }
+
+  .stay-visual-body,
+  .city-plan-body {
+    padding: 1rem;
+  }
+
+  .stay-visual-title,
+  .city-plan-title {
+    font-family: var(--font-display);
+    font-size: 1.08rem;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .stay-visual-meta,
+  .city-plan-meta {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    color: var(--muted-light);
+    margin: 0.35rem 0 0.7rem;
+  }
+
+  .city-plan-list {
+    list-style: none;
+    margin: 0.6rem 0 0.8rem;
+  }
+
+  .city-plan-list li {
+    padding: 0.35rem 0;
+    border-top: 1px dashed var(--paper-darker);
+    font-size: 0.88rem;
+    line-height: 1.4;
+  }
+
+  .city-plan-list li:first-child { border-top: none; }
+
+  @media (max-width: 700px) {
+    .stay-gallery,
+    .city-plan-grid { grid-template-columns: 1fr; }
+    .stay-map { height: 170px; }
+  }
   /* ORGANIZATION DASHBOARD */
   .ops-grid {
     display: grid;
@@ -1097,13 +1162,14 @@
   <a href="#misiones">Misiones</a>
   <a href="#vuelos">Vuelos</a>
   <a href="#itinerario">Itinerario</a>
+  <a href="#planes">Planes</a>
   <a href="#reservas">Reservas</a>
   <a href="#transporte">Transporte</a>
   <a href="#gastos">Gastos</a>
   <a href="#checklist">Checklist</a>
   <a href="#decisiones">Decisiones</a>
   <a href="#fotos">Fotos</a>
-  <a href="#novedades">Novedades</a>
+  <a href="#novedades">Enlaces</a>
   <a href="#estado-vuelos">Estado Vuelos</a>
 </nav>
 
@@ -1124,7 +1190,7 @@
     <div class="progress-head">
       <div>
         <div class="ops-kicker">Bitácora de organización</div>
-        <div class="progress-title">Viaje cargando: <em>el Camino ya está armado</em></div>
+        <div class="progress-title">Viaje cargando: <em>ahora viene la segunda mitad</em></div>
       </div>
       <div class="progress-percent">40%</div>
     </div>
@@ -1132,23 +1198,23 @@
       <div class="progress-fill" style="width:40%;"></div>
     </div>
     <div class="progress-caption">
-      <strong>Lo más importante ya está:</strong> vuelos internacionales, tren Madrid → Sarria y las cinco noches que permiten ejecutar el Camino. Portomarín cerró el último hueco crítico. Ahora el trabajo pasa al segundo tramo: Santiago, Alicante, Barcelona, Costa Azul e Italia.
+      <strong>El núcleo inicial está resuelto:</strong> vuelos internacionales, Madrid → Sarria y todo el Camino. La bitácora ya no repite esos hospedajes: muestra los próximos cinco bloques que realmente hacen avanzar el viaje.
     </div>
     <div class="progress-metrics">
       <div class="progress-metric"><div class="num">9/23</div><div class="label">bloques cerrados</div></div>
-      <div class="progress-metric"><div class="num">2/2</div><div class="label">vuelos grandes</div></div>
-      <div class="progress-metric"><div class="num">5/5</div><div class="label">noches Camino</div></div>
-      <div class="progress-metric"><div class="num">0</div><div class="label">huecos Camino</div></div>
+      <div class="progress-metric"><div class="num">15</div><div class="label">noches por reservar</div></div>
+      <div class="progress-metric"><div class="num">5</div><div class="label">traslados grandes</div></div>
+      <div class="progress-metric"><div class="num">412 €</div><div class="label">pagado conocido</div></div>
     </div>
-    <div class="lodging-strip" aria-label="Hospedajes principales del Camino">
-      <div class="lodging-chip ok"><div class="lodging-day">02 Ago</div><div class="lodging-place">Sarria</div><div class="lodging-state">pagado · il nonno</div></div>
-      <div class="lodging-chip ok"><div class="lodging-day">03 Ago</div><div class="lodging-place">Portomarín</div><div class="lodging-state">pagado · Pensión Portomiño</div></div>
-      <div class="lodging-chip flex"><div class="lodging-day">04 Ago</div><div class="lodging-place">Palas de Rei</div><div class="lodging-state">flexible · Casa Camiño II</div></div>
-      <div class="lodging-chip flex"><div class="lodging-day">05 Ago</div><div class="lodging-place">Arzúa</div><div class="lodging-state">flexible · check-in 18:00</div></div>
-      <div class="lodging-chip ok"><div class="lodging-day">06 Ago</div><div class="lodging-place">O Pedrouzo</div><div class="lodging-state">pagado · check-in 16:30</div></div>
+    <div class="lodging-strip" aria-label="Próximos bloques por resolver">
+      <div class="lodging-chip warn"><div class="lodging-day">07-09 Ago</div><div class="lodging-place">Santiago</div><div class="lodging-state">hotel · 2 noches</div></div>
+      <div class="lodging-chip warn"><div class="lodging-day">09-10 Ago</div><div class="lodging-place">Trenes España</div><div class="lodging-state">Santiago → Alicante → BCN</div></div>
+      <div class="lodging-chip warn"><div class="lodging-day">10-13 Ago</div><div class="lodging-place">Barcelona</div><div class="lodging-state">hotel · 3 noches</div></div>
+      <div class="lodging-chip warn"><div class="lodging-day">13-16 Ago</div><div class="lodging-place">Hertz + Riviera</div><div class="lodging-state">auto · Niza · Cinque Terre</div></div>
+      <div class="lodging-chip warn"><div class="lodging-day">16-22 Ago</div><div class="lodging-place">Italia + Madrid</div><div class="lodging-state">hoteles · trenes · vuelo</div></div>
     </div>
     <div class="progress-fineprint">
-      Criterio: vuelos, traslados principales, hospedajes, Camino, auto y regreso a Madrid. El 40% representa preparación operativa: el núcleo más rígido ya está resuelto y el itinerario mediterráneo sigue abierto.
+      El porcentaje mide preparación operativa. Los detalles cerrados permanecen en Reservas y Gastos; esta franja se reserva para lo siguiente que hay que resolver.
     </div>
   </div>
 </section>
@@ -1189,41 +1255,38 @@
 </section>
 <!-- PANEL DE CONTROL -->
 <section id="panel">
-  <div class="section-label">Organización viva</div>
-  <div class="section-title">Panel de <em>Control</em></div>
+  <div class="section-label">Radar operativo · sin repetir Misiones</div>
+  <div class="section-title">Panel de <em>Riesgos</em></div>
   <div class="ops-grid">
     <div class="ops-panel">
-      <div class="ops-kicker">Estado general</div>
-      <div class="ops-value">Camino cerrado</div>
-      <div class="ops-note">Cinco etapas y cinco noches cubiertas desde Sarria hasta la llegada a Santiago el 07 Ago.</div>
+      <div class="ops-kicker">Próximo cuello de botella</div>
+      <div class="ops-value">Santiago · 07-09 Ago</div>
+      <div class="ops-note">Dos noches todavía sin alojamiento. Es la próxima reserva que conviene cerrar.</div>
     </div>
     <div class="ops-panel">
-      <div class="ops-kicker">Próxima reserva</div>
-      <div class="ops-value">Santiago · 2 noches</div>
-      <div class="ops-note">Buscar del 07 al 09 Ago, con buena salida hacia estación y acceso caminable al casco histórico.</div>
+      <div class="ops-kicker">Traslado delicado</div>
+      <div class="ops-value">Barcelona → Niza</div>
+      <div class="ops-note">Unos 660 km antes de sumar Cannes. En agosto requiere salida temprana y margen por tránsito.</div>
     </div>
     <div class="ops-panel">
-      <div class="ops-kicker">Ruta en estudio</div>
-      <div class="ops-value">Alicante + Barcelona</div>
-      <div class="ops-note">Una noche en Alicante y tres en Barcelona antes de tomar el auto hacia Cannes, Niza, Mónaco y Cinque Terre.</div>
-    </div>
-    <div class="ops-panel wide">
-      <div class="ops-kicker">Próximas acciones</div>
-      <ul class="ops-list">
-        <li><span class="status-pill pill-ok">Completo</span>Camino: Sarria, Portomarín, Palas de Rei, Arzúa y O Pedrouzo reservados.</li>
-        <li><span class="status-pill pill-warn">Prioridad</span>Reservar Santiago 07-09 Ago y definir actividades con horario.</li>
-        <li><span class="status-pill pill-warn">Comparar</span>Tren Santiago → Alicante el 09 Ago, probablemente con cambio en Madrid.</li>
-        <li><span class="status-pill pill-warn">Comparar</span>Tren Alicante → Barcelona el 10 Ago; plan actual: tres noches en Barcelona.</li>
-        <li><span class="status-pill pill-ok">Definido</span>Costa Azul: Cannes → Niza → Mónaco, con una noche en Niza.</li>
-        <li><span class="status-pill pill-info">Cotizar</span>Hertz Barcelona → zona Cinque Terre; revisar cruce internacional, recargo y oficina de devolución.</li>
-        <li><span class="status-pill pill-info">Plan B</span>Si el one-way es inviable: devolver en Francia y continuar a Liguria en tren.</li>
-        <li><span class="status-pill pill-private">Privado</span>Mantener localizadores, PIN y documentos personales solo en esta copia local.</li>
-      </ul>
+      <div class="ops-kicker">Contrato a revisar</div>
+      <div class="ops-value">Hertz internacional</div>
+      <div class="ops-note">Cruce España/Francia/Italia, recargo one-way, oficina de devolución y cobertura.</div>
     </div>
     <div class="ops-panel">
-      <div class="ops-kicker">Criterio de manejo</div>
-      <div class="ops-value">Autopistas, no centros</div>
-      <div class="ops-note">En temporada alta: estacionar fuera de cascos históricos, evitar ZTL italianas y no usar el auto para pueblos con calles estrechas.</div>
+      <div class="ops-kicker">Etapa física</div>
+      <div class="ops-value">Palas → Arzúa · 29 km</div>
+      <div class="ops-note">Hospedaje cerrado, pero sigue siendo el día que necesita mejor estrategia de ritmo y equipaje.</div>
+    </div>
+    <div class="ops-panel">
+      <div class="ops-kicker">Dinero aún invisible</div>
+      <div class="ops-value">Vuelos + 15 noches</div>
+      <div class="ops-note">El subtotal conocido no incluye los vuelos internacionales ni la segunda mitad del alojamiento.</div>
+    </div>
+    <div class="ops-panel">
+      <div class="ops-kicker">Regla de ejecución</div>
+      <div class="ops-value">Auto fuera del centro</div>
+      <div class="ops-note">Alojamientos con parking, evitar ZTL y recorrer Cinque Terre exclusivamente en tren o barco.</div>
     </div>
   </div>
 </section>
@@ -1266,7 +1329,7 @@
       <a class="btn-link" href="https://www.flightradar24.com/data/flights/pu502" target="_blank">FlightRadar24 PU502</a>
       <a class="btn-link" href="https://flightaware.com/live/flight/PU502" target="_blank">FlightAware PU502</a>
       <a class="btn-link" href="https://www.flightstats.com/v2/flight-tracker/PU/502" target="_blank">FlightStats PU502</a>
-      <a class="btn-link gold" href="https://www.edreams.com.ar/my-trips/" target="_blank">Mi reserva en eDreams</a>
+      <a class="btn-link gold" href="https://www.edreams.com.ar/travel/#/mytrips" target="_blank">Mi reserva en eDreams</a>
     </div>
   </div>
 
@@ -1303,7 +1366,7 @@
       <a class="btn-link" href="https://www.flightradar24.com/data/flights/pu501" target="_blank">FlightRadar24 PU501</a>
       <a class="btn-link" href="https://flightaware.com/live/flight/PU501" target="_blank">FlightAware PU501</a>
       <a class="btn-link" href="https://www.flightstats.com/v2/flight-tracker/PU/501" target="_blank">FlightStats PU501</a>
-      <a class="btn-link gold" href="https://www.edreams.com.ar/my-trips/" target="_blank">Mi reserva en eDreams</a>
+      <a class="btn-link gold" href="https://www.edreams.com.ar/travel/#/mytrips" target="_blank">Mi reserva en eDreams</a>
     </div>
   </div>
 </section>
@@ -1354,11 +1417,11 @@
       </tr>
       <tr>
         <td>02-03 Ago</td>
-        <td><strong>Albergue y pensión il nonno</strong><br>Sarria · Habitación doble con baño privado</td>
+        <td><strong><a href="https://www.booking.com/searchresults.es.html?ss=Albergue+y+pension+il+nonno+Sarria" target="_blank">Albergue y pensión il nonno</a></strong><br>Sarria · Habitación doble con baño privado</td>
         <td>Entrada 13:00-22:00<br>Salida 06:00-08:00</td>
         <td><span class="status-pill pill-ok">Confirmado</span>Booking.com · PIN privado</td>
         <td><span class="status-pill pill-ok">Pagado</span>55 €</td>
-        <td>Calle Mayor, 27600 Sarria · Tel. +34 693 589 757 · No reembolsable; cambios/no show cobran total.</td>
+        <td>Calle Mayor, 27600 Sarria · Tel. +34 693 589 757 · No reembolsable. <a class="btn-link" href="https://www.google.com/maps/search/?api=1&query=Albergue+y+pension+il+nonno+Sarria" target="_blank">Mapa y fotos</a></td>
       </tr>
             <tr>
         <td>03-04 Ago</td>
@@ -1366,30 +1429,30 @@
         <td>Entrada 14:00-19:00<br>Salida 07:00-10:30</td>
         <td><span class="status-pill pill-ok">Confirmado</span>Booking.com · PIN privado</td>
         <td><span class="status-pill pill-ok">Pagado</span>119,60 €</td>
-        <td>Camino del Monte s/n, 27170 Portomarín · Tel. +34 982 547 575 · no reembolsable; cancelación, cambios o no show cobran el total.</td>
+        <td>Camino del Monte s/n, 27170 Portomarín · Tel. +34 982 547 575 · no reembolsable. <a class="btn-link" href="https://www.google.com/maps/search/?api=1&query=Pension+Portomino+Portomarin" target="_blank">Mapa y fotos</a></td>
       </tr><tr>
         <td>04-05 Ago</td>
-        <td><strong>Pensión Restaurante Casa Camiño II</strong><br>Palas de Rei · Habitación doble exterior con baño privado</td>
+        <td><strong><a href="https://www.booking.com/hotel/es/pension-restaurante-casa-camino-ii.html" target="_blank">Pensión Restaurante Casa Camiño II</a></strong><br>Palas de Rei · Habitación doble exterior con baño privado</td>
         <td>Entrada 14:00-22:00<br>Salida 00:00-10:00</td>
         <td><span class="status-pill pill-ok">Confirmado</span>Booking.com · PIN privado</td>
         <td><span class="status-pill pill-info">No pagado</span>77,70 €</td>
-        <td>Travesia del Peregrino No 8 · Tel. +34 982 37 40 66 · cancelación gratis hasta 02 Ago 23:59 CEST; desde 03 Ago cobra total.</td>
+        <td>Travesia del Peregrino No 8 · Tel. +34 982 37 40 66 · cancelación gratis hasta 02 Ago 23:59 CEST. <a class="btn-link" href="https://www.google.com/maps/search/?api=1&query=Pension+Restaurante+Casa+Camino+II+Palas+de+Rei" target="_blank">Mapa y fotos</a></td>
       </tr>
       <tr>
         <td>05-06 Ago</td>
-        <td><strong>Hotel La Puerta de Arzúa</strong><br>Arzúa · Habitación doble - 2 camas</td>
+        <td><strong><a href="https://www.booking.com/hotel/es/la-puerta-de-arzua.html" target="_blank">Hotel La Puerta de Arzúa</a></strong><br>Arzúa · Habitación doble - 2 camas</td>
         <td>Entrada 14:00-18:00<br>Salida 07:00-11:00</td>
         <td><span class="status-pill pill-ok">Confirmado</span>Booking.com · PIN privado</td>
         <td><span class="status-pill pill-info">No pagado</span>80 €</td>
-        <td>TEIRABOA, 10 ARZÚA · Tel. +34 680 953 694 · cancelación gratis hasta 03 Ago 23:59 CEST; desde 04 Ago cobra total. Check-in cierra 18:00.</td>
+        <td>TEIRABOA, 10 ARZÚA · Tel. +34 680 953 694 · cancelación gratis hasta 03 Ago 23:59 CEST · check-in hasta 18:00. <a class="btn-link" href="https://lapuertadearzua.es/" target="_blank">Web y fotos</a> <a class="btn-link" href="https://www.google.com/maps/search/?api=1&query=Hotel+La+Puerta+de+Arzua" target="_blank">Mapa</a></td>
       </tr>
       <tr>
         <td>06-07 Ago</td>
-        <td><strong>Pension 23-Vinte e Tres</strong><br>O Pedrouzo · Habitación doble con baño compartido - 2 camas</td>
+        <td><strong><a href="https://www.booking.com/hotel/es/pension-23-vinte-e-tres.html" target="_blank">Pension 23-Vinte e Tres</a></strong><br>O Pedrouzo · Habitación doble con baño compartido - 2 camas</td>
         <td>Entrada 13:00-16:30<br>Salida hasta 10:00</td>
         <td><span class="status-pill pill-ok">Confirmado</span>Booking.com · PIN privado</td>
         <td><span class="status-pill pill-ok">Pagado</span>106 €</td>
-        <td>Avenida De la Iglesia N 7, Portal 5 · Tel. +34 667 57 00 12 · cancelación gratis hasta 15 Jul 23:59 CEST; desde 16 Jul cobra total. Check-in muy temprano.</td>
+        <td>Avenida De la Iglesia N 7, Portal 5 · Tel. +34 667 57 00 12 · cancelación gratis hasta 15 Jul 23:59 CEST · check-in hasta 16:30. <a class="btn-link" href="https://www.google.com/maps/search/?api=1&query=Pension+23+Vinte+e+Tres+O+Pedrouzo" target="_blank">Mapa y fotos</a></td>
       </tr>
       <tr>
         <td>03-07 Ago</td>
@@ -1480,6 +1543,28 @@
       </tr>
     </tbody>
   </table>
+  <div class="stay-gallery" aria-label="Ubicación y fotos de los hospedajes confirmados">
+    <div class="stay-visual">
+      <iframe class="stay-map" loading="lazy" src="https://www.google.com/maps?q=Albergue%20y%20pension%20il%20nonno%20Sarria&output=embed" title="Mapa de il nonno"></iframe>
+      <div class="stay-visual-body"><div class="stay-visual-title">Il nonno · Sarria</div><div class="stay-visual-meta">02 Ago · pagado</div><a class="btn-link" href="https://www.booking.com/searchresults.es.html?ss=Albergue+y+pension+il+nonno+Sarria" target="_blank">Fotos en Booking</a></div>
+    </div>
+    <div class="stay-visual">
+      <iframe class="stay-map" loading="lazy" src="https://www.google.com/maps?q=Pension%20Portomino%20Portomarin&output=embed" title="Mapa de Pensión Portomiño"></iframe>
+      <div class="stay-visual-body"><div class="stay-visual-title">Pensión Portomiño</div><div class="stay-visual-meta">03 Ago · pagado</div><a class="btn-link" href="https://www.booking.com/hotel/es/portomiao.html" target="_blank">Fotos en Booking</a></div>
+    </div>
+    <div class="stay-visual">
+      <iframe class="stay-map" loading="lazy" src="https://www.google.com/maps?q=Pension%20Restaurante%20Casa%20Camino%20II%20Palas%20de%20Rei&output=embed" title="Mapa de Casa Camiño II"></iframe>
+      <div class="stay-visual-body"><div class="stay-visual-title">Casa Camiño II · Palas</div><div class="stay-visual-meta">04 Ago · flexible</div><a class="btn-link" href="https://www.booking.com/hotel/es/pension-restaurante-casa-camino-ii.html" target="_blank">Fotos en Booking</a></div>
+    </div>
+    <div class="stay-visual">
+      <iframe class="stay-map" loading="lazy" src="https://www.google.com/maps?q=Hotel%20La%20Puerta%20de%20Arzua&output=embed" title="Mapa de La Puerta de Arzúa"></iframe>
+      <div class="stay-visual-body"><div class="stay-visual-title">La Puerta de Arzúa</div><div class="stay-visual-meta">05 Ago · flexible</div><a class="btn-link" href="https://lapuertadearzua.es/servicios/" target="_blank">Fotos oficiales</a></div>
+    </div>
+    <div class="stay-visual">
+      <iframe class="stay-map" loading="lazy" src="https://www.google.com/maps?q=Pension%2023%20Vinte%20e%20Tres%20O%20Pedrouzo&output=embed" title="Mapa de Pension 23-Vinte e Tres"></iframe>
+      <div class="stay-visual-body"><div class="stay-visual-title">23-Vinte e Tres · O Pedrouzo</div><div class="stay-visual-meta">06 Ago · pagado</div><a class="btn-link" href="https://www.booking.com/hotel/es/pension-23-vinte-e-tres.html" target="_blank">Fotos en Booking</a></div>
+    </div>
+  </div>
 </section>
 <!-- ITINERARIO -->
 <section id="itinerario">
@@ -1583,6 +1668,24 @@
     <div class="dest-desc">Una noche adicional convierte el cierre en una estadía real y deja margen amplio frente al vuelo internacional.</div>
     <ul class="dest-details"><li>20 Ago: llegada desde Nápoles</li><li>21 Ago: día completo en Madrid</li><li>22 Ago: jornada libre, equipaje y traslado a Barajas con margen</li></ul>
   </div></div>
+</section>
+
+<!-- PLANES POR CIUDAD -->
+<section id="planes">
+  <div class="section-label">Enlaces reales · intensidad según cantidad de noches</div>
+  <div class="section-title">Qué hacer en <em>cada parada</em></div>
+  <div class="itinerary-note">No es una lista para completar por obligación. Cada ciudad tiene un plan base compatible con el tiempo disponible y enlaces directos a ubicaciones u organismos oficiales.</div>
+  <div class="city-plan-grid">
+    <div class="city-plan"><div class="city-plan-body"><div class="city-plan-title">Santiago · 2 noches</div><div class="city-plan-meta">Llegada emocional + un día completo</div><ul class="city-plan-list"><li>Obradoiro, Compostela y Catedral al llegar</li><li>Mercado de Abastos y casco histórico</li><li>Alameda al atardecer y cena sin apuro</li></ul><a class="btn-link" href="https://oficinadelperegrino.com/" target="_blank">Compostela</a> <a class="btn-link" href="https://catedraldesantiago.es/" target="_blank">Catedral</a> <a class="btn-link" href="https://www.santiagoturismo.com/" target="_blank">Turismo oficial</a></div></div>
+    <div class="city-plan"><div class="city-plan-body"><div class="city-plan-title">Alicante · 1 noche</div><div class="city-plan-meta">Una tarde/noche social</div><ul class="city-plan-list"><li>Castillo de Santa Bárbara si llegan con luz</li><li>Barrio de Santa Cruz y casco antiguo</li><li>Explanada y paseo marítimo para cenar</li></ul><a class="btn-link" href="https://www.google.com/maps/search/?api=1&query=Castillo+de+Santa+Barbara+Alicante" target="_blank">Castillo</a> <a class="btn-link" href="https://www.google.com/maps/search/?api=1&query=Explanada+de+Espana+Alicante" target="_blank">Explanada</a></div></div>
+    <div class="city-plan"><div class="city-plan-body"><div class="city-plan-title">Barcelona · 3 noches</div><div class="city-plan-meta">Dos días completos + llegada</div><ul class="city-plan-list"><li>Sagrada Família y paseo modernista</li><li>Gótico, Born y frente marítimo</li><li>Park Güell o Montjuïc, no ambos a las corridas</li></ul><a class="btn-link" href="https://sagradafamilia.org/" target="_blank">Sagrada Família</a> <a class="btn-link" href="https://parkguell.barcelona/" target="_blank">Park Güell</a> <a class="btn-link" href="https://www.barcelonaturisme.com/" target="_blank">Turismo oficial</a></div></div>
+    <div class="city-plan"><div class="city-plan-body"><div class="city-plan-title">Costa Azul · 1 noche</div><div class="city-plan-meta">Cannes → Niza → Mónaco</div><ul class="city-plan-list"><li>Cannes: Croisette y pausa para almorzar</li><li>Niza: Vieux Nice, paseo y noche</li><li>Mónaco: visita breve al salir hacia Italia</li></ul><a class="btn-link" href="https://www.google.com/maps/search/?api=1&query=La+Croisette+Cannes" target="_blank">Cannes</a> <a class="btn-link" href="https://www.explorenicecotedazur.com/" target="_blank">Niza oficial</a> <a class="btn-link" href="https://www.visitmonaco.com/" target="_blank">Mónaco oficial</a></div></div>
+    <div class="city-plan"><div class="city-plan-body"><div class="city-plan-title">Cinque Terre · 2 noches</div><div class="city-plan-meta">Un día completo sin auto</div><ul class="city-plan-list"><li>Base práctica en La Spezia o Levanto</li><li>Elegir 3 pueblos y unirlos en tren</li><li>Atardecer en Manarola o Riomaggiore</li></ul><a class="btn-link" href="https://www.parconazionale5terre.it/" target="_blank">Parque oficial</a> <a class="btn-link" href="https://www.google.com/maps/search/?api=1&query=Manarola+Cinque+Terre" target="_blank">Manarola</a></div></div>
+    <div class="city-plan"><div class="city-plan-body"><div class="city-plan-title">Pisa + Florencia · 1 noche</div><div class="city-plan-meta">Parada + tarde/noche compacta</div><ul class="city-plan-list"><li>Pisa: Piazza dei Miracoli, sin sumar museo largo</li><li>Florencia: Duomo, Signoria y Ponte Vecchio</li><li>Solo una entrada con horario: Uffizi o Accademia</li></ul><a class="btn-link" href="https://www.opapisa.it/" target="_blank">Pisa oficial</a> <a class="btn-link" href="https://www.feelflorence.it/" target="_blank">Florencia oficial</a> <a class="btn-link" href="https://www.uffizi.it/" target="_blank">Uffizi</a></div></div>
+    <div class="city-plan"><div class="city-plan-body"><div class="city-plan-title">Roma · 2 noches</div><div class="city-plan-meta">Una Roma antigua + una Roma papal</div><ul class="city-plan-list"><li>Coliseo, Foro y centro histórico</li><li>Vaticano o San Pedro, según entradas</li><li>Trevi, Panteón y cena en Trastevere</li></ul><a class="btn-link" href="https://colosseo.it/" target="_blank">Coliseo oficial</a> <a class="btn-link" href="https://www.museivaticani.va/" target="_blank">Museos Vaticanos</a> <a class="btn-link" href="https://www.turismoroma.it/" target="_blank">Turismo oficial</a></div></div>
+    <div class="city-plan"><div class="city-plan-body"><div class="city-plan-title">Nápoles · 1 noche</div><div class="city-plan-meta">Centro histórico + comida</div><ul class="city-plan-list"><li>Spaccanapoli y Via dei Tribunali</li><li>Capilla Sansevero si consiguen horario</li><li>Pizza, paseo nocturno y salida al aeropuerto</li></ul><a class="btn-link" href="https://www.google.com/maps/search/?api=1&query=Spaccanapoli+Napoli" target="_blank">Spaccanapoli</a> <a class="btn-link" href="https://museosansevero.it/" target="_blank">Sansevero</a></div></div>
+    <div class="city-plan"><div class="city-plan-body"><div class="city-plan-title">Madrid · 2 noches</div><div class="city-plan-meta">Un día completo + salida tardía</div><ul class="city-plan-list"><li>Prado y Retiro en un mismo sector</li><li>Madrid de los Austrias y Palacio Real</li><li>Último día flexible para compras y equipaje</li></ul><a class="btn-link" href="https://www.museodelprado.es/" target="_blank">Museo del Prado</a> <a class="btn-link" href="https://www.patrimonionacional.es/visita/palacio-real-de-madrid" target="_blank">Palacio Real</a> <a class="btn-link" href="https://www.esmadrid.com/" target="_blank">Turismo oficial</a></div></div>
+  </div>
 </section>
 
 <!-- TRANSPORTE INTERNO -->
@@ -1747,77 +1850,29 @@
 
 <!-- NOVEDADES -->
 <section id="novedades">
-  <div class="section-label">Seguimiento en redes</div>
-  <div class="section-title"><em>Novedades</em> de Plus Ultra y eDreams</div>
-
-  <p style="color:var(--muted); margin-bottom:2rem; font-style:italic; font-size:0.95rem;">
-    Links directos a búsquedas en X/Twitter con las menciones más relevantes de cada empresa. "Top" muestra los tweets con más likes; "Recientes" los últimos publicados.
-  </p>
-
+  <div class="section-label">Fuentes comprobadas · sin búsquedas inventadas</div>
+  <div class="section-title">Enlaces <em>oficiales</em> del viaje</div>
   <div class="news-grid">
     <div class="company-panel">
-      <div class="company-panel-header">
-        <div class="company-name">Plus Ultra</div>
-        <div class="company-type">Aerolínea · Madrid</div>
-      </div>
+      <div class="company-panel-header"><div class="company-name">Plus Ultra</div><div class="company-type">Información operativa oficial</div></div>
       <div class="company-panel-body">
-        <a class="social-link" href="https://twitter.com/search?q=plus%20ultra%20aerolinea&f=top" target="_blank">
-          <span class="social-icon">𝕏</span>
-          <span class="social-label">Tweets top: "plus ultra aerolinea"</span>
-          <span class="social-arrow">→</span>
-        </a>
-        <a class="social-link" href="https://twitter.com/search?q=plus%20ultra%20aerolinea&f=live" target="_blank">
-          <span class="social-icon">𝕏</span>
-          <span class="social-label">Tweets recientes: "plus ultra aerolinea"</span>
-          <span class="social-arrow">→</span>
-        </a>
-        <a class="social-link" href="https://twitter.com/PlusUltraAir" target="_blank">
-          <span class="social-icon">𝕏</span>
-          <span class="social-label">Perfil oficial @PlusUltraAir</span>
-          <span class="social-arrow">→</span>
-        </a>
-        <a class="social-link" href="https://www.plusultra.com/es/noticias" target="_blank">
-          <span class="social-icon">🌐</span>
-          <span class="social-label">Noticias oficiales Plus Ultra</span>
-          <span class="social-arrow">→</span>
-        </a>
+        <a class="social-link" href="https://www.plusultra.com/es-es/informacion/horario-vuelos/" target="_blank"><span class="social-icon">↗</span><span class="social-label">Horarios oficiales de vuelos</span><span class="social-arrow">→</span></a>
+        <a class="social-link" href="https://www.plusultra.com/es-es/" target="_blank"><span class="social-icon">↗</span><span class="social-label">Web oficial · gestionar reserva y check-in</span><span class="social-arrow">→</span></a>
+        <a class="social-link" href="https://www.plusultra.com/es-es/informacion/conocenos/contacto/" target="_blank"><span class="social-icon">↗</span><span class="social-label">Contacto y atención al cliente</span><span class="social-arrow">→</span></a>
+        <a class="social-link" href="https://prensa.plusultra.com/" target="_blank"><span class="social-icon">↗</span><span class="social-label">Sala de prensa oficial</span><span class="social-arrow">→</span></a>
       </div>
     </div>
-
     <div class="company-panel">
-      <div class="company-panel-header">
-        <div class="company-name">eDreams</div>
-        <div class="company-type">Agencia online · Barcelona</div>
-      </div>
+      <div class="company-panel-header"><div class="company-name">Reserva y aeropuertos</div><div class="company-type">Control directo</div></div>
       <div class="company-panel-body">
-        <a class="social-link" href="https://twitter.com/search?q=edreams%20agencia&f=top" target="_blank">
-          <span class="social-icon">𝕏</span>
-          <span class="social-label">Tweets top: "edreams agencia"</span>
-          <span class="social-arrow">→</span>
-        </a>
-        <a class="social-link" href="https://twitter.com/search?q=edreams%20agencia&f=live" target="_blank">
-          <span class="social-icon">𝕏</span>
-          <span class="social-label">Tweets recientes: "edreams agencia"</span>
-          <span class="social-arrow">→</span>
-        </a>
-        <a class="social-link" href="https://twitter.com/eDreams_ES" target="_blank">
-          <span class="social-icon">𝕏</span>
-          <span class="social-label">Perfil oficial @eDreams_ES</span>
-          <span class="social-arrow">→</span>
-        </a>
-        <a class="social-link" href="https://www.edreams.com.ar/my-trips/" target="_blank">
-          <span class="social-icon">🌐</span>
-          <span class="social-label">Mis viajes en eDreams</span>
-          <span class="social-arrow">→</span>
-        </a>
+        <a class="social-link" href="https://www.edreams.com.ar/travel/#/mytrips" target="_blank"><span class="social-icon">↗</span><span class="social-label">eDreams · Mis viajes</span><span class="social-arrow">→</span></a>
+        <a class="social-link" href="https://www.aena.es/es/pasajeros/vuelos.html" target="_blank"><span class="social-icon">↗</span><span class="social-label">AENA · vuelos Madrid-Barajas</span><span class="social-arrow">→</span></a>
+        <a class="social-link" href="https://www.aeropuertosargentina.com/es/vuelos" target="_blank"><span class="social-icon">↗</span><span class="social-label">Aeropuertos Argentina · Ezeiza</span><span class="social-arrow">→</span></a>
+        <a class="social-link" href="https://www.flightradar24.com/data/flights/pu502" target="_blank"><span class="social-icon">↗</span><span class="social-label">Historial PU502 en FlightRadar24</span><span class="social-arrow">→</span></a>
       </div>
     </div>
   </div>
-
-  <p class="news-disclaimer">
-    Los links abren búsquedas en tiempo real en X/Twitter.<br>
-    "Top" = más interacciones · "Recientes" = últimos publicados.
-  </p>
+  <p class="news-disclaimer">Se quitaron las búsquedas genéricas de X. Estos enlaces apuntan a páginas oficiales o a un rastreador de vuelo identificado.</p>
 </section>
 
 <!-- ESTADO VUELOS -->
@@ -1841,8 +1896,8 @@
       <a class="scrape-link" href="https://www.flightradar24.com/data/flights/pu502" target="_blank">FlightRadar24</a>
       <a class="scrape-link" href="https://flightaware.com/live/flight/PU502" target="_blank">FlightAware</a>
       <a class="scrape-link" href="https://www.flightstats.com/v2/flight-tracker/PU/502" target="_blank">FlightStats</a>
-      <a class="scrape-link" href="https://www.plusultra.com/es/informacion-de-vuelo" target="_blank">Plus Ultra oficial</a>
-      <a class="scrape-link" href="https://www.edreams.com.ar/my-trips/" target="_blank">eDreams · mis viajes</a>
+      <a class="scrape-link" href="https://www.plusultra.com/es-es/informacion/horario-vuelos/" target="_blank">Plus Ultra oficial</a>
+      <a class="scrape-link" href="https://www.edreams.com.ar/travel/#/mytrips" target="_blank">eDreams · mis viajes</a>
     </div>
     <button class="open-all-btn" onclick="openAll502()">Abrir todo en pestañas ↗</button>
     <div class="scrape-note">
@@ -1860,8 +1915,8 @@
       <a class="scrape-link" href="https://www.flightradar24.com/data/flights/pu501" target="_blank">FlightRadar24</a>
       <a class="scrape-link" href="https://flightaware.com/live/flight/PU501" target="_blank">FlightAware</a>
       <a class="scrape-link" href="https://www.flightstats.com/v2/flight-tracker/PU/501" target="_blank">FlightStats</a>
-      <a class="scrape-link" href="https://www.plusultra.com/es/informacion-de-vuelo" target="_blank">Plus Ultra oficial</a>
-      <a class="scrape-link" href="https://www.edreams.com.ar/my-trips/" target="_blank">eDreams · mis viajes</a>
+      <a class="scrape-link" href="https://www.plusultra.com/es-es/informacion/horario-vuelos/" target="_blank">Plus Ultra oficial</a>
+      <a class="scrape-link" href="https://www.edreams.com.ar/travel/#/mytrips" target="_blank">eDreams · mis viajes</a>
     </div>
     <button class="open-all-btn" onclick="openAll501()">Abrir todo en pestañas ↗</button>
     <div class="scrape-note">
@@ -1910,8 +1965,8 @@
       'https://www.flightradar24.com/data/flights/pu502',
       'https://flightaware.com/live/flight/PU502',
       'https://www.flightstats.com/v2/flight-tracker/PU/502',
-      'https://www.plusultra.com/es/informacion-de-vuelo',
-      'https://www.edreams.com.ar/my-trips/'
+      'https://www.plusultra.com/es-es/informacion/horario-vuelos/',
+      'https://www.edreams.com.ar/travel/#/mytrips'
     ];
     urls.forEach(u => window.open(u, '_blank'));
   }
@@ -1921,8 +1976,8 @@
       'https://www.flightradar24.com/data/flights/pu501',
       'https://flightaware.com/live/flight/PU501',
       'https://www.flightstats.com/v2/flight-tracker/PU/501',
-      'https://www.plusultra.com/es/informacion-de-vuelo',
-      'https://www.edreams.com.ar/my-trips/'
+      'https://www.plusultra.com/es-es/informacion/horario-vuelos/',
+      'https://www.edreams.com.ar/travel/#/mytrips'
     ];
     urls.forEach(u => window.open(u, '_blank'));
   }
@@ -1936,6 +1991,9 @@
 </script>
 </body>
 </html>
+
+
+
 
 
 
