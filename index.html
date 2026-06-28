@@ -7,20 +7,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ink: #1a1714;
-    --paper: #ece2d0;
-    --paper-dark: #ded2bb;
-    --paper-darker: #c6b796;
-    --accent: #7b3f1d;
-    --accent-light: #c4762a;
-    --accent-gold: #b88d2f;
-    --accent-olive: #5c6b2e;
-    --accent-blue: #2c4a6e;
-    --muted: #5f503c;
-    --muted-light: #84735b;
-    --red-stamp: #8b1a1a;
-    --confirmed: #2d5a27;
-    --pending: #7a5c1a;
+    --ink: #16202a;
+    --paper: #f4f1ea;
+    --paper-dark: #e7edf0;
+    --paper-darker: #c7d3d8;
+    --accent: #0f766e;
+    --accent-light: #14b8a6;
+    --accent-gold: #d99a2b;
+    --accent-olive: #5f7d4f;
+    --accent-blue: #2563eb;
+    --muted: #475569;
+    --muted-light: #718096;
+    --red-stamp: #b42318;
+    --confirmed: #15803d;
+    --pending: #b7791f;
     --font-display: 'Playfair Display', Georgia, serif;
     --font-body: 'Crimson Pro', Georgia, serif;
     --font-mono: 'Space Mono', monospace;
@@ -54,7 +54,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at 50% 40%, rgba(201,168,76,0.12) 0%, transparent 70%);
+    background: radial-gradient(ellipse at 50% 40%, rgba(20,184,166,0.14) 0%, rgba(217,154,43,0.08) 45%, transparent 72%);
     pointer-events: none;
   }
 
@@ -568,7 +568,7 @@
   }
 
   .trip-progress::after {
-    content: 'Loading Europa 2026...';
+    content: 'Loading Italia directa...';
     position: absolute;
     right: 1rem;
     top: 0.75rem;
@@ -1272,7 +1272,7 @@
     <div>EZE→MAD</div>
   </div>
 
-  <div class="route-line">Buenos Aires → Madrid → Camino → Santiago → Alicante → Costa Azul → Cinque Terre → Pisa → Florencia → Roma → Nápoles → Madrid → Buenos Aires</div>
+  <div class="route-line">Buenos Aires → Madrid → Camino → Santiago → Alicante → Italia directa → Pisa → Florencia → Roma → Nápoles → Capri → Madrid → Buenos Aires</div>
 
   <h1>Nuestro <em>Gran</em><br>Viaje Europeo</h1>
   <p class="hero-subtitle">El primero de muchos, el más especial de todos</p>
@@ -1294,7 +1294,6 @@
 
 <!-- NAV -->
 <nav>
-  <a href="#panel">Panel</a>
   <a href="#misiones">Misiones</a>
   <a href="#vuelos">Vuelos</a>
   <a href="#itinerario">Itinerario</a>
@@ -1327,31 +1326,31 @@
     <div class="progress-head">
       <div>
         <div class="ops-kicker">Bitácora de organización</div>
-        <div class="progress-title">Viaje cargando: <em>menos ciudades, más aire</em></div>
+        <div class="progress-title">Viaje cargando: <em>Italia directa</em></div>
       </div>
-      <div class="progress-percent">40%</div>
+      <div class="progress-percent">52%</div>
     </div>
     <div class="progress-track" aria-label="Progreso de organización del viaje">
-      <div class="progress-fill" style="width:40%;"></div>
+      <div class="progress-fill" style="width:52%;"></div>
     </div>
     <div class="progress-caption">
-      <strong>Ruta reducida:</strong> Costa Azul queda como elección entre Marsella, Niza o Mónaco. Las noches liberadas se usan para bajar el ritmo en Cinque Terre y Florencia/Pisa.
+      <strong>Nuevo estado:</strong> Santiago y Alicante ya tienen alojamiento, y el tren Santiago → Alicante está comprado. Francia queda para otro viaje; ahora el tramo medio busca entrar directo a Italia, idealmente por Bolonia, Bérgamo, Pisa o Florencia.
     </div>
     <div class="progress-metrics">
-      <div class="progress-metric"><div class="num">9/23</div><div class="label">bloques cerrados</div></div>
-      <div class="progress-metric"><div class="num">15</div><div class="label">noches por reservar</div></div>
-      <div class="progress-metric"><div class="num">1</div><div class="label">base Costa Azul</div></div>
-      <div class="progress-metric"><div class="num">412 €</div><div class="label">pagado conocido</div></div>
+      <div class="progress-metric"><div class="num">12/23</div><div class="label">bloques cerrados</div></div>
+      <div class="progress-metric"><div class="num">3</div><div class="label">hospedajes nuevos</div></div>
+      <div class="progress-metric"><div class="num">2</div><div class="label">trenes largos</div></div>
+      <div class="progress-metric"><div class="num">Italia</div><div class="label">siguiente decisión</div></div>
     </div>
     <div class="lodging-strip" aria-label="Próximos bloques por resolver">
-      <div class="lodging-chip warn"><div class="lodging-day">07-09 Ago</div><div class="lodging-place">Santiago</div><div class="lodging-state">hotel · 2 noches</div></div>
-      <div class="lodging-chip warn"><div class="lodging-day">09-11 Ago</div><div class="lodging-place">Alicante</div><div class="lodging-state">hotel · 2 noches</div></div>
-      <div class="lodging-chip warn"><div class="lodging-day">11-12 Ago</div><div class="lodging-place">Costa Azul</div><div class="lodging-state">Marsella / Niza / Mónaco</div></div>
-      <div class="lodging-chip warn"><div class="lodging-day">12-17 Ago</div><div class="lodging-place">Liguria + Toscana</div><div class="lodging-state">Cinque Terre · Pisa · Florencia</div></div>
-      <div class="lodging-chip warn"><div class="lodging-day">17-22 Ago</div><div class="lodging-place">Roma + Nápoles + Madrid</div><div class="lodging-state">Roma 2 · Madrid 2</div></div>
+      <div class="lodging-chip ok"><div class="lodging-day">07-09 Ago</div><div class="lodging-place">Santiago</div><div class="lodging-state">Airbnb confirmado</div></div>
+      <div class="lodging-chip ok"><div class="lodging-day">09 Ago</div><div class="lodging-place">SCQ → Alicante</div><div class="lodging-state">Renfe comprado</div></div>
+      <div class="lodging-chip flex"><div class="lodging-day">09-12 Ago</div><div class="lodging-place">Alicante</div><div class="lodging-state">hotel confirmado · paga luego</div></div>
+      <div class="lodging-chip warn"><div class="lodging-day">12 Ago</div><div class="lodging-place">Italia directa</div><div class="lodging-state">low cost a definir</div></div>
+      <div class="lodging-chip warn"><div class="lodging-day">12-22 Ago</div><div class="lodging-place">Italia + Madrid</div><div class="lodging-state">Florencia · Roma · Nápoles · Madrid</div></div>
     </div>
     <div class="progress-fineprint">
-      El porcentaje se mantiene: las reservas confirmadas no cambiaron. Cambió la estrategia de la segunda mitad: menos destinos y más noches útiles en cada bloque.
+      El auto deja de ser traslado principal. Si aparece un low cost barato y rápido hacia Italia, se prioriza. Francia queda explícitamente fuera de esta versión.
     </div>
   </div>
 </section>
@@ -1363,46 +1362,34 @@
       <div>
         <div class="ops-kicker">No olvidar / reservar</div>
         <div class="mission-title">Misiones de <em>viaje</em></div>
-        <div class="mission-subtitle">La ruta se simplificó. Ahora las misiones apuntan a cerrar pocas decisiones grandes y no perseguir demasiadas ciudades.</div>
+        <div class="mission-subtitle">Se quitaron duplicados: acá quedan solo las acciones que destraban la ejecución.</div>
       </div>
       <div class="mission-score">
-        <span class="big">3/10</span>
+        <span class="big">5/10</span>
         <span class="small">misiones listas</span>
-        <div class="mission-mini-track"><div class="mission-mini-fill" style="width:30%;"></div></div>
+        <div class="mission-mini-track"><div class="mission-mini-fill" style="width:50%;"></div></div>
       </div>
     </div>
     <table class="mission-table">
       <thead><tr><th>OK</th><th>Misión</th><th>Cuándo</th><th>Estado</th><th>Nota rápida</th></tr></thead>
       <tbody>
-        <tr><td><span class="check-dot done">✓</span></td><td><strong>Pasajes Renfe a mano</strong><br><span class="mission-tag">QR / PDF</span></td><td>02 Ago</td><td><span class="status-pill pill-ok">Listo base</span></td><td>PDFs guardados. Falta sumar las cuatro imágenes QR como archivos.</td></tr>
         <tr><td><span class="check-dot done">✓</span></td><td><strong>Hospedajes del Camino</strong><br><span class="mission-tag">Sarria → O Pedrouzo</span></td><td>02-07 Ago</td><td><span class="status-pill pill-ok">Completo</span></td><td>Las cinco noches previas a Santiago están cubiertas.</td></tr>
-        <tr><td><span class="check-dot done">✓</span></td><td><strong>MasterAssist / AXA</strong><br><span class="mission-tag">asistencia</span></td><td>Hecho</td><td><span class="status-pill pill-ok">Listo</span></td><td><a class="btn-link" href="docs/assistencia/Certificado.pdf" target="_blank">Certificado</a> <a class="btn-link" href="docs/assistencia/Credencial.pdf" target="_blank">Credencial</a> <a class="btn-link" href="docs/assistencia/CCGG.pdf" target="_blank">CCGG</a></td></tr>
-        <tr><td><span class="check-dot">□</span></td><td><strong>Credencial y sellos</strong><br><span class="mission-tag">Camino</span></td><td>Antes / durante</td><td><span class="status-pill pill-warn">Pendiente</span></td><td>Credencial accesible cada día para sellar y pedir la Compostela.</td></tr>
-        <tr><td><span class="check-dot">□</span></td><td><strong>Reservar Santiago</strong><br><span class="mission-tag">2 noches</span></td><td>07-09 Ago</td><td><span class="status-pill pill-warn">Prioridad</span></td><td>Buscar cerca del casco histórico o con salida cómoda a estación.</td></tr>
-        <tr><td><span class="check-dot">□</span></td><td><strong>Resolver Alicante</strong><br><span class="mission-tag">2 noches</span></td><td>09-11 Ago</td><td><span class="status-pill pill-warn">Buscar</span></td><td>Hotel + tren Santiago → Alicante, probablemente vía Madrid.</td></tr>
-        <tr><td><span class="check-dot">□</span></td><td><strong>Elegir Costa Azul</strong><br><span class="mission-tag">1 noche</span></td><td>11-12 Ago</td><td><span class="status-pill pill-info">Decidir</span></td><td>Marsella, Niza o Mónaco. Elegir una base, no tres paradas.</td></tr>
-        <tr><td><span class="check-dot">□</span></td><td><strong>Comparar tren / low cost / auto</strong><br><span class="mission-tag">Costa Azul / Cinque Terre</span></td><td>Antes de reservar</td><td><span class="status-pill pill-warn">Comparar</span></td><td>Si aparece low cost barato y rápido, prioridad. Auto solo si suma libertad real.</td></tr>
-        <tr><td><span class="check-dot">□</span></td><td><strong>Reservar Italia</strong><br><span class="mission-tag">Cinque / Florencia / Roma / Nápoles</span></td><td>12-20 Ago</td><td><span class="status-pill pill-warn">Pendiente</span></td><td>Prioridad: Cinque Terre y Roma por disponibilidad.</td></tr>
-        <tr><td><span class="check-dot">□</span></td><td><strong>Vuelo Nápoles → Madrid</strong><br><span class="mission-tag">regreso europeo</span></td><td>20 Ago</td><td><span class="status-pill pill-warn">Buscar</span></td><td>Debe dejar dos noches completas en Madrid antes del PU501.</td></tr>
+        <tr><td><span class="check-dot done">✓</span></td><td><strong>Santiago confirmado</strong><br><span class="mission-tag">Airbnb</span></td><td>07-09 Ago</td><td><span class="status-pill pill-ok">Listo</span></td><td>Check-in 15:00, check-out antes de 12:00.</td></tr>
+        <tr><td><span class="check-dot done">✓</span></td><td><strong>Renfe Santiago → Alicante</strong><br><span class="mission-tag">tren</span></td><td>09 Ago</td><td><span class="status-pill pill-ok">Comprado</span></td><td>07:43 → 14:28, con cambio de 1h15.</td></tr>
+        <tr><td><span class="check-dot done">✓</span></td><td><strong>Alicante reservado</strong><br><span class="mission-tag">3 noches</span></td><td>09-12 Ago</td><td><span class="status-pill pill-ok">Confirmado</span></td><td>Cancelación gratis hasta 07 Ago 23:59 CEST.</td></tr>
+        <tr><td><span class="check-dot done">✓</span></td><td><strong>MasterAssist / AXA</strong><br><span class="mission-tag">asistencia</span></td><td>Hecho</td><td><span class="status-pill pill-ok">Listo</span></td><td><a class="btn-link" href="docs/assistencia/Certificado.pdf" target="_blank">Certificado</a> <a class="btn-link" href="docs/assistencia/Credencial.pdf" target="_blank">Credencial</a></td></tr>
+        <tr><td><span class="check-dot">□</span></td><td><strong>Reservar Finisterre / Costa da Morte</strong><br><span class="mission-tag">excursión</span></td><td>08 Ago</td><td><span class="status-pill pill-warn">Evaluar</span></td><td>Civitatis, Tour Galicia o Galicia Travels. Día completo.</td></tr>
+        <tr><td><span class="check-dot">□</span></td><td><strong>Vuelo Alicante → Italia</strong><br><span class="mission-tag">low cost</span></td><td>12 Ago</td><td><span class="status-pill pill-warn">Buscar</span></td><td>Priorizar Bolonia, Bérgamo, Pisa o Florencia. Auto solo si gana claramente.</td></tr>
+        <tr><td><span class="check-dot">□</span></td><td><strong>Hospedajes Italia</strong><br><span class="mission-tag">12-20 Ago</span></td><td>Próximo bloque</td><td><span class="status-pill pill-warn">Pendiente</span></td><td>Florencia 3, Roma 2, Nápoles 3.</td></tr>
+        <tr><td><span class="check-dot">□</span></td><td><strong>Capri</strong><br><span class="mission-tag">desde Nápoles</span></td><td>18/19 Ago</td><td><span class="status-pill pill-info">Planear</span></td><td>Ferry ida/vuelta. Mejor como excursión para evitar otro check-in.</td></tr>
+        <tr><td><span class="check-dot">□</span></td><td><strong>Madrid final</strong><br><span class="mission-tag">2 noches</span></td><td>20-22 Ago</td><td><span class="status-pill pill-warn">Reservar</span></td><td>Hotel + vuelo Nápoles → Madrid.</td></tr>
       </tbody>
     </table>
-    <div class="mission-note">Regla nueva: si una ciudad no agrega descanso o sentido, sale. El objetivo es llegar mejor, no tachar más nombres.</div>
-  </div>
-</section>
-<!-- PANEL DE CONTROL -->
-<section id="panel">
-  <div class="section-label">Radar operativo · ruta reducida</div>
-  <div class="section-title">Panel de <em>Riesgos</em></div>
-  <div class="ops-grid">
-    <div class="ops-panel"><div class="ops-kicker">Próxima reserva</div><div class="ops-value">Santiago · 2 noches</div><div class="ops-note">Sigue siendo el primer hueco real después del Camino.</div></div>
-    <div class="ops-panel"><div class="ops-kicker">Cambio clave</div><div class="ops-value">Ruta simplificada</div><div class="ops-note">Se reduce la cantidad de ciudades para aliviar la segunda mitad.</div></div>
-    <div class="ops-panel"><div class="ops-kicker">Decisión abierta</div><div class="ops-value">Costa Azul</div><div class="ops-note">Marsella, Niza o Mónaco. Una base sola para no perder el ritmo.</div></div>
-    <div class="ops-panel"><div class="ops-kicker">Descanso ganado</div><div class="ops-value">Cinque + Florencia</div><div class="ops-note">Cinque Terre queda con 3 noches y Pisa/Florencia con 2 noches.</div></div>
-    <div class="ops-panel"><div class="ops-kicker">Riesgo físico</div><div class="ops-value">Palas → Arzúa</div><div class="ops-note">29 km. La ruta posterior baja intensidad, pero este día sigue siendo exigente.</div></div>
-    <div class="ops-panel"><div class="ops-kicker">Cierre</div><div class="ops-value">Madrid · 2 noches</div><div class="ops-note">Llegar el 20 Ago desde Nápoles y volar el 22 Ago por la noche.</div></div>
+    <div class="mission-note">Francia queda para otro viaje. La prioridad real es comprar el salto a Italia y cerrar los cuatro bloques de alojamiento que faltan.</div>
   </div>
 </section>
 <!-- VUELOS -->
+
 <section id="vuelos">
   <div class="section-label">Documentación confirmada</div>
   <div class="section-title">Nuestros <em>Vuelos</em></div>
@@ -1576,59 +1563,67 @@
       </tr>
       <tr>
         <td>07-09 Ago</td>
-        <td><strong>Santiago de Compostela</strong><br>2 noches</td>
-        <td>Alojamiento y actividades</td>
-        <td><span class="status-pill pill-warn">Reservar</span>Hotel / pensión</td>
-        <td>EUR a cargar</td>
-        <td>Compostela, Catedral, casco histórico y descanso después del Camino.</td>
+        <td><strong>Habitación cercana al casco antiguo</strong><br>Santiago de Compostela · Airbnb</td>
+        <td>Entrada desde 15:00<br>Salida antes de 12:00</td>
+        <td><span class="status-pill pill-ok">Confirmado</span>HMPTMWEAKW · anfitrión Kevin</td>
+        <td><span class="status-pill pill-ok">Pagado</span>US$207,97</td>
+        <td>Rúa do Bispo Teodomiro, 10 · Tel. +34 695 10 85 26 · ideal para Compostela y excursión a Finisterre. <a class="btn-link" href="https://www.google.com/maps/search/?api=1&query=R%C3%BAa%20do%20Bispo%20Teodomiro%2010%20Santiago%20de%20Compostela" target="_blank">Mapa</a></td>
       </tr>
       <tr>
-        <td>09-11 Ago</td>
-        <td><strong>Alicante</strong><br>2 noches</td>
-        <td>Tren desde Santiago</td>
-        <td><span class="status-pill pill-warn">Reservar</span>Renfe + hotel</td>
-        <td>EUR a cargar</td>
-        <td>Parada social para ver a la amiga de Marita con una noche extra de margen.</td>
+        <td>09 Ago</td>
+        <td><strong>Santiago → Alicante</strong><br>Renfe 04364 + 05312 · cambio 1h15</td>
+        <td>07:43 → 14:28</td>
+        <td><span class="status-pill pill-ok">Comprado</span>Max L95UPK · Maru WWRX6J</td>
+        <td>178,20 € total<br>89,10 € c/u</td>
+        <td>Salida: Santiago de Compostela-Daniel Castelao. Llegada: Alicante/Alacant-Terminal. Básico Tarjeta Más Renfe 10% - Silencio.</td>
       </tr>
       <tr>
-        <td>11-12 Ago</td>
-        <td><strong>Costa Azul</strong><br>Marsella ó Niza ó Mónaco</td>
-        <td>1 noche</td>
-        <td><span class="status-pill pill-info">Elegir</span>Base final</td>
+        <td>09-12 Ago</td>
+        <td><strong><a href="https://www.booking.com/hotel/es/la-casa-del-montaraz.html" target="_blank">La Casa del Montaraz</a></strong><br>Alicante · Habitación doble con baño privado</td>
+        <td>Entrada 14:00-23:00<br>Salida 08:00-12:00</td>
+        <td><span class="status-pill pill-ok">Confirmado</span>Booking.com · PIN privado</td>
+        <td><span class="status-pill pill-info">Pago futuro</span>225 €</td>
+        <td>Carrer Dr. Buades, 03012 Alicante · Tel. +34 631 341 449 · cancelación gratis hasta 07 Ago 23:59 CEST. <a class="btn-link" href="https://www.google.com/maps/search/?api=1&query=La%20Casa%20del%20Montaraz%20Carrer%20Dr.%20Buades%20Alicante" target="_blank">Mapa y fotos</a></td>
+      </tr>
+      <tr>
+        <td>08 Ago</td>
+        <td><strong>Finisterre / Costa da Morte</strong><br>Excursión desde Santiago</td>
+        <td>Día completo</td>
+        <td><span class="status-pill pill-warn">Evaluar</span>Civitatis / Tour Galicia / Galicia Travels</td>
+        <td>Desde ~US$59 p/p según Civitatis</td>
+        <td>Ruta típica: Pontemaceira, Muxía, Faro de Finisterre, Ézaro, Carnota/Muros. <a class="btn-link" href="https://www.civitatis.com/es/santiago-de-compostela/excursion-finisterre-costa-morte/" target="_blank">Ver excursión</a></td>
+      </tr>
+      <tr>
+        <td>12 Ago</td>
+        <td><strong>Alicante → Italia directa</strong><br>Bolonia / Bérgamo / Pisa / Florencia</td>
+        <td>A confirmar</td>
+        <td><span class="status-pill pill-warn">Buscar</span>Low cost primero</td>
         <td>EUR a cargar</td>
-        <td>Elegir una base; no intentar visitar toda la Riviera.</td>
+        <td>Francia queda fuera. Prioridad: vuelo barato y rápido; tren/auto solo si conviene mucho.</td>
       </tr>
       <tr>
         <td>12-15 Ago</td>
-        <td><strong>Cinque Terre</strong><br>3 noches</td>
-        <td>Tren o auto hasta base práctica</td>
-        <td><span class="status-pill pill-warn">Reservar</span>Base</td>
+        <td><strong>Florencia + Pisa</strong><br>3 noches base Florencia</td>
+        <td>Hotel + trenes</td>
+        <td><span class="status-pill pill-warn">Reservar</span>Alojamiento</td>
         <td>EUR a cargar</td>
-        <td>Usar La Spezia o Levanto si simplifica hotel, equipaje y trenes.</td>
+        <td>Pisa como excursión o parada de llegada. Base sugerida: Florencia cerca de Santa Maria Novella.</td>
       </tr>
       <tr>
         <td>15-17 Ago</td>
-        <td><strong>Pisa + Florencia</strong><br>2 noches</td>
-        <td>Tren</td>
-        <td><span class="status-pill pill-warn">Reservar</span>Hotel / entradas</td>
-        <td>EUR a cargar</td>
-        <td>Pisa como parada y Florencia con más aire que el plan anterior.</td>
-      </tr>
-      <tr>
-        <td>17-19 Ago</td>
         <td><strong>Roma</strong><br>2 noches</td>
-        <td>Tren rápido</td>
+        <td>Tren rápido desde Florencia</td>
         <td><span class="status-pill pill-warn">Reservar</span>Hotel / entradas</td>
         <td>EUR a cargar</td>
         <td>Coliseo, centro histórico y Vaticano según disponibilidad.</td>
       </tr>
       <tr>
-        <td>19-20 Ago</td>
-        <td><strong>Nápoles</strong><br>1 noche</td>
-        <td>Tren desde Roma</td>
-        <td><span class="status-pill pill-warn">Reservar</span>Hotel</td>
+        <td>17-20 Ago</td>
+        <td><strong>Nápoles + Capri</strong><br>3 noches base Nápoles</td>
+        <td>Tren + ferry Capri</td>
+        <td><span class="status-pill pill-warn">Reservar</span>Hotel / ferry</td>
         <td>EUR a cargar</td>
-        <td>Última noche italiana antes de volar a Madrid.</td>
+        <td>Capri como excursión desde Nápoles para evitar sumar otro check-in.</td>
       </tr>
       <tr>
         <td>20-22 Ago</td>
@@ -1672,10 +1667,10 @@
 </section>
 <!-- ITINERARIO -->
 <section id="itinerario">
-  <div class="section-label">Día por día · ruta reducida</div>
+  <div class="section-label">Día por día · Francia queda para otro viaje</div>
   <div class="section-title"><em>Itinerario</em> del Viaje</div>
   <div class="itinerary-note">
-    Nueva lógica: menos ciudades y más noches donde el viaje lo necesita. Costa Azul queda como una única base a elegir.
+    Nueva versión: Santiago confirmado, Alicante confirmado y salto directo a Italia. Francia sale del plan actual para bajar traslados y concentrar la segunda mitad en Italia.
   </div>
   <table class="data-table">
     <thead><tr><th>Día</th><th>Fecha</th><th>Ciudad / recorrido</th><th>Dónde dormimos</th><th>Estado</th></tr></thead>
@@ -1686,42 +1681,40 @@
       <tr><td>4</td><td>Mar 04 Ago</td><td>Portomarín → Palas de Rei · 25 km</td><td>Casa Camiño II</td><td><span class="status-pill pill-ok">Reservado</span></td></tr>
       <tr><td>5</td><td>Mié 05 Ago</td><td>Palas de Rei → Arzúa · 29 km</td><td>Hotel La Puerta de Arzúa</td><td><span class="status-pill pill-ok">Reservado</span></td></tr>
       <tr><td>6</td><td>Jue 06 Ago</td><td>Arzúa → O Pedrouzo · 19 km</td><td>Pension 23-Vinte e Tres</td><td><span class="status-pill pill-ok">Pagado</span></td></tr>
-      <tr><td>7</td><td>Vie 07 Ago</td><td>O Pedrouzo → Santiago</td><td>Santiago · noche 1</td><td><span class="status-pill pill-warn">Buscar</span></td></tr>
-      <tr><td>8</td><td>Sáb 08 Ago</td><td>Santiago de Compostela</td><td>Santiago · noche 2</td><td><span class="status-pill pill-warn">Buscar</span></td></tr>
-      <tr><td>9</td><td>Dom 09 Ago</td><td>Santiago → Alicante</td><td>Alicante · noche 1</td><td><span class="status-pill pill-warn">Buscar</span></td></tr>
-      <tr><td>10</td><td>Lun 10 Ago</td><td>Alicante</td><td>Alicante · noche 2</td><td><span class="status-pill pill-warn">Buscar</span></td></tr>
-      <tr><td>11</td><td>Mar 11 Ago</td><td>Alicante → Costa Azul</td><td>Marsella / Niza / Mónaco</td><td><span class="status-pill pill-info">Elegir</span></td></tr>
-      <tr><td>12</td><td>Mié 12 Ago</td><td>Costa Azul → Cinque Terre</td><td>Cinque Terre · noche 1</td><td><span class="status-pill pill-info">Plan</span></td></tr>
-      <tr><td>13</td><td>Jue 13 Ago</td><td>Cinque Terre</td><td>Cinque Terre · noche 2</td><td><span class="status-pill pill-info">Plan</span></td></tr>
-      <tr><td>14</td><td>Vie 14 Ago</td><td>Cinque Terre</td><td>Cinque Terre · noche 3</td><td><span class="status-pill pill-info">Plan</span></td></tr>
-      <tr><td>15</td><td>Sáb 15 Ago</td><td>Cinque Terre → Pisa → Florencia</td><td>Florencia · noche 1</td><td><span class="status-pill pill-info">Plan</span></td></tr>
-      <tr><td>16</td><td>Dom 16 Ago</td><td>Florencia</td><td>Florencia · noche 2</td><td><span class="status-pill pill-info">Plan</span></td></tr>
-      <tr><td>17</td><td>Lun 17 Ago</td><td>Florencia → Roma</td><td>Roma · noche 1</td><td><span class="status-pill pill-info">Plan</span></td></tr>
-      <tr><td>18</td><td>Mar 18 Ago</td><td>Roma</td><td>Roma · noche 2</td><td><span class="status-pill pill-info">Plan</span></td></tr>
-      <tr><td>19</td><td>Mié 19 Ago</td><td>Roma → Nápoles</td><td>Nápoles · 1 noche</td><td><span class="status-pill pill-info">Plan</span></td></tr>
-      <tr><td>20</td><td>Jue 20 Ago</td><td>Nápoles → Madrid</td><td>Madrid · noche 1</td><td><span class="status-pill pill-info">Plan</span></td></tr>
-      <tr><td>21</td><td>Vie 21 Ago</td><td>Madrid</td><td>Madrid · noche 2</td><td><span class="status-pill pill-info">Plan</span></td></tr>
+      <tr><td>7</td><td>Vie 07 Ago</td><td>O Pedrouzo → Santiago</td><td>Airbnb · Santiago noche 1</td><td><span class="status-pill pill-ok">Confirmado</span></td></tr>
+      <tr><td>8</td><td>Sáb 08 Ago</td><td>Santiago / Finisterre</td><td>Airbnb · Santiago noche 2</td><td><span class="status-pill pill-ok">Confirmado</span></td></tr>
+      <tr><td>9</td><td>Dom 09 Ago</td><td>Santiago → Alicante</td><td>La Casa del Montaraz · noche 1</td><td><span class="status-pill pill-ok">Tren + hotel</span></td></tr>
+      <tr><td>10</td><td>Lun 10 Ago</td><td>Alicante</td><td>La Casa del Montaraz · noche 2</td><td><span class="status-pill pill-ok">Confirmado</span></td></tr>
+      <tr><td>11</td><td>Mar 11 Ago</td><td>Alicante</td><td>La Casa del Montaraz · noche 3</td><td><span class="status-pill pill-ok">Confirmado</span></td></tr>
+      <tr><td>12</td><td>Mié 12 Ago</td><td>Alicante → Italia directa</td><td>Florencia · noche 1</td><td><span class="status-pill pill-warn">Buscar vuelo</span></td></tr>
+      <tr><td>13</td><td>Jue 13 Ago</td><td>Florencia / Pisa</td><td>Florencia · noche 2</td><td><span class="status-pill pill-warn">Reservar</span></td></tr>
+      <tr><td>14</td><td>Vie 14 Ago</td><td>Florencia</td><td>Florencia · noche 3</td><td><span class="status-pill pill-warn">Reservar</span></td></tr>
+      <tr><td>15</td><td>Sáb 15 Ago</td><td>Florencia → Roma</td><td>Roma · noche 1</td><td><span class="status-pill pill-warn">Reservar</span></td></tr>
+      <tr><td>16</td><td>Dom 16 Ago</td><td>Roma</td><td>Roma · noche 2</td><td><span class="status-pill pill-warn">Reservar</span></td></tr>
+      <tr><td>17</td><td>Lun 17 Ago</td><td>Roma → Nápoles</td><td>Nápoles · noche 1</td><td><span class="status-pill pill-warn">Reservar</span></td></tr>
+      <tr><td>18</td><td>Mar 18 Ago</td><td>Nápoles / Capri</td><td>Nápoles · noche 2</td><td><span class="status-pill pill-warn">Planear ferry</span></td></tr>
+      <tr><td>19</td><td>Mié 19 Ago</td><td>Nápoles</td><td>Nápoles · noche 3</td><td><span class="status-pill pill-warn">Reservar</span></td></tr>
+      <tr><td>20</td><td>Jue 20 Ago</td><td>Nápoles → Madrid</td><td>Madrid · noche 1</td><td><span class="status-pill pill-warn">Buscar vuelo</span></td></tr>
+      <tr><td>21</td><td>Vie 21 Ago</td><td>Madrid</td><td>Madrid · noche 2</td><td><span class="status-pill pill-warn">Reservar</span></td></tr>
       <tr><td>22</td><td>Sáb 22 Ago</td><td>Madrid · vuelo PU501 23:10</td><td>Noche en vuelo</td><td><span class="status-pill pill-ok">Confirmado</span></td></tr>
     </tbody>
   </table>
   <div class="itinerary-note" style="margin-top:2rem;">
-    <strong>Mapa de noches:</strong> 20 noches de alojamiento en 12 lugares distintos, más 2 noches en vuelo. Se baja la rotación y se gana descanso en Alicante, Cinque Terre, Florencia, Roma y Madrid.
+    <strong>Mapa de noches:</strong> 20 noches de alojamiento en 11 bases, más 2 noches en vuelo. Confirmado hasta Alicante inclusive; faltan Florencia, Roma, Nápoles y Madrid.
   </div>
-  <div class="destination-block"><div class="dest-number">01</div><div class="dest-content"><div class="dest-header"><div class="dest-city">Madrid → Camino → Santiago</div><div class="dest-country">España</div><div class="dest-badge badge-confirmed">Confirmado hasta 07 Ago</div></div><div class="dest-dates">02 → 09 Ago</div><div class="dest-desc">Llegada, tren a Sarria, cinco etapas completas y dos noches de recuperación en Santiago.</div><ul class="dest-details"><li>Camino: Sarria, Portomarín, Palas de Rei, Arzúa, O Pedrouzo y Santiago</li><li>Todos los hospedajes del Camino están cubiertos</li><li>En Santiago: Compostela, Catedral, Mercado de Abastos, Alameda y cena de celebración</li></ul></div></div>
+  <div class="destination-block"><div class="dest-number">01</div><div class="dest-content"><div class="dest-header"><div class="dest-city">Madrid → Camino → Santiago</div><div class="dest-country">España</div><div class="dest-badge badge-confirmed">Confirmado hasta 09 Ago</div></div><div class="dest-dates">02 → 09 Ago</div><div class="dest-desc">Camino completo, dos noches en Santiago y tren comprado a Alicante.</div><ul class="dest-details"><li>08 Ago sugerido: Finisterre, Muxía y Costa da Morte</li><li>Airbnb confirmado cerca del casco antiguo</li><li>Salida en tren a Alicante el 09 Ago a las 07:43</li></ul></div></div>
   <hr class="separator">
-  <div class="destination-block"><div class="dest-number">02</div><div class="dest-content"><div class="dest-header"><div class="dest-city">Alicante</div><div class="dest-country">España</div><div class="dest-badge badge-pending">2 noches</div></div><div class="dest-dates">09 → 11 Ago</div><div class="dest-desc">La parada social gana una noche: menos traslado y más margen para ver a la amiga de Marita.</div><ul class="dest-details"><li>Santiago → Alicante: comparar tren con cambio en Madrid</li><li>Hospedaje: ideal cerca de estación o zona de encuentro</li><li>Segundo día flexible para playa, castillo o simplemente descansar</li></ul></div></div>
+  <div class="destination-block"><div class="dest-number">02</div><div class="dest-content"><div class="dest-header"><div class="dest-city">Alicante</div><div class="dest-country">España</div><div class="dest-badge badge-confirmed">3 noches</div></div><div class="dest-dates">09 → 12 Ago</div><div class="dest-desc">Tres noches con base confirmada antes del salto a Italia.</div><ul class="dest-details"><li>La Casa del Montaraz reservado</li><li>Cancelación gratis hasta el 07 Ago 23:59 CEST</li><li>El próximo desbloqueo es el vuelo a Italia</li></ul></div></div>
   <hr class="separator">
-  <div class="destination-block"><div class="dest-number">03</div><div class="dest-content"><div class="dest-header"><div class="dest-city">Costa Azul</div><div class="dest-country">Francia / Mónaco</div><div class="dest-badge badge-pending">Elegir una base</div></div><div class="dest-dates">11 → 12 Ago · Marsella ó Niza ó Mónaco</div><div class="dest-desc">Una sola noche para cortar camino hacia Italia. La decisión no es “ver todo”, sino elegir el mejor punto de descanso.</div><ul class="dest-details"><li>Marsella: mejor logística si priorizan ciudad y puerto</li><li>Niza: opción equilibrada para Riviera clásica</li><li>Mónaco: solo si el costo/logística no castiga demasiado</li></ul></div></div>
+  <div class="destination-block"><div class="dest-number">03</div><div class="dest-content"><div class="dest-header"><div class="dest-city">Italia directa</div><div class="dest-country">Bolonia / Bérgamo / Pisa / Florencia</div><div class="dest-badge badge-pending">Buscar low cost</div></div><div class="dest-dates">12 Ago</div><div class="dest-desc">Francia sale del plan. La puerta de entrada será la que combine mejor precio, horario, equipaje y llegada a Florencia.</div><ul class="dest-details"><li>Opción A: Alicante → Bolonia + tren a Florencia</li><li>Opción B: Alicante → Bérgamo/Milán + tren a Florencia</li><li>Opción C: Alicante → Pisa/Florencia si aparece directo conveniente</li></ul></div></div>
   <hr class="separator">
-  <div class="destination-block"><div class="dest-number">04</div><div class="dest-content"><div class="dest-header"><div class="dest-city">Cinque Terre</div><div class="dest-country">Italia · Liguria</div><div class="dest-badge badge-pending">3 noches</div></div><div class="dest-dates">12 → 15 Ago</div><div class="dest-desc">El tramo gana aire: tres noches para recorrer sin auto y sin apurar cada pueblo.</div><ul class="dest-details"><li>Base práctica: La Spezia o Levanto si simplifica equipaje y trenes</li><li>Recorrer pueblos en tren/barco</li><li>Atardecer en Manarola o Riomaggiore sin agenda comprimida</li></ul></div></div>
+  <div class="destination-block"><div class="dest-number">04</div><div class="dest-content"><div class="dest-header"><div class="dest-city">Pisa + Florencia</div><div class="dest-country">Italia · Toscana</div><div class="dest-badge badge-pending">3 noches</div></div><div class="dest-dates">12 → 15 Ago</div><div class="dest-desc">Florencia como base y Pisa como excursión o parada logística.</div><ul class="dest-details"><li>Base sugerida: cerca de Santa Maria Novella</li><li>Una entrada principal: Uffizi o Accademia</li><li>Pisa puede hacerse medio día si no complica equipaje</li></ul></div></div>
   <hr class="separator">
-  <div class="destination-block"><div class="dest-number">05</div><div class="dest-content"><div class="dest-header"><div class="dest-city">Pisa + Florencia</div><div class="dest-country">Italia · Toscana</div><div class="dest-badge badge-pending">2 noches</div></div><div class="dest-dates">15 → 17 Ago</div><div class="dest-desc">Pisa como parada de traslado y Florencia con una noche extra para no correr el Renacimiento.</div><ul class="dest-details"><li>Pisa: Piazza dei Miracoli durante el traslado</li><li>Florencia: Duomo, Ponte Vecchio, Signoria y una entrada principal</li><li>La noche extra permite elegir Uffizi o Accademia con menos presión</li></ul></div></div>
+  <div class="destination-block"><div class="dest-number">05</div><div class="dest-content"><div class="dest-header"><div class="dest-city">Roma</div><div class="dest-country">Italia · Lazio</div><div class="dest-badge badge-pending">2 noches</div></div><div class="dest-dates">15 → 17 Ago</div><div class="dest-desc">Dos noches para Roma antigua, centro histórico y una decisión fuerte: Vaticano o más calle.</div><ul class="dest-details"><li>Florencia → Roma en tren rápido</li><li>Coliseo/Foro con entrada horaria si consiguen</li><li>Vaticano solo si no vuelve todo rígido</li></ul></div></div>
   <hr class="separator">
-  <div class="destination-block"><div class="dest-number">06</div><div class="dest-content"><div class="dest-header"><div class="dest-city">Roma</div><div class="dest-country">Italia · Lazio</div><div class="dest-badge badge-pending">2 noches</div></div><div class="dest-dates">17 → 19 Ago</div><div class="dest-desc">Dos noches para una Roma intensa pero no imposible.</div><ul class="dest-details"><li>Florencia → Roma en tren rápido</li><li>Coliseo/Foro y centro histórico</li><li>Vaticano si consiguen horario conveniente</li></ul></div></div>
+  <div class="destination-block"><div class="dest-number">06</div><div class="dest-content"><div class="dest-header"><div class="dest-city">Nápoles + Capri</div><div class="dest-country">Italia · Campania</div><div class="dest-badge badge-pending">3 noches</div></div><div class="dest-dates">17 → 20 Ago</div><div class="dest-desc">Base en Nápoles para comer bien, caminar centro histórico y hacer Capri en ferry sin sumar otro check-in.</div><ul class="dest-details"><li>Roma → Nápoles en tren rápido</li><li>Capri como excursión de día: revisar ferry y clima</li><li>Buscar hotel bien ubicado para tren y puerto</li></ul></div></div>
   <hr class="separator">
-  <div class="destination-block"><div class="dest-number">07</div><div class="dest-content"><div class="dest-header"><div class="dest-city">Nápoles</div><div class="dest-country">Italia · Campania</div><div class="dest-badge badge-pending">1 noche</div></div><div class="dest-dates">19 → 20 Ago</div><div class="dest-desc">Última noche italiana antes de volver a Madrid.</div><ul class="dest-details"><li>Roma → Nápoles en tren rápido</li><li>Centro histórico y cena napolitana</li><li>Buscar vuelo Nápoles → Madrid para el 20 Ago</li></ul></div></div>
-  <hr class="separator">
-  <div class="destination-block"><div class="dest-number">08</div><div class="dest-content"><div class="dest-header"><div class="dest-city">Madrid</div><div class="dest-country">España</div><div class="dest-badge badge-pending">2 noches</div></div><div class="dest-dates">20 → 22 Ago · PU501 sale 22 Ago 23:10</div><div class="dest-desc">Cierre con margen real: un día completo antes del vuelo largo.</div><ul class="dest-details"><li>20 Ago: llegada desde Nápoles</li><li>21 Ago: día completo en Madrid</li><li>22 Ago: equipaje, paseo liviano y Barajas con margen</li></ul></div></div>
+  <div class="destination-block"><div class="dest-number">07</div><div class="dest-content"><div class="dest-header"><div class="dest-city">Madrid</div><div class="dest-country">España</div><div class="dest-badge badge-pending">2 noches</div></div><div class="dest-dates">20 → 22 Ago</div><div class="dest-desc">Cierre con margen real antes del vuelo largo.</div><ul class="dest-details"><li>Vuelo Nápoles → Madrid pendiente</li><li>21 Ago: día completo en Madrid</li><li>22 Ago: vuelo PU501 a las 23:10</li></ul></div></div>
 </section>
 
 <!-- ALTITUD CAMINO -->
@@ -1796,17 +1789,16 @@
 
 <!-- PLANES POR CIUDAD -->
 <section id="planes">
-  <div class="section-label">Enlaces reales · ruta reducida</div>
+  <div class="section-label">Planes útiles · versión Italia directa</div>
   <div class="section-title">Qué hacer en <em>cada parada</em></div>
-  <div class="itinerary-note">Planes simples, proporcionales a las noches reales. La idea es elegir, no llenar todos los huecos.</div>
+  <div class="itinerary-note">Menos destinos, más foco. Estos planes son sugerencias proporcionales a las noches disponibles.</div>
   <div class="city-plan-grid">
-    <div class="city-plan"><div class="city-plan-body"><div class="city-plan-title">Santiago · 2 noches</div><div class="city-plan-meta">Llegada emocional + un día completo</div><ul class="city-plan-list"><li>Obradoiro, Compostela y Catedral</li><li>Mercado de Abastos y casco histórico</li><li>Alameda y cena sin apuro</li></ul><a class="btn-link" href="https://oficinadelperegrino.com/" target="_blank">Compostela</a> <a class="btn-link" href="https://catedraldesantiago.es/" target="_blank">Catedral</a></div></div>
-    <div class="city-plan"><div class="city-plan-body"><div class="city-plan-title">Alicante · 2 noches</div><div class="city-plan-meta">Amiga de Marita + descanso</div><ul class="city-plan-list"><li>Castillo de Santa Bárbara</li><li>Barrio de Santa Cruz y casco antiguo</li><li>Explanada, playa o comida tranquila</li></ul><a class="btn-link" href="https://www.google.com/maps/search/?api=1&query=Castillo+de+Santa+Barbara+Alicante" target="_blank">Castillo</a> <a class="btn-link" href="https://www.google.com/maps/search/?api=1&query=Explanada+de+Espana+Alicante" target="_blank">Explanada</a></div></div>
-    <div class="city-plan"><div class="city-plan-body"><div class="city-plan-title">Costa Azul · 1 noche</div><div class="city-plan-meta">Marsella ó Niza ó Mónaco</div><ul class="city-plan-list"><li>Marsella: puerto y ciudad</li><li>Niza: paseo marítimo y casco antiguo</li><li>Mónaco: opción breve y cara, revisar logística</li></ul><a class="btn-link" href="https://www.marseille-tourisme.com/" target="_blank">Marsella</a> <a class="btn-link" href="https://www.explorenicecotedazur.com/" target="_blank">Niza</a> <a class="btn-link" href="https://www.visitmonaco.com/" target="_blank">Mónaco</a></div></div>
-    <div class="city-plan"><div class="city-plan-body"><div class="city-plan-title">Cinque Terre · 3 noches</div><div class="city-plan-meta">Recorrer sin auto</div><ul class="city-plan-list"><li>Base en La Spezia o Levanto</li><li>Dos días para pueblos y senderos suaves</li><li>Atardecer en Manarola o Riomaggiore</li></ul><a class="btn-link" href="https://www.parconazionale5terre.it/" target="_blank">Parque oficial</a></div></div>
-    <div class="city-plan"><div class="city-plan-body"><div class="city-plan-title">Pisa + Florencia · 2 noches</div><div class="city-plan-meta">Toscana compacta</div><ul class="city-plan-list"><li>Pisa durante el traslado</li><li>Duomo, Signoria y Ponte Vecchio</li><li>Uffizi o Accademia, una entrada principal</li></ul><a class="btn-link" href="https://www.opapisa.it/" target="_blank">Pisa</a> <a class="btn-link" href="https://www.feelflorence.it/" target="_blank">Florencia</a> <a class="btn-link" href="https://www.uffizi.it/" target="_blank">Uffizi</a></div></div>
+    <div class="city-plan"><div class="city-plan-body"><div class="city-plan-title">Santiago · 2 noches</div><div class="city-plan-meta">Compostela + Finisterre</div><ul class="city-plan-list"><li>07 Ago: llegada, Obradoiro, Compostela y Catedral</li><li>08 Ago: excursión Finisterre, Muxía y Costa da Morte</li><li>Salir temprano el 09 Ago hacia Alicante</li></ul><a class="btn-link" href="https://oficinadelperegrino.com/" target="_blank">Compostela</a> <a class="btn-link" href="https://www.civitatis.com/es/santiago-de-compostela/excursion-finisterre-costa-morte/" target="_blank">Finisterre</a></div></div>
+    <div class="city-plan"><div class="city-plan-body"><div class="city-plan-title">Alicante · 3 noches</div><div class="city-plan-meta">Descanso + salto a Italia</div><ul class="city-plan-list"><li>Castillo de Santa Bárbara</li><li>Explanada, playa o casco antiguo</li><li>Usar una mañana para ordenar equipaje antes del vuelo</li></ul><a class="btn-link" href="https://www.google.com/maps/search/?api=1&query=Castillo+de+Santa+Barbara+Alicante" target="_blank">Castillo</a></div></div>
+    <div class="city-plan"><div class="city-plan-body"><div class="city-plan-title">Entrada a Italia</div><div class="city-plan-meta">Bolonia / Bérgamo / Pisa / Florencia</div><ul class="city-plan-list"><li>Buscar low cost primero</li><li>Medir tiempo puerta a puerta, no solo duración de vuelo</li><li>Elegir aeropuerto que deje llegada razonable a Florencia</li></ul><a class="btn-link" href="https://www.aena.es/es/alicante-elche.html" target="_blank">AENA Alicante</a></div></div>
+    <div class="city-plan"><div class="city-plan-body"><div class="city-plan-title">Pisa + Florencia · 3 noches</div><div class="city-plan-meta">Base Toscana</div><ul class="city-plan-list"><li>Pisa como parada o excursión</li><li>Duomo, Signoria, Ponte Vecchio</li><li>Uffizi o Accademia, una entrada principal</li></ul><a class="btn-link" href="https://www.opapisa.it/" target="_blank">Pisa</a> <a class="btn-link" href="https://www.feelflorence.it/" target="_blank">Florencia</a> <a class="btn-link" href="https://www.uffizi.it/" target="_blank">Uffizi</a></div></div>
     <div class="city-plan"><div class="city-plan-body"><div class="city-plan-title">Roma · 2 noches</div><div class="city-plan-meta">Antigua + centro/Vaticano</div><ul class="city-plan-list"><li>Coliseo y Foro</li><li>Trevi, Panteón y Trastevere</li><li>Vaticano solo si el horario ayuda</li></ul><a class="btn-link" href="https://colosseo.it/" target="_blank">Coliseo</a> <a class="btn-link" href="https://www.museivaticani.va/" target="_blank">Vaticano</a></div></div>
-    <div class="city-plan"><div class="city-plan-body"><div class="city-plan-title">Nápoles · 1 noche</div><div class="city-plan-meta">Centro histórico + salida</div><ul class="city-plan-list"><li>Spaccanapoli y Via dei Tribunali</li><li>Pizza napolitana sin negociación posible</li><li>Dormir bien ubicado para volar a Madrid</li></ul><a class="btn-link" href="https://www.google.com/maps/search/?api=1&query=Spaccanapoli+Napoli" target="_blank">Spaccanapoli</a></div></div>
+    <div class="city-plan"><div class="city-plan-body"><div class="city-plan-title">Nápoles + Capri · 3 noches</div><div class="city-plan-meta">Base sur</div><ul class="city-plan-list"><li>Spaccanapoli y Via dei Tribunali</li><li>Capri en ferry ida/vuelta si el clima acompaña</li><li>Hotel práctico para estación y puerto</li></ul><a class="btn-link" href="https://www.google.com/maps/search/?api=1&query=Spaccanapoli+Napoli" target="_blank">Spaccanapoli</a> <a class="btn-link" href="https://www.capri.com/en/ferry-schedule" target="_blank">Ferries Capri</a></div></div>
     <div class="city-plan"><div class="city-plan-body"><div class="city-plan-title">Madrid · 2 noches</div><div class="city-plan-meta">Cierre con margen</div><ul class="city-plan-list"><li>Prado y Retiro</li><li>Madrid de los Austrias</li><li>Último día flexible para equipaje</li></ul><a class="btn-link" href="https://www.museodelprado.es/" target="_blank">Prado</a> <a class="btn-link" href="https://www.esmadrid.com/" target="_blank">Turismo oficial</a></div></div>
   </div>
 </section>
@@ -1815,14 +1807,15 @@
 <section id="transporte">
   <div class="section-label">Logística interna</div>
   <div class="section-title">Transporte <em>entre ciudades</em></div>
-  <div class="itinerary-note">Ruta reducida: se comparan tren, low cost y auto para llegar a Costa Azul y Cinque Terre con menos estrés.</div>
+  <div class="itinerary-note">El auto no es traslado principal. El tramo clave es Alicante → Italia directa: si el low cost es barato y rápido, se prioriza.</div>
   <div class="transport-item"><div class="transport-icon">✈</div><div class="transport-body"><div class="transport-route">EZE → MAD · PU502</div><div class="transport-meta">01 Ago · confirmado</div><div class="transport-status badge-confirmed">Comprado</div></div></div>
   <div class="transport-item"><div class="transport-icon">🚆</div><div class="transport-body"><div class="transport-route">MAD → Sarria</div><div class="transport-meta">02 Ago · Cercanías + Renfe 04375/12646</div><div class="transport-status badge-confirmed">Comprado</div></div></div>
   <div class="transport-item"><div class="transport-icon">🚶</div><div class="transport-body"><div class="transport-route">Sarria → Santiago</div><div class="transport-meta">03 → 07 Ago · 5 etapas</div><div class="transport-status badge-confirmed">Hospedajes completos</div></div></div>
-  <div class="transport-item"><div class="transport-icon">🚄</div><div class="transport-body"><div class="transport-route">Santiago → Alicante</div><div class="transport-meta">09 Ago · probable cambio en Madrid</div><div class="transport-status badge-pending">Buscar</div></div></div>
-  <div class="transport-item"><div class="transport-icon">🚄</div><div class="transport-body"><div class="transport-route">Alicante → Costa Azul</div><div class="transport-meta">11 Ago · comparar tren, low cost cercano o auto según base elegida</div><div class="transport-status badge-pending">Comparar</div></div></div>
-  <div class="transport-item"><div class="transport-icon">🚄</div><div class="transport-body"><div class="transport-route">Costa Azul → Cinque Terre</div><div class="transport-meta">12 Ago · tren, low cost cercano o auto hasta La Spezia/Levanto</div><div class="transport-status badge-pending">Definir</div></div></div>
-  <div class="transport-item"><div class="transport-icon">🚄</div><div class="transport-body"><div class="transport-route">Cinque Terre → Pisa → Florencia → Roma → Nápoles</div><div class="transport-meta">15-19 Ago · trenes regionales y rápidos</div><div class="transport-status badge-pending">Diseñar horarios</div></div></div>
+  <div class="transport-item"><div class="transport-icon">🚆</div><div class="transport-body"><div class="transport-route">Santiago → Alicante</div><div class="transport-meta">09 Ago · 07:43 → 14:28 · Renfe 04364 + 05312 · 178,20 € / 2 personas</div><div class="transport-status badge-confirmed">Comprado</div></div></div>
+  <div class="transport-item"><div class="transport-icon">✈</div><div class="transport-body"><div class="transport-route">Alicante → Italia directa</div><div class="transport-meta">12 Ago · Bolonia / Bérgamo / Pisa / Florencia · comparar low cost primero</div><div class="transport-status badge-pending">Buscar</div></div></div>
+  <div class="transport-item"><div class="transport-icon">🚄</div><div class="transport-body"><div class="transport-route">Florencia ↔ Pisa</div><div class="transport-meta">12-15 Ago · tren regional o parada logística según aeropuerto</div><div class="transport-status badge-pending">Definir</div></div></div>
+  <div class="transport-item"><div class="transport-icon">🚄</div><div class="transport-body"><div class="transport-route">Florencia → Roma → Nápoles</div><div class="transport-meta">15-17 Ago · trenes rápidos</div><div class="transport-status badge-pending">Reservar</div></div></div>
+  <div class="transport-item"><div class="transport-icon">⛴</div><div class="transport-body"><div class="transport-route">Nápoles ↔ Capri</div><div class="transport-meta">18/19 Ago · ferry según clima y horarios</div><div class="transport-status badge-pending">Planear</div></div></div>
   <div class="transport-item"><div class="transport-icon">✈</div><div class="transport-body"><div class="transport-route">Nápoles → Madrid</div><div class="transport-meta">20 Ago · deja dos noches en Madrid</div><div class="transport-status badge-pending">Buscar vuelo</div></div></div>
   <div class="transport-item"><div class="transport-icon">✈</div><div class="transport-body"><div class="transport-route">MAD → EZE · PU501</div><div class="transport-meta">22 Ago · 23:10</div><div class="transport-status badge-confirmed">Comprado</div></div></div>
 </section>
@@ -1832,12 +1825,11 @@
   <div class="section-label">Presupuesto y control · importes conocidos</div>
   <div class="section-title">Gastos del <em>Viaje</em></div>
   <div class="money-summary">
-    <div class="money-box"><div class="ops-kicker">Pagado conocido</div><div class="ops-value">412,00 €</div><div class="ops-note">Hospedajes pagados + Renfe Madrid → Sarria. No incluye vuelos internacionales porque falta cargar el importe.</div></div>
-    <div class="money-box"><div class="ops-kicker">Comprometido conocido</div><div class="ops-value">569,70 €</div><div class="ops-note">Todo lo pagado más Palas de Rei y Arzúa reservados sin pago adelantado.</div></div>
-    <div class="money-box"><div class="ops-kicker">Pendiente reservado</div><div class="ops-value">157,70 €</div><div class="ops-note">Casa Camiño II 77,70 € + La Puerta de Arzúa 80 €.</div></div>
-    <div class="money-box"><div class="ops-kicker">Por presupuestar</div><div class="ops-value">15 noches</div><div class="ops-note">Santiago en adelante: alojamiento, trenes/auto, vuelo Nápoles → Madrid y actividades.</div></div>
+    <div class="money-box"><div class="ops-kicker">Pagado conocido</div><div class="ops-value">590,20 € + US$207,97</div><div class="ops-note">Incluye Renfe Madrid → Sarria, Renfe Santiago → Alicante, hospedajes pagados del Camino y Airbnb Santiago. No convierte divisas.</div></div>
+    <div class="money-box"><div class="ops-kicker">Comprometido conocido</div><div class="ops-value">972,90 € + US$207,97</div><div class="ops-note">Pagado + Palas, Arzúa y Alicante reservados con pago futuro.</div></div>
+    <div class="money-box"><div class="ops-kicker">Pendiente reservado</div><div class="ops-value">382,70 €</div><div class="ops-note">Palas 77,70 € + Arzúa 80 € + Alicante 225 €.</div></div>
+    <div class="money-box"><div class="ops-kicker">Por presupuestar</div><div class="ops-value">8 noches + vuelos</div><div class="ops-note">Florencia 3, Roma 2, Nápoles 3, Madrid 2, más vuelos y actividades.</div></div>
   </div>
-
   <table class="data-table">
     <thead><tr><th>Concepto</th><th>Estado</th><th>Pagado</th><th>Pendiente</th><th>Total conocido</th></tr></thead>
     <tbody>
@@ -1846,19 +1838,21 @@
       <tr><td>Casa Camiño II · Palas de Rei</td><td><span class="status-pill pill-info">Reservado</span></td><td>0</td><td>77,70 €</td><td>77,70 €</td></tr>
       <tr><td>La Puerta de Arzúa</td><td><span class="status-pill pill-info">Reservado</span></td><td>0</td><td>80,00 €</td><td>80,00 €</td></tr>
       <tr><td>Pension 23-Vinte e Tres · O Pedrouzo</td><td><span class="status-pill pill-ok">Pagado</span></td><td>106,00 €</td><td>0</td><td>106,00 €</td></tr>
+      <tr><td>Airbnb · Santiago</td><td><span class="status-pill pill-ok">Pagado</span></td><td>US$207,97</td><td>0</td><td>US$207,97</td></tr>
+      <tr><td>La Casa del Montaraz · Alicante</td><td><span class="status-pill pill-info">Pago futuro</span></td><td>0</td><td>225,00 €</td><td>225,00 €</td></tr>
       <tr><td>Renfe Madrid → Sarria · 2 personas</td><td><span class="status-pill pill-ok">Pagado</span></td><td>131,40 €</td><td>0</td><td>131,40 €</td></tr>
-      <tr><td><strong>Subtotal conocido</strong></td><td></td><td><strong>412,00 €</strong></td><td><strong>157,70 €</strong></td><td><strong>569,70 €</strong></td></tr>
+      <tr><td>Renfe Santiago → Alicante · 2 personas</td><td><span class="status-pill pill-ok">Pagado</span></td><td>178,20 €</td><td>0</td><td>178,20 €</td></tr>
+      <tr><td><strong>Subtotal conocido</strong></td><td></td><td><strong>590,20 € + US$207,97</strong></td><td><strong>382,70 €</strong></td><td><strong>972,90 € + US$207,97</strong></td></tr>
     </tbody>
   </table>
-
   <table class="data-table" style="margin-top:1.5rem;">
     <thead><tr><th>Categoría futura</th><th>Estado</th><th>Qué falta cargar</th></tr></thead>
     <tbody>
       <tr><td>Vuelos internacionales</td><td><span class="status-pill pill-ok">Comprados</span></td><td>Importe total, equipaje, asientos y cargos de eDreams.</td></tr>
-      <tr><td>Alojamientos restantes</td><td><span class="status-pill pill-warn">15 noches</span></td><td>Santiago 2, Alicante 2, Costa Azul 1, Cinque Terre 3, Florencia/Pisa 2, Roma 2, Nápoles 1 y Madrid 2.</td></tr>
-      <tr><td>Transportes</td><td><span class="status-pill pill-warn">Pendiente</span></td><td>Santiago → Alicante, Alicante → Costa Azul, Costa Azul → Cinque Terre, trenes italianos y Nápoles → Madrid.</td></tr>
-      <tr><td>Actividades</td><td><span class="status-pill pill-warn">Pendiente</span></td><td>Santiago, Alicante, Costa Azul, Cinque Terre, Florencia, Roma y posibles entradas.</td></tr>
-      <tr><td>Comidas y efectivo</td><td><span class="status-pill pill-warn">Definir</span></td><td>Presupuesto diario para 22 días y fondo de contingencia.</td></tr>
+      <tr><td>Alojamientos restantes</td><td><span class="status-pill pill-warn">8 noches</span></td><td>Florencia 3, Roma 2, Nápoles 3 y Madrid 2.</td></tr>
+      <tr><td>Transportes</td><td><span class="status-pill pill-warn">Pendiente</span></td><td>Alicante → Italia, trenes italianos, ferry Capri y Nápoles → Madrid.</td></tr>
+      <tr><td>Actividades</td><td><span class="status-pill pill-warn">Pendiente</span></td><td>Finisterre, Pisa/Florencia, Roma, Capri y Madrid.</td></tr>
+      <tr><td>Comidas y efectivo</td><td><span class="status-pill pill-warn">Definir</span></td><td>Presupuesto diario y fondo de contingencia.</td></tr>
     </tbody>
   </table>
 </section>
@@ -1900,12 +1894,12 @@
 </section>
 <!-- DECISIONES -->
 <section id="decisiones">
-  <div class="section-label">Cambios de destino</div>
+  <div class="section-label">Pendientes reales</div>
   <div class="section-title">Decisiones <em>abiertas</em></div>
-  <div class="decision-card"><div class="decision-date">Ruta</div><div><div class="decision-title">Ruta simplificada</div><div class="decision-meta">La segunda mitad queda más liviana: Alicante 2 noches, una base en Costa Azul y más tiempo en Cinque Terre / Florencia.</div></div></div>
-  <div class="decision-card"><div class="decision-date">Costa Azul</div><div><div class="decision-title">Marsella ó Niza ó Mónaco</div><div class="decision-meta">Elegir una sola base por costo, logística y salida hacia Cinque Terre. Niza parece la opción más equilibrada; Marsella puede ser más práctica; Mónaco puede encarecer.</div></div></div>
-  <div class="decision-card"><div class="decision-date">Transporte</div><div><div class="decision-title">¿Tren, low cost o auto desde Alicante?</div><div class="decision-meta">Comparar precio, tiempo real puerta a puerta, equipaje y cansancio. Si aparece low cost barato y rápido, no se duda; el auto queda como opción táctica.</div></div></div>
-  <div class="decision-card"><div class="decision-date">Italia</div><div><div class="decision-title">Cinque Terre 3 noches, Florencia/Pisa 2</div><div class="decision-meta">Estas noches extra son el beneficio real de reducir ciudades.</div></div></div>
+  <div class="decision-card"><div class="decision-date">08 Ago</div><div><div class="decision-title">Finisterre / Costa da Morte</div><div class="decision-meta">Sugerencia: excursión de día completo desde Santiago. Civitatis informa duración 9h20-10h y operadores posibles como Tour Galicia o Galicia Travels.</div></div></div>
+  <div class="decision-card"><div class="decision-date">12 Ago</div><div><div class="decision-title">Alicante → Italia directa</div><div class="decision-meta">Buscar low cost a Bolonia, Bérgamo, Pisa o Florencia. Si es barato y rápido, se compra antes que tren/auto.</div></div></div>
+  <div class="decision-card"><div class="decision-date">Italia</div><div><div class="decision-title">Base Florencia 3 noches</div><div class="decision-meta">Pisa entra como excursión o parada logística, sin sumar otro hotel.</div></div></div>
+  <div class="decision-card"><div class="decision-date">Sur</div><div><div class="decision-title">Capri desde Nápoles</div><div class="decision-meta">Plan base: dormir en Nápoles y cruzar en ferry ida/vuelta. Evita otro check-in.</div></div></div>
   <div class="decision-card"><div class="decision-date">Regreso</div><div><div class="decision-title">Nápoles → Madrid el 20 Ago</div><div class="decision-meta">Mantener dos noches finales en Madrid antes del PU501 del 22 Ago.</div></div></div>
 </section>
 <!-- FOTOS -->
@@ -1930,7 +1924,7 @@
     </a>
     <a class="photo-slot" href="#" onclick="return false;">
       <div class="photo-slot-icon">📷</div>
-      <div>Costa Azul · base a elegir</div>
+      <div>Italia directa</div>
       <div style="margin-top:4px; font-size:0.55rem; opacity:0.6;">Álbum por agregar</div>
     </a>
     <a class="photo-slot" href="#" onclick="return false;">
@@ -1940,17 +1934,17 @@
     </a>
     <a class="photo-slot" href="#" onclick="return false;">
       <div class="photo-slot-icon">📷</div>
-      <div>Costa Azul</div>
+      <div>Florencia</div>
       <div style="margin-top:4px; font-size:0.55rem; opacity:0.6;">Álbum por agregar</div>
     </a>
     <a class="photo-slot" href="#" onclick="return false;">
       <div class="photo-slot-icon">📷</div>
-      <div>Florencia y Pisa</div>
+      <div>Roma</div>
       <div style="margin-top:4px; font-size:0.55rem; opacity:0.6;">Álbum por agregar</div>
     </a>
     <a class="photo-slot" href="#" onclick="return false;">
       <div class="photo-slot-icon">📷</div>
-      <div>Roma y Nápoles</div>
+      <div>Nápoles y Capri</div>
       <div style="margin-top:4px; font-size:0.55rem; opacity:0.6;">Álbum por agregar</div>
     </a>
     <a class="photo-slot" href="#" onclick="return false;">
@@ -2060,7 +2054,7 @@
 <footer>
   <div style="font-size:1.5rem; font-family:var(--font-display); font-style:italic; color:var(--accent); margin-bottom:1rem;">Europa 2026</div>
   <div>Hecho con <span class="heart">♥</span> para nuestro primer gran viaje juntos</div>
-  <div style="margin-top:0.5rem; opacity:0.6;">Buenos Aires → Madrid → Camino → Santiago → Alicante → Costa Azul → Cinque Terre → Pisa → Florencia → Roma → Nápoles → Madrid → Buenos Aires</div>
+  <div style="margin-top:0.5rem; opacity:0.6;">Buenos Aires → Madrid → Camino → Santiago → Alicante → Italia directa → Pisa → Florencia → Roma → Nápoles → Capri → Madrid → Buenos Aires</div>
 </footer>
 
 <script>
@@ -2114,6 +2108,8 @@
 </script>
 </body>
 </html>
+
+
 
 
 
