@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Europa 2026 ✈️</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --ink: #16202a;
@@ -1253,6 +1253,373 @@
     .destination-block { grid-template-columns: 40px 1fr; }
     nav a { padding: 0.75rem 0.6rem; font-size: 0.6rem; }
   }
+
+  /* BITACORA ELEGANTE REFRESH 2026-07-14 */
+  :root {
+    --ink: #102033;
+    --paper: #f5f8f4;
+    --paper-dark: #e8f0eb;
+    --paper-darker: #bfd2c7;
+    --accent: #1f7a5a;
+    --accent-light: #38b78f;
+    --accent-gold: #c7932f;
+    --accent-olive: #6f8b4f;
+    --accent-blue: #2166a5;
+    --muted: #4b6273;
+    --muted-light: #718596;
+    --red-stamp: #9f2f2f;
+    --confirmed: #18724d;
+    --pending: #a46a19;
+    --font-display: 'Manrope', system-ui, sans-serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
+  }
+
+  body {
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.74), rgba(232,240,235,0.62)),
+      var(--paper);
+    font-size: 16px;
+    letter-spacing: 0;
+  }
+
+  .hero {
+    min-height: 82vh;
+    background:
+      linear-gradient(135deg, rgba(31,122,90,0.11), rgba(33,102,165,0.12)),
+      radial-gradient(circle at 18% 18%, rgba(56,183,143,0.14), transparent 34%),
+      radial-gradient(circle at 78% 12%, rgba(33,102,165,0.12), transparent 30%);
+  }
+
+  .hero::before {
+    background: linear-gradient(180deg, transparent 0%, rgba(245,248,244,0.9) 100%);
+  }
+
+  .hero h1 {
+    letter-spacing: -0.02em;
+  }
+
+  .hero h1 em,
+  .hero-subtitle,
+  .countdown-title,
+  footer .heart {
+    font-style: normal;
+  }
+
+  nav {
+    background: rgba(245,248,244,0.88);
+    border-bottom: 1px solid rgba(16,32,51,0.08);
+    box-shadow: 0 10px 24px rgba(16,32,51,0.08);
+  }
+
+  nav a {
+    border-bottom: 2px solid transparent;
+  }
+
+  nav a:hover {
+    border-bottom-color: var(--accent-blue);
+  }
+
+  .trip-progress {
+    border: 1px solid rgba(16,32,51,0.12);
+    border-top: 0;
+    border-radius: 16px;
+    background:
+      linear-gradient(135deg, rgba(31,122,90,0.12), rgba(33,102,165,0.13)),
+      #ffffff;
+    box-shadow: 0 24px 50px rgba(16,32,51,0.10);
+  }
+
+  .trip-progress::after {
+    content: 'Bitácora en marcha';
+    color: rgba(16,32,51,0.38);
+    animation: softPulse 2.2s ease-in-out infinite;
+  }
+
+  .progress-track {
+    height: 18px;
+    background: rgba(255,255,255,0.78);
+    border: 1px solid rgba(16,32,51,0.12);
+    position: relative;
+  }
+
+  .progress-fill {
+    background: linear-gradient(90deg, var(--accent), var(--accent-blue), var(--accent-light));
+    position: relative;
+    overflow: hidden;
+  }
+
+  .progress-fill::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.45) 45%, transparent 70%);
+    transform: translateX(-100%);
+    animation: routeShine 2.4s ease-in-out infinite;
+  }
+
+  .route-progress {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(8, minmax(72px, 1fr));
+    gap: 0.6rem;
+    margin-top: 1.2rem;
+    padding-top: 1.25rem;
+    overflow: hidden;
+  }
+
+  .route-progress::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0.42rem;
+    height: 3px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-blue), var(--accent), var(--accent-blue));
+    background-size: 220% 100%;
+    animation: routeFlow 4.5s linear infinite;
+    opacity: 0.9;
+  }
+
+  .route-stop {
+    position: relative;
+    z-index: 1;
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.02em;
+    color: var(--muted);
+  }
+
+  .route-stop::before {
+    content: '';
+    display: block;
+    width: 11px;
+    height: 11px;
+    border-radius: 999px;
+    background: #ffffff;
+    border: 3px solid var(--accent-blue);
+    margin-bottom: 0.45rem;
+    box-shadow: 0 0 0 4px rgba(33,102,165,0.10);
+  }
+
+  .route-stop.done::before {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(31,122,90,0.12);
+  }
+
+  .next-board {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .next-card {
+    background: #ffffff;
+    border: 1px solid rgba(16,32,51,0.10);
+    border-radius: 14px;
+    padding: 1rem;
+    box-shadow: 0 14px 30px rgba(16,32,51,0.07);
+  }
+
+  .next-card .step {
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent-blue);
+    margin-bottom: 0.55rem;
+  }
+
+  .next-card h3 {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    line-height: 1.25;
+    margin-bottom: 0.45rem;
+  }
+
+  .next-card p {
+    color: var(--muted);
+    font-size: 0.86rem;
+    line-height: 1.45;
+  }
+
+  .passport-goal {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin-top: 1.2rem;
+  }
+
+  .passport-stamp {
+    border: 1px dashed rgba(31,122,90,0.45);
+    border-radius: 14px;
+    padding: 0.8rem;
+    text-align: center;
+    color: var(--accent);
+    background: rgba(255,255,255,0.55);
+    font-family: var(--font-mono);
+    font-size: 0.56rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    min-height: 72px;
+    display: grid;
+    place-items: center;
+  }
+
+  .data-table,
+  .mission-table {
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    letter-spacing: 0;
+  }
+
+  .data-table th,
+  .mission-table th {
+    font-family: var(--font-mono);
+  }
+
+  .data-table td strong,
+  .mission-table td strong {
+    font-family: var(--font-display);
+    font-size: 0.94rem;
+  }
+
+  @keyframes routeShine {
+    0% { transform: translateX(-110%); }
+    55%, 100% { transform: translateX(115%); }
+  }
+
+  @keyframes routeFlow {
+    from { background-position: 0% 0; }
+    to { background-position: 220% 0; }
+  }
+
+  @keyframes softPulse {
+    0%, 100% { opacity: 0.45; }
+    50% { opacity: 0.85; }
+  }
+
+  @media (max-width: 900px) {
+    .next-board,
+    .passport-goal,
+    .route-progress {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 760px) {
+    .data-table,
+    .mission-table {
+      display: block;
+      overflow: visible;
+      white-space: normal;
+    }
+
+    .data-table thead,
+    .mission-table thead {
+      display: none;
+    }
+
+    .data-table tbody,
+    .mission-table tbody,
+    .data-table tr,
+    .mission-table tr,
+    .data-table td,
+    .mission-table td {
+      display: block;
+      width: 100%;
+    }
+
+    .data-table tr,
+    .mission-table tr {
+      background: #ffffff;
+      border: 1px solid rgba(16,32,51,0.10);
+      border-radius: 14px;
+      margin: 0 0 0.8rem;
+      overflow: hidden;
+      box-shadow: 0 12px 24px rgba(16,32,51,0.06);
+    }
+
+    .data-table td,
+    .mission-table td {
+      display: none;
+      border-bottom: 1px solid rgba(16,32,51,0.08);
+      padding: 0.7rem 0.9rem;
+    }
+
+    .data-table tr.open td,
+    .mission-table tr.open td {
+      display: grid;
+      grid-template-columns: 108px 1fr;
+      gap: 0.8rem;
+    }
+
+    .data-table td::before,
+    .mission-table td::before {
+      content: attr(data-label);
+      font-family: var(--font-mono);
+      font-size: 0.55rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted-light);
+    }
+
+    .data-table td:first-child,
+    .mission-table td:first-child {
+      display: block;
+      padding: 0;
+      border-bottom: none;
+    }
+
+    .data-table tr.open td:first-child,
+    .mission-table tr.open td:first-child {
+      display: block;
+    }
+
+    .data-table td:first-child::before,
+    .mission-table td:first-child::before {
+      display: none;
+    }
+
+    .mobile-row-toggle {
+      display: grid;
+      width: 100%;
+      border: 0;
+      background: linear-gradient(135deg, rgba(31,122,90,0.10), rgba(33,102,165,0.12));
+      color: var(--ink);
+      text-align: left;
+      padding: 0.9rem 1rem;
+      font-family: var(--font-body);
+      cursor: pointer;
+    }
+
+    .mobile-row-toggle span {
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      color: var(--accent-blue);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .mobile-row-toggle strong {
+      display: block;
+      margin-top: 0.22rem;
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+    }
+
+    .desktop-cell-text {
+      display: none;
+    }
+
+    .route-progress,
+    .passport-goal,
+    .next-board {
+      grid-template-columns: 1fr;
+    }
+  }
 </style>
 </head>
 <body>
@@ -1294,19 +1661,18 @@
 
 <!-- NAV -->
 <nav>
-  <a href="#misiones">Misiones</a>
+  <a href="#hoy">Hoy</a>
   <a href="#vuelos">Vuelos</a>
-  <a href="#itinerario">Itinerario</a>
-  <a href="#altitud-camino">Altitud</a>
-  <a href="#planes">Planes</a>
+  <a href="#itinerario">Día a día</a>
   <a href="#reservas">Reservas</a>
+  <a href="#planes">Guía</a>
   <a href="#transporte">Transporte</a>
-  <a href="#gastos">Gastos</a>
+  <a href="#altitud-camino">Camino</a>
+  <a href="#documentos-privados">Docs</a>
   <a href="#checklist">Checklist</a>
   <a href="#decisiones">Decisiones</a>
   <a href="#fotos">Fotos</a>
   <a href="#novedades">Enlaces</a>
-  <a href="#estado-vuelos">Estado Vuelos</a>
 </nav>
 
 <!-- COUNTDOWN -->
@@ -1333,6 +1699,24 @@
     <div class="progress-track" aria-label="Progreso de organización del viaje">
       <div class="progress-fill" style="width:61%;"></div>
     </div>
+    <div class="route-progress" aria-label="Ruta visual del viaje">
+      <div class="route-stop done">Buenos Aires</div>
+      <div class="route-stop done">Madrid</div>
+      <div class="route-stop done">Camino</div>
+      <div class="route-stop done">Alicante</div>
+      <div class="route-stop">Bolonia</div>
+      <div class="route-stop">Florencia</div>
+      <div class="route-stop">Roma / Nápoles</div>
+      <div class="route-stop">Madrid</div>
+    </div>
+    <div class="passport-goal" aria-label="Objetivo completo del viaje">
+      <div class="passport-stamp">Pasajes clave</div>
+      <div class="passport-stamp">Camino completo</div>
+      <div class="passport-stamp">Italia armada</div>
+      <div class="passport-stamp">Check-ins OK</div>
+      <div class="passport-stamp">Docs privados</div>
+      <div class="passport-stamp">Volver felices</div>
+    </div>
     <div class="progress-caption">
       <strong>Próximo movimiento:</strong> reservar/confirmar el Apennino Shuttle de las 05:30 desde Bolonia hacia Florencia. El vuelo llega a BLQ el 13/08 a las 02:25: hay ventana de espera nocturna, pero conviene no improvisarla.
     </div>
@@ -1355,39 +1739,17 @@
   </div>
 </section>
 
-<!-- MISIONES -->
-<section id="misiones" style="padding:0 2rem 3rem;">
-  <div class="mission-board">
-    <div class="mission-top">
-      <div>
-        <div class="ops-kicker">No olvidar / reservar</div>
-        <div class="mission-title">Misiones de <em>viaje</em></div>
-        <div class="mission-subtitle">Solo acciones que destraban la ruta. Lo ya confirmado vive en Reservas y Gastos.</div>
-      </div>
-      <div class="mission-score">
-        <span class="big">7/12</span>
-        <span class="small">misiones listas</span>
-        <div class="mission-mini-track"><div class="mission-mini-fill" style="width:58%;"></div></div>
-      </div>
-    </div>
-    <table class="mission-table">
-      <thead><tr><th>OK</th><th>Misión</th><th>Cuándo</th><th>Estado</th><th>Nota rápida</th></tr></thead>
-      <tbody>
-        <tr><td><span class="check-dot done">✓</span></td><td><strong>Camino + Santiago + Alicante</strong><br><span class="mission-tag">base cerrada</span></td><td>02-12 Ago</td><td><span class="status-pill pill-ok">Encarrilado</span></td><td>Hospedajes del Camino, Airbnb Santiago, tren SCQ→Alicante y hotel Alicante cargados.</td></tr>
-        <tr><td><span class="check-dot done">✓</span></td><td><strong>MasterAssist / AXA</strong><br><span class="mission-tag">asistencia</span></td><td>Hecho</td><td><span class="status-pill pill-ok">Listo</span></td><td><a class="btn-link" href="docs/assistencia/Certificado.pdf" target="_blank">Certificado</a> <a class="btn-link" href="docs/assistencia/Credencial.pdf" target="_blank">Credencial</a></td></tr>
-        <tr><td><span class="check-dot">□</span></td><td><strong>Finisterre / Costa da Morte</strong><br><span class="mission-tag">excursión</span></td><td>08 Ago</td><td><span class="status-pill pill-warn">Evaluar</span></td><td>Elegir empresa y confirmar salida temprano desde Santiago.</td></tr>
-        <tr><td><span class="check-dot done">✓</span></td><td><strong>Vuelo Alicante → Bolonia</strong><br><span class="mission-tag">12/13 Ago</span></td><td>Hecho</td><td><span class="status-pill pill-ok">Pagado</span></td><td>Air Europa vía Madrid: ALC 20:45 → MAD 21:50 / MAD 00:10 → BLQ 02:25. <a class="btn-link" href="docs/vuelos/trip-alc-bolonia.pdf" target="_blank">PDF</a></td></tr>
-        <tr><td><span class="check-dot">□</span></td><td><strong>Apennino Shuttle</strong><br><span class="mission-tag">BLQ → Florencia</span></td><td>13 Ago</td><td><span class="status-pill pill-warn">Reservar</span></td><td>Opción mirada: 05:30. Llegan 02:25, ventana aprox. 3h05 en madrugada; confirmar parada, equipaje y llegada a Florencia.</td></tr>
-        <tr><td><span class="check-dot">□</span></td><td><strong>Hotel Florencia</strong><br><span class="mission-tag">3 noches</span></td><td>13-16 Ago</td><td><span class="status-pill pill-warn">Reservar</span></td><td>Base para recuperarse de la llegada, Pisa + Cinque Terre y un día de Florencia.</td></tr>
-        <tr><td><span class="check-dot">□</span></td><td><strong>Excursión Pisa + Cinque Terre</strong><br><span class="mission-tag">desde Florencia</span></td><td>14 Ago</td><td><span class="status-pill pill-warn">Reservar</span></td><td>Buscar tour largo de día completo, ideal con logística cerrada.</td></tr>
-        <tr><td><span class="check-dot">□</span></td><td><strong>Roma</strong><br><span class="mission-tag">2 noches</span></td><td>16-18 Ago</td><td><span class="status-pill pill-warn">Reservar</span></td><td>Hotel + Coliseo/Vaticano si hay horarios razonables.</td></tr>
-        <tr><td><span class="check-dot">□</span></td><td><strong>Nápoles + Capri</strong><br><span class="mission-tag">2 noches</span></td><td>18-20 Ago</td><td><span class="status-pill pill-warn">Reservar</span></td><td>Hotel en Nápoles y ferry Capri según clima/horarios.</td></tr>
-        <tr><td><span class="check-dot done">✓</span></td><td><strong>Nápoles → Madrid</strong><br><span class="mission-tag">I2 1832</span></td><td>20 Ago</td><td><span class="status-pill pill-ok">Confirmado</span></td><td>NAP 14:50 → MAD T4 17:40. Localizadores LM192 / 8DTOSY. Marita corregida como REYES/MARIAELINA.</td></tr>
-        <tr><td><span class="check-dot">□</span></td><td><strong>Check-in Iberia Express</strong><br><span class="mission-tag">I2 1832</span></td><td>20 Ago</td><td><span class="status-pill pill-warn">Pendiente</span></td><td>El cierre de facturación informado es 45 min antes de la salida: límite operativo 14:05 en NAP.</td></tr>
-        <tr><td><span class="check-dot">□</span></td><td><strong>Madrid hotel</strong><br><span class="mission-tag">cierre</span></td><td>20-22 Ago</td><td><span class="status-pill pill-warn">Reservar</span></td><td>Dos noches finales antes del PU501 del 22 Ago.</td></tr>
-      </tbody>
-    </table>
-    <div class="mission-note">Las dudas de ciudad ya no se duplican: si es una reserva o vencimiento, va acá; si es inspiración práctica, va en la guía de ejecución.</div>
+<!-- HOY / PROXIMO PASO -->
+<section id="hoy" style="padding:0 2rem 3rem;">
+  <div class="section-label">Hoy / próximo paso</div>
+  <div class="section-title">Lo que destraba <em>el viaje</em></div>
+  <p class="progress-fineprint">Sin duplicar la bitácora: acá quedan solo las acciones vivas. Lo confirmado vive en Reservas y el plan grande vive en Día a día.</p>
+  <div class="next-board">
+    <div class="next-card"><div class="step">13 Ago</div><h3>Apennino Shuttle</h3><p>Confirmar el 05:30 desde BLQ a Florencia: parada, equipaje y llegada real.</p></div>
+    <div class="next-card"><div class="step">13-22 Ago</div><h3>Hoteles Italia + Madrid</h3><p>Reservar Florencia, Roma, Nápoles y las dos noches finales en Madrid.</p></div>
+    <div class="next-card"><div class="step">14 Ago</div><h3>Pisa + Cinque Terre</h3><p>Elegir excursión larga desde Florencia, con logística cerrada y horarios claros.</p></div>
+    <div class="next-card"><div class="step">Check-ins</div><h3>Ventanas críticas</h3><p>Air Europa, Iberia Express y Plus Ultra. El de Nápoles cierra 45 min antes.</p></div>
+    <div class="next-card"><div class="step">Privado</div><h3>Carpeta Drive</h3><p>Pendiente pegar link restringido para pasaportes, tickets, QR y documentación sensible.</p></div>
   </div>
 </section>
 <!-- VUELOS -->
@@ -1487,7 +1849,7 @@
         <th>Tramo / servicio</th>
         <th>Horario</th>
         <th>Reserva</th>
-        <th>Pago</th>
+        <th>Estado</th>
         <th>Notas de ejecución</th>
       </tr>
     </thead>
@@ -1497,7 +1859,7 @@
         <td><strong>PU502 · EZE → MAD</strong><br>Plus Ultra vía eDreams</td>
         <td>13:25 → 06:30 +1</td>
         <td><span class="status-pill pill-private">Privado</span>Código eDreams / PNR</td>
-        <td><span class="status-pill pill-ok">Comprado</span>Importe a cargar</td>
+        <td><span class="status-pill pill-ok">Comprado</span>Importe oculto</td>
         <td>Check-in, equipaje, asientos, seguro y documentación.</td>
       </tr>
       <tr>
@@ -1505,7 +1867,7 @@
         <td><strong>MAD T4 → Chamartín</strong><br>Cercanías Renfe C1 / C10</td>
         <td>Entre llegada 06:30 y tren 17:03</td>
         <td><span class="status-pill pill-info">Verificar</span>Horario vigente</td>
-        <td>~1-3 € por persona</td>
+        <td>Costo bajo · verificar tarifa</td>
         <td>Conexión directa desde T4 a Chamartín. Priorizar tren sobre taxi si horarios y equipaje lo permiten.</td>
       </tr>
       <tr>
@@ -1513,7 +1875,7 @@
         <td><strong>Madrid Chamartín → Sarria</strong><br>Renfe 04375 + 12646 · transbordo 13 min</td>
         <td>17:03 → 21:02</td>
         <td><span class="status-pill pill-ok">Comprado</span>Max LM6JVL · Maru R3GZM3</td>
-        <td>131,40 € total<br>65,70 € c/u</td>
+        <td>Comprado · importe oculto</td>
         <td>Tarifa Básico - Silencio. <a class="btn-link" href="docs/Pasaje%20RENFE%20-%20MAD%20SAR_%20Max.pdf" target="_blank">PDF Max</a> <a class="btn-link" href="docs/Pasaje%20RENFE%20-%20MAD%20SAR_%20Maru.pdf" target="_blank">PDF Maru</a></td>
       </tr>
       <tr>
@@ -1521,7 +1883,7 @@
         <td><strong><a href="https://www.booking.com/searchresults.es.html?ss=Albergue+y+pension+il+nonno+Sarria" target="_blank">Albergue y pensión il nonno</a></strong><br>Sarria · Habitación doble con baño privado</td>
         <td>Entrada 13:00-22:00<br>Salida 06:00-08:00</td>
         <td><span class="status-pill pill-ok">Confirmado</span>Booking.com · PIN privado</td>
-        <td><span class="status-pill pill-ok">Pagado</span>55 €</td>
+        <td><span class="status-pill pill-ok">Pagado</span>Importe oculto</td>
         <td>Calle Mayor, 27600 Sarria · Tel. +34 693 589 757 · No reembolsable. <a class="btn-link" href="https://www.google.com/maps/search/?api=1&query=Albergue+y+pension+il+nonno+Sarria" target="_blank">Mapa y fotos</a></td>
       </tr>
             <tr>
@@ -1529,14 +1891,14 @@
         <td><strong><a href="https://www.booking.com/hotel/es/portomiao.html" target="_blank">Pensión Portomiño</a></strong><br>Portomarín · Habitación doble - 2 camas</td>
         <td>Entrada 14:00-19:00<br>Salida 07:00-10:30</td>
         <td><span class="status-pill pill-ok">Confirmado</span>Booking.com · PIN privado</td>
-        <td><span class="status-pill pill-ok">Pagado</span>119,60 €</td>
+        <td><span class="status-pill pill-ok">Pagado</span>Importe oculto</td>
         <td>Camino del Monte s/n, 27170 Portomarín · Tel. +34 982 547 575 · no reembolsable. <a class="btn-link" href="https://www.google.com/maps/search/?api=1&query=Pension+Portomino+Portomarin" target="_blank">Mapa y fotos</a></td>
       </tr><tr>
         <td>04-05 Ago</td>
         <td><strong><a href="https://www.booking.com/hotel/es/pension-restaurante-casa-camino-ii.html" target="_blank">Pensión Restaurante Casa Camiño II</a></strong><br>Palas de Rei · Habitación doble exterior con baño privado</td>
         <td>Entrada 14:00-22:00<br>Salida 00:00-10:00</td>
         <td><span class="status-pill pill-ok">Confirmado</span>Booking.com · PIN privado</td>
-        <td><span class="status-pill pill-info">No pagado</span>77,70 €</td>
+        <td><span class="status-pill pill-info">No pagado</span>Importe oculto</td>
         <td>Travesia del Peregrino No 8 · Tel. +34 982 37 40 66 · cancelación gratis hasta 02 Ago 23:59 CEST. <a class="btn-link" href="https://www.google.com/maps/search/?api=1&query=Pension+Restaurante+Casa+Camino+II+Palas+de+Rei" target="_blank">Mapa y fotos</a></td>
       </tr>
       <tr>
@@ -1544,7 +1906,7 @@
         <td><strong><a href="https://www.booking.com/hotel/es/la-puerta-de-arzua.html" target="_blank">Hotel La Puerta de Arzúa</a></strong><br>Arzúa · Habitación doble - 2 camas</td>
         <td>Entrada 14:00-18:00<br>Salida 07:00-11:00</td>
         <td><span class="status-pill pill-ok">Confirmado</span>Booking.com · PIN privado</td>
-        <td><span class="status-pill pill-info">No pagado</span>80 €</td>
+        <td><span class="status-pill pill-info">No pagado</span>Importe oculto</td>
         <td>TEIRABOA, 10 ARZÚA · Tel. +34 680 953 694 · cancelación gratis hasta 03 Ago 23:59 CEST · check-in hasta 18:00. <a class="btn-link" href="https://lapuertadearzua.es/" target="_blank">Web y fotos</a> <a class="btn-link" href="https://www.google.com/maps/search/?api=1&query=Hotel+La+Puerta+de+Arzua" target="_blank">Mapa</a></td>
       </tr>
       <tr>
@@ -1552,7 +1914,7 @@
         <td><strong><a href="https://www.booking.com/hotel/es/pension-23-vinte-e-tres.html" target="_blank">Pension 23-Vinte e Tres</a></strong><br>O Pedrouzo · Habitación doble con baño compartido - 2 camas</td>
         <td>Entrada 13:00-16:30<br>Salida hasta 10:00</td>
         <td><span class="status-pill pill-ok">Confirmado</span>Booking.com · PIN privado</td>
-        <td><span class="status-pill pill-ok">Pagado</span>106 €</td>
+        <td><span class="status-pill pill-ok">Pagado</span>Importe oculto</td>
         <td>Avenida De la Iglesia N 7, Portal 5 · Tel. +34 667 57 00 12 · cancelación gratis hasta 15 Jul 23:59 CEST · check-in hasta 16:30. <a class="btn-link" href="https://www.google.com/maps/search/?api=1&query=Pension+23+Vinte+e+Tres+O+Pedrouzo" target="_blank">Mapa y fotos</a></td>
       </tr>
       <tr>
@@ -1560,7 +1922,7 @@
         <td><strong>Habitación cercana al casco antiguo</strong><br>Santiago de Compostela · Airbnb</td>
         <td>Entrada desde 15:00<br>Salida antes de 12:00</td>
         <td><span class="status-pill pill-ok">Confirmado</span>HMPTMWEAKW · anfitrión Kevin</td>
-        <td><span class="status-pill pill-ok">Pagado</span>US$207,97</td>
+        <td><span class="status-pill pill-ok">Pagado</span>Importe oculto</td>
         <td>Rúa do Bispo Teodomiro, 10 · Tel. +34 695 10 85 26 · ideal para Compostela y excursión a Finisterre. <a class="btn-link" href="https://www.google.com/maps/search/?api=1&query=R%C3%BAa%20do%20Bispo%20Teodomiro%2010%20Santiago%20de%20Compostela" target="_blank">Mapa</a></td>
       </tr>
       <tr>
@@ -1568,7 +1930,7 @@
         <td><strong>Santiago → Alicante</strong><br>Renfe 04364 + 05312 · cambio 1h15</td>
         <td>07:43 → 14:28</td>
         <td><span class="status-pill pill-ok">Comprado</span>Max L95UPK · Maru WWRX6J</td>
-        <td>178,20 € total<br>89,10 € c/u</td>
+        <td>Comprado · importe oculto</td>
         <td>Salida: Santiago de Compostela-Daniel Castelao. Llegada: Alicante/Alacant-Terminal. Básico Tarjeta Más Renfe 10% - Silencio.</td>
       </tr>
       <tr>
@@ -1576,7 +1938,7 @@
         <td><strong><a href="https://www.booking.com/hotel/es/la-casa-del-montaraz.html" target="_blank">La Casa del Montaraz</a></strong><br>Alicante · Habitación doble con baño privado</td>
         <td>Entrada 14:00-23:00<br>Salida 08:00-12:00</td>
         <td><span class="status-pill pill-ok">Confirmado</span>Booking.com · PIN privado</td>
-        <td><span class="status-pill pill-info">Pago futuro</span>225 €</td>
+        <td><span class="status-pill pill-info">Pago futuro</span>Importe oculto</td>
         <td>Carrer Dr. Buades, 03012 Alicante · Tel. +34 631 341 449 · cancelación gratis hasta 07 Ago 23:59 CEST. <a class="btn-link" href="https://www.google.com/maps/search/?api=1&query=La%20Casa%20del%20Montaraz%20Carrer%20Dr.%20Buades%20Alicante" target="_blank">Mapa y fotos</a></td>
       </tr>
       <tr>
@@ -1584,7 +1946,7 @@
         <td><strong>Finisterre / Costa da Morte</strong><br>Excursión desde Santiago</td>
         <td>Día completo</td>
         <td><span class="status-pill pill-warn">Evaluar</span>Civitatis / Tour Galicia / Galicia Travels</td>
-        <td>Desde ~US$59 p/p según Civitatis</td>
+        <td>Costo a consultar</td>
         <td>Ruta típica: Pontemaceira, Muxía, Faro de Finisterre, Ézaro, Carnota/Muros. <a class="btn-link" href="https://www.civitatis.com/es/santiago-de-compostela/excursion-finisterre-costa-morte/" target="_blank">Ver excursión</a></td>
       </tr>
       <tr>
@@ -1592,7 +1954,7 @@
         <td><strong>Alicante → Bolonia</strong><br>Air Europa UX4050 + UX1183 · escala Madrid</td>
         <td>ALC 20:45 → MAD 21:50<br>MAD 00:10 → BLQ 02:25</td>
         <td><span class="status-pill pill-ok">Pagado</span>Trip.com · revisar emisión de billetes</td>
-        <td>US$178,00</td>
+        <td>Importe oculto</td>
         <td>Escala nocturna en Madrid: Trip indica recoger equipaje y volver a facturarlo. PDF local: <a class="btn-link" href="docs/vuelos/trip-alc-bolonia.pdf" target="_blank">ver pasaje</a>. En BLQ, mirar <a class="btn-link" href="https://appenninoshuttle.it/" target="_blank">Apennino Shuttle</a> 05:30 a Florencia.</td>
       </tr>
       <tr>
@@ -1600,7 +1962,7 @@
         <td><strong>Florencia</strong><br>3 noches · base Toscana</td>
         <td>Hotel + excursiones</td>
         <td><span class="status-pill pill-warn">Reservar</span>Alojamiento</td>
-        <td>EUR a cargar</td>
+        <td>Importe oculto</td>
         <td>13 Ago llegada/descanso. 14 Ago sugerido: excursión Pisa + Cinque Terre. 15 Ago: Florencia.</td>
       </tr>
       <tr>
@@ -1608,7 +1970,7 @@
         <td><strong>Roma</strong><br>2 noches</td>
         <td>Tren rápido desde Florencia</td>
         <td><span class="status-pill pill-warn">Reservar</span>Hotel / entradas</td>
-        <td>EUR a cargar</td>
+        <td>Importe oculto</td>
         <td>Coliseo, centro histórico y Vaticano según disponibilidad.</td>
       </tr>
       <tr>
@@ -1616,7 +1978,7 @@
         <td><strong>Nápoles + Capri</strong><br>2 noches base Nápoles</td>
         <td>Tren + ferry Capri</td>
         <td><span class="status-pill pill-warn">Reservar</span>Hotel / ferry</td>
-        <td>EUR a cargar</td>
+        <td>Importe oculto</td>
         <td>Capri como excursión desde Nápoles para evitar sumar otro check-in.</td>
       </tr>
       <tr>
@@ -1624,15 +1986,15 @@
         <td><strong>Nápoles → Madrid</strong><br>Iberia Express I2 1832 · Airbus A320</td>
         <td>NAP 14:50 → MAD T4 17:40<br>Duración 2:50 · sin paradas</td>
         <td><span class="status-pill pill-ok">Confirmado</span>LM192 / 8DTOSY</td>
-        <td>EUR 165,00*</td>
-        <td>Marita corregida: REYES/MARIAELINA. Ticket Marita 060-2310709742; Max figura con ticket 0602310710911. Equipaje documentado 0PC; tarifa indica bolso personal + cabina hasta 10 kg. *Importe del ticket corregido; total reserva a validar.</td>
+        <td>Importe oculto</td>
+        <td>Marita corregida: REYES/MARIAELINA. Ticket Marita 060-2310709742; Max figura con ticket 0602310710911. Equipaje documentado 0PC; tarifa indica bolso personal + cabina hasta 10 kg. Importe privado; total reserva a validar.</td>
       </tr>
       <tr>
         <td>20-22 Ago</td>
         <td><strong>Madrid</strong><br>2 noches</td>
         <td>Hotel por reservar</td>
         <td><span class="status-pill pill-warn">Reservar</span>Alojamiento</td>
-        <td>EUR a cargar</td>
+        <td>Importe oculto</td>
         <td>Un día completo de margen antes del PU501 del 22 Ago a las 23:10.</td>
       </tr>
       <tr>
@@ -1640,7 +2002,7 @@
         <td><strong>PU501 · MAD → EZE</strong><br>Plus Ultra vía eDreams</td>
         <td>23:10 → 06:45 +1</td>
         <td><span class="status-pill pill-private">Privado</span>Código eDreams / PNR</td>
-        <td><span class="status-pill pill-ok">Comprado</span>Importe a cargar</td>
+        <td><span class="status-pill pill-ok">Comprado</span>Importe oculto</td>
         <td>Estar en Madrid con margen. No arriesgar conexión el mismo día.</td>
       </tr>
     </tbody>
@@ -1811,44 +2173,14 @@
   <div class="transport-item"><div class="transport-icon">✈</div><div class="transport-body"><div class="transport-route">MAD → EZE · PU501</div><div class="transport-meta">22 Ago · 23:10</div><div class="transport-status badge-confirmed">Comprado</div></div></div>
 </section>
 
-<!-- GASTOS -->
-<section id="gastos">
-  <div class="section-label">Presupuesto y control · importes conocidos</div>
-  <div class="section-title">Gastos del <em>Viaje</em></div>
-  <div class="money-summary">
-    <div class="money-box"><div class="ops-kicker">Pagado conocido</div><div class="ops-value">590,20 € + US$385,97</div><div class="ops-note">Incluye Renfe Madrid → Sarria, Renfe Santiago → Alicante, hospedajes pagados del Camino, Airbnb Santiago y vuelo Alicante → Bolonia. No convierte divisas.</div></div>
-    <div class="money-box"><div class="ops-kicker">Comprometido conocido</div><div class="ops-value">972,90 € + US$385,97</div><div class="ops-note">Pagado + Palas, Arzúa y Alicante reservados con pago futuro.</div></div>
-    <div class="money-box"><div class="ops-kicker">Pendiente reservado</div><div class="ops-value">382,70 €</div><div class="ops-note">Palas 77,70 € + Arzúa 80 € + Alicante 225 €.</div></div>
-    <div class="money-box"><div class="ops-kicker">Por presupuestar</div><div class="ops-value">9 noches + tramos</div><div class="ops-note">Florencia 3, Roma 2, Nápoles 2, Madrid 2, más Apennino Shuttle, excursión Pisa/Cinque Terre y ferry Capri. Nápoles → Madrid comprado; importe final a validar.</div></div>
+
+<!-- DOCUMENTOS PRIVADOS -->
+<section id="documentos-privados">
+  <div class="section-label">Privado · acceso restringido</div>
+  <div class="section-title">Documentos <em>sensibles</em></div>
+  <div class="itinerary-note">
+    Cuando tengas la carpeta de Google Drive, pegamos acá el enlace. Recomendación: acceso "Restringido", solo Marita y vos como lectores. No usar "Cualquier persona con el enlace".
   </div>
-  <table class="data-table">
-    <thead><tr><th>Concepto</th><th>Estado</th><th>Pagado</th><th>Pendiente</th><th>Total conocido</th></tr></thead>
-    <tbody>
-      <tr><td>Il nonno · Sarria</td><td><span class="status-pill pill-ok">Pagado</span></td><td>55,00 €</td><td>0</td><td>55,00 €</td></tr>
-      <tr><td>Pensión Portomiño · Portomarín</td><td><span class="status-pill pill-ok">Pagado</span></td><td>119,60 €</td><td>0</td><td>119,60 €</td></tr>
-      <tr><td>Casa Camiño II · Palas de Rei</td><td><span class="status-pill pill-info">Reservado</span></td><td>0</td><td>77,70 €</td><td>77,70 €</td></tr>
-      <tr><td>La Puerta de Arzúa</td><td><span class="status-pill pill-info">Reservado</span></td><td>0</td><td>80,00 €</td><td>80,00 €</td></tr>
-      <tr><td>Pension 23-Vinte e Tres · O Pedrouzo</td><td><span class="status-pill pill-ok">Pagado</span></td><td>106,00 €</td><td>0</td><td>106,00 €</td></tr>
-      <tr><td>Airbnb · Santiago</td><td><span class="status-pill pill-ok">Pagado</span></td><td>US$207,97</td><td>0</td><td>US$207,97</td></tr>
-      <tr><td>La Casa del Montaraz · Alicante</td><td><span class="status-pill pill-info">Pago futuro</span></td><td>0</td><td>225,00 €</td><td>225,00 €</td></tr>
-      <tr><td>Renfe Madrid → Sarria · 2 personas</td><td><span class="status-pill pill-ok">Pagado</span></td><td>131,40 €</td><td>0</td><td>131,40 €</td></tr>
-      <tr><td>Renfe Santiago → Alicante · 2 personas</td><td><span class="status-pill pill-ok">Pagado</span></td><td>178,20 €</td><td>0</td><td>178,20 €</td></tr>
-      <tr><td>Air Europa Alicante → Bolonia · 2 personas</td><td><span class="status-pill pill-ok">Pagado</span></td><td>US$178,00</td><td>0</td><td>US$178,00</td></tr>
-      <tr><td>Iberia Express Nápoles → Madrid · ticket corregido</td><td><span class="status-pill pill-info">Validar total</span></td><td>EUR 165,00*</td><td>0</td><td>EUR 165,00*</td></tr>
-      <tr><td><strong>Subtotal conocido</strong></td><td></td><td><strong>590,20 € + US$385,97</strong></td><td><strong>382,70 €</strong></td><td><strong>972,90 € + US$385,97</strong></td></tr>
-    </tbody>
-  </table>
-  <div class="itinerary-note" style="margin-top:0.75rem;">*El importe EUR 165,00 figura en el ticket corregido de Marita. No está sumado al subtotal hasta validar el total final de la reserva Nápoles → Madrid para ambos pasajeros.</div>
-  <table class="data-table" style="margin-top:1.5rem;">
-    <thead><tr><th>Categoría futura</th><th>Estado</th><th>Qué falta cargar</th></tr></thead>
-    <tbody>
-      <tr><td>Vuelos internacionales</td><td><span class="status-pill pill-ok">Comprados</span></td><td>Importe total, equipaje, asientos y cargos de eDreams.</td></tr>
-      <tr><td>Alojamientos restantes</td><td><span class="status-pill pill-warn">9 noches</span></td><td>Florencia 3, Roma 2, Nápoles 2 y Madrid 2.</td></tr>
-      <tr><td>Transportes</td><td><span class="status-pill pill-warn">Pendiente</span></td><td>Apennino Shuttle BLQ → Florencia, excursión Pisa/Cinque Terre, trenes italianos y ferry Capri. Nápoles → Madrid ya está comprado.</td></tr>
-      <tr><td>Actividades</td><td><span class="status-pill pill-warn">Pendiente</span></td><td>Finisterre, Pisa + Cinque Terre desde Florencia, Roma, Capri y Madrid.</td></tr>
-      <tr><td>Comidas y efectivo</td><td><span class="status-pill pill-warn">Definir</span></td><td>Presupuesto diario y fondo de contingencia.</td></tr>
-    </tbody>
-  </table>
 </section>
 <!-- CHECKLIST -->
 <section id="checklist">
@@ -2093,6 +2425,35 @@
     urls.forEach(u => window.open(u, '_blank'));
   }
 
+
+  function setupMobileAccordions() {
+    document.querySelectorAll('.data-table, .mission-table').forEach(table => {
+      if (table.dataset.mobileReady === 'true') return;
+      table.dataset.mobileReady = 'true';
+      const headers = Array.from(table.querySelectorAll('thead th')).map(th => th.textContent.trim());
+      table.querySelectorAll('tbody tr').forEach(row => {
+        const cells = Array.from(row.children);
+        cells.forEach((cell, index) => {
+          cell.dataset.label = headers[index] || 'Detalle';
+        });
+        if (!cells.length || cells[0].querySelector('.mobile-row-toggle')) return;
+        const first = cells[0];
+        const original = document.createElement('span');
+        original.className = 'desktop-cell-text';
+        while (first.firstChild) original.appendChild(first.firstChild);
+        const summaryCell = cells[1] || first;
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'mobile-row-toggle';
+        button.innerHTML = `<span>${original.textContent.trim()}</span><strong>${summaryCell.textContent.trim().split('\n')[0]}</strong>`;
+        button.addEventListener('click', () => row.classList.toggle('open'));
+        first.appendChild(button);
+        first.appendChild(original);
+      });
+    });
+  }
+
+  setupMobileAccordions();
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       const target = document.querySelector(a.getAttribute('href'));
@@ -2102,6 +2463,7 @@
 </script>
 </body>
 </html>
+
 
 
 
