@@ -1620,6 +1620,157 @@
       grid-template-columns: 1fr;
     }
   }
+
+  /* TICKET WALLET */
+  .ticket-wallet {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 1.2rem;
+  }
+
+  .ticket-card {
+    position: relative;
+    min-height: 220px;
+    overflow: hidden;
+    border-radius: 18px;
+    background: #ffffff;
+    border: 1px solid rgba(16,32,51,0.10);
+    box-shadow: 0 18px 38px rgba(16,32,51,0.10);
+    padding: 1.1rem;
+    display: grid;
+    align-content: space-between;
+  }
+
+  .ticket-card::before {
+    content: attr(data-watermark);
+    position: absolute;
+    right: -0.25rem;
+    bottom: -1.6rem;
+    font-size: 7.5rem;
+    line-height: 1;
+    opacity: 0.06;
+    filter: grayscale(1);
+    pointer-events: none;
+  }
+
+  .ticket-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 100% 50%, transparent 0 12px, rgba(16,32,51,0.07) 13px 14px, transparent 15px),
+      linear-gradient(135deg, transparent, rgba(33,102,165,0.06));
+    pointer-events: none;
+  }
+
+  .ticket-card.train {
+    border-top: 4px solid var(--accent);
+  }
+
+  .ticket-card.flight {
+    border-top: 4px solid var(--accent-blue);
+  }
+
+  .ticket-brand {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted-light);
+    position: relative;
+    z-index: 1;
+  }
+
+  .ticket-status {
+    color: var(--confirmed);
+    background: rgba(31,122,90,0.10);
+    border: 1px solid rgba(31,122,90,0.18);
+    border-radius: 999px;
+    padding: 0.18rem 0.55rem;
+  }
+
+  .ticket-route {
+    position: relative;
+    z-index: 1;
+    margin: 1.2rem 0 1rem;
+  }
+
+  .ticket-route h3 {
+    font-family: var(--font-display);
+    font-size: 1.28rem;
+    line-height: 1.12;
+    color: var(--ink);
+    margin-bottom: 0.45rem;
+  }
+
+  .ticket-route p {
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.45;
+  }
+
+  .ticket-meta {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.65rem;
+    border-top: 1px dashed rgba(16,32,51,0.18);
+    padding-top: 0.85rem;
+  }
+
+  .ticket-meta span {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.56rem;
+    color: var(--muted-light);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .ticket-meta strong {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    color: var(--ink);
+    margin-top: 0.12rem;
+  }
+
+  .drive-panel {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    align-items: center;
+    background: linear-gradient(135deg, rgba(31,122,90,0.10), rgba(33,102,165,0.12));
+    border: 1px solid rgba(16,32,51,0.10);
+    border-radius: 16px;
+    padding: 1rem;
+    margin-top: 1rem;
+  }
+
+  .drive-panel p {
+    color: var(--muted);
+    line-height: 1.5;
+    font-size: 0.92rem;
+  }
+
+  @media (max-width: 980px) {
+    .ticket-wallet {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 640px) {
+    .ticket-wallet,
+    .drive-panel {
+      grid-template-columns: 1fr;
+    }
+  }
 </style>
 </head>
 <body>
@@ -1669,6 +1820,7 @@
   <a href="#transporte">Transporte</a>
   <a href="#altitud-camino">Camino</a>
   <a href="#documentos-privados">Docs</a>
+  <a href="#tickets">Tickets</a>
   <a href="#checklist">Checklist</a>
   <a href="#decisiones">Decisiones</a>
   <a href="#fotos">Fotos</a>
@@ -1749,7 +1901,7 @@
     <div class="next-card"><div class="step">13-22 Ago</div><h3>Hoteles Italia + Madrid</h3><p>Reservar Florencia, Roma, Nápoles y las dos noches finales en Madrid.</p></div>
     <div class="next-card"><div class="step">14 Ago</div><h3>Pisa + Cinque Terre</h3><p>Elegir excursión larga desde Florencia, con logística cerrada y horarios claros.</p></div>
     <div class="next-card"><div class="step">Check-ins</div><h3>Ventanas críticas</h3><p>Air Europa, Iberia Express y Plus Ultra. El de Nápoles cierra 45 min antes.</p></div>
-    <div class="next-card"><div class="step">Privado</div><h3>Carpeta Drive</h3><p>Pendiente pegar link restringido para pasaportes, tickets, QR y documentación sensible.</p></div>
+    <div class="next-card"><div class="step">Privado</div><h3>Carpeta Drive</h3><p>Drive restringido enlazado para pasaportes, tickets, QR y documentación sensible.</p></div>
   </div>
 </section>
 <!-- VUELOS -->
@@ -1874,7 +2026,7 @@
         <td>02 Ago</td>
         <td><strong>Madrid Chamartín → Sarria</strong><br>Renfe 04375 + 12646 · transbordo 13 min</td>
         <td>17:03 → 21:02</td>
-        <td><span class="status-pill pill-ok">Comprado</span>Max LM6JVL · Maru R3GZM3</td>
+        <td><span class="status-pill pill-ok">Comprado</span>Datos privados en Drive</td>
         <td>Comprado · importe oculto</td>
         <td>Tarifa Básico - Silencio. <a class="btn-link" href="docs/Pasaje%20RENFE%20-%20MAD%20SAR_%20Max.pdf" target="_blank">PDF Max</a> <a class="btn-link" href="docs/Pasaje%20RENFE%20-%20MAD%20SAR_%20Maru.pdf" target="_blank">PDF Maru</a></td>
       </tr>
@@ -1921,7 +2073,7 @@
         <td>07-09 Ago</td>
         <td><strong>Habitación cercana al casco antiguo</strong><br>Santiago de Compostela · Airbnb</td>
         <td>Entrada desde 15:00<br>Salida antes de 12:00</td>
-        <td><span class="status-pill pill-ok">Confirmado</span>HMPTMWEAKW · anfitrión Kevin</td>
+        <td><span class="status-pill pill-ok">Confirmado</span>Datos privados en Drive</td>
         <td><span class="status-pill pill-ok">Pagado</span>Importe oculto</td>
         <td>Rúa do Bispo Teodomiro, 10 · Tel. +34 695 10 85 26 · ideal para Compostela y excursión a Finisterre. <a class="btn-link" href="https://www.google.com/maps/search/?api=1&query=R%C3%BAa%20do%20Bispo%20Teodomiro%2010%20Santiago%20de%20Compostela" target="_blank">Mapa</a></td>
       </tr>
@@ -1929,7 +2081,7 @@
         <td>09 Ago</td>
         <td><strong>Santiago → Alicante</strong><br>Renfe 04364 + 05312 · cambio 1h15</td>
         <td>07:43 → 14:28</td>
-        <td><span class="status-pill pill-ok">Comprado</span>Max L95UPK · Maru WWRX6J</td>
+        <td><span class="status-pill pill-ok">Comprado</span>Datos privados en Drive</td>
         <td>Comprado · importe oculto</td>
         <td>Salida: Santiago de Compostela-Daniel Castelao. Llegada: Alicante/Alacant-Terminal. Básico Tarjeta Más Renfe 10% - Silencio.</td>
       </tr>
@@ -1953,7 +2105,7 @@
         <td>12/13 Ago</td>
         <td><strong>Alicante → Bolonia</strong><br>Air Europa UX4050 + UX1183 · escala Madrid</td>
         <td>ALC 20:45 → MAD 21:50<br>MAD 00:10 → BLQ 02:25</td>
-        <td><span class="status-pill pill-ok">Pagado</span>Trip.com · revisar emisión de billetes</td>
+        <td><span class="status-pill pill-ok">Pagado</span>Trip.com · datos privados en Drive</td>
         <td>Importe oculto</td>
         <td>Escala nocturna en Madrid: Trip indica recoger equipaje y volver a facturarlo. PDF local: <a class="btn-link" href="docs/vuelos/trip-alc-bolonia.pdf" target="_blank">ver pasaje</a>. En BLQ, mirar <a class="btn-link" href="https://appenninoshuttle.it/" target="_blank">Apennino Shuttle</a> 05:30 a Florencia.</td>
       </tr>
@@ -1985,9 +2137,9 @@
         <td>20 Ago</td>
         <td><strong>Nápoles → Madrid</strong><br>Iberia Express I2 1832 · Airbus A320</td>
         <td>NAP 14:50 → MAD T4 17:40<br>Duración 2:50 · sin paradas</td>
-        <td><span class="status-pill pill-ok">Confirmado</span>LM192 / 8DTOSY</td>
+        <td><span class="status-pill pill-ok">Confirmado</span>Datos privados en Drive</td>
         <td>Importe oculto</td>
-        <td>Marita corregida: REYES/MARIAELINA. Ticket Marita 060-2310709742; Max figura con ticket 0602310710911. Equipaje documentado 0PC; tarifa indica bolso personal + cabina hasta 10 kg. Importe privado; total reserva a validar.</td>
+        <td>Apellido corregido para Marita. Tickets y números de reserva guardados en Drive. Equipaje documentado 0PC; tarifa indica bolso personal + cabina hasta 10 kg.</td>
       </tr>
       <tr>
         <td>20-22 Ago</td>
@@ -2178,8 +2330,52 @@
 <section id="documentos-privados">
   <div class="section-label">Privado · acceso restringido</div>
   <div class="section-title">Documentos <em>sensibles</em></div>
+  <div class="drive-panel">
+    <p>Carpeta privada para pasaportes, tickets, QR, reservas completas y documentación sensible. Mantener acceso restringido solo a Marita y vos.</p>
+    <a class="btn-link gold" href="https://drive.google.com/drive/folders/12WYH5Q48dS6ZgLxrdwbkKR2Zq5eN2H4n?usp=sharing" target="_blank">Abrir carpeta Drive</a>
+  </div>
+  <div class="itinerary-note" style="margin-top:1rem;">
+    Si Google Drive queda como "Restringido", tener el link no alcanza para acceder. Solo entran las cuentas agregadas con permiso.
+  </div>
+</section>
+<!-- TICKETS VISUALES -->
+<section id="tickets">
+  <div class="section-label">Billetera visual · no reemplaza los documentos reales</div>
+  <div class="section-title">Tickets <em>del viaje</em></div>
   <div class="itinerary-note">
-    Cuando tengas la carpeta de Google Drive, pegamos acá el enlace. Recomendación: acceso "Restringido", solo Marita y vos como lectores. No usar "Cualquier persona con el enlace".
+    Tarjetas simuladas con datos reales confirmados. Sin QR, sin códigos privados inventados y sin reemplazar el ticket oficial. Los documentos completos viven en Drive.
+  </div>
+  <div class="ticket-wallet">
+    <article class="ticket-card flight" data-watermark="✈">
+      <div class="ticket-brand"><span>Plus Ultra</span><span class="ticket-status">Comprado</span></div>
+      <div class="ticket-route"><h3>Buenos Aires → Madrid</h3><p>PU502 · salida desde Ezeiza y llegada a Madrid-Barajas.</p></div>
+      <div class="ticket-meta"><div><span>Fecha</span><strong>01/02 Ago</strong></div><div><span>Horario</span><strong>13:25 → 06:30</strong></div></div>
+    </article>
+    <article class="ticket-card train" data-watermark="▰">
+      <div class="ticket-brand"><span>Renfe</span><span class="ticket-status">Comprado</span></div>
+      <div class="ticket-route"><h3>Madrid → Sarria</h3><p>Chamartín-Clara Campoamor hacia Sarria, con transbordo corto.</p></div>
+      <div class="ticket-meta"><div><span>Fecha</span><strong>02 Ago</strong></div><div><span>Horario</span><strong>17:03 → 21:02</strong></div></div>
+    </article>
+    <article class="ticket-card train" data-watermark="▰">
+      <div class="ticket-brand"><span>Renfe</span><span class="ticket-status">Comprado</span></div>
+      <div class="ticket-route"><h3>Santiago → Alicante</h3><p>Renfe 04364 + 05312, con cambio de tren programado.</p></div>
+      <div class="ticket-meta"><div><span>Fecha</span><strong>09 Ago</strong></div><div><span>Horario</span><strong>07:43 → 14:28</strong></div></div>
+    </article>
+    <article class="ticket-card flight" data-watermark="✈">
+      <div class="ticket-brand"><span>Air Europa</span><span class="ticket-status">Emitido</span></div>
+      <div class="ticket-route"><h3>Alicante → Bolonia</h3><p>UX4050 + UX1183, escala nocturna en Madrid y llegada a BLQ.</p></div>
+      <div class="ticket-meta"><div><span>Fecha</span><strong>12/13 Ago</strong></div><div><span>Horario</span><strong>20:45 → 02:25</strong></div></div>
+    </article>
+    <article class="ticket-card flight" data-watermark="✈">
+      <div class="ticket-brand"><span>Iberia Express</span><span class="ticket-status">Confirmado</span></div>
+      <div class="ticket-route"><h3>Nápoles → Madrid</h3><p>I2 1832, directo a Madrid T4. Apellido de Marita corregido.</p></div>
+      <div class="ticket-meta"><div><span>Fecha</span><strong>20 Ago</strong></div><div><span>Horario</span><strong>14:50 → 17:40</strong></div></div>
+    </article>
+    <article class="ticket-card flight" data-watermark="✈">
+      <div class="ticket-brand"><span>Plus Ultra</span><span class="ticket-status">Comprado</span></div>
+      <div class="ticket-route"><h3>Madrid → Buenos Aires</h3><p>PU501 · regreso nocturno desde Madrid-Barajas.</p></div>
+      <div class="ticket-meta"><div><span>Fecha</span><strong>22/23 Ago</strong></div><div><span>Horario</span><strong>23:10 → 06:45</strong></div></div>
+    </article>
   </div>
 </section>
 <!-- CHECKLIST -->
@@ -2463,6 +2659,8 @@
 </script>
 </body>
 </html>
+
+
 
 
 
