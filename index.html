@@ -1674,6 +1674,41 @@
     line-height: 1.5;
     color: var(--muted-light);
   }
+  .camino-guide-drive-cover {
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 0.65rem;
+    padding: 1.5rem;
+    color: #fff;
+    background:
+      linear-gradient(150deg, rgba(17, 94, 89, 0.96), rgba(24, 83, 126, 0.92)),
+      #18537e;
+    border-radius: 7px;
+    box-shadow: 0 18px 36px rgba(16, 32, 51, 0.16);
+  }
+  .camino-guide-drive-cover strong {
+    max-width: 15ch;
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3vw, 2.7rem);
+    line-height: 1.02;
+  }
+  .camino-guide-drive-cover > span:last-child {
+    max-width: 36ch;
+    color: rgba(255, 255, 255, 0.86);
+    line-height: 1.55;
+  }
+  .camino-guide-drive-kicker {
+    width: fit-content;
+    padding: 0.3rem 0.55rem;
+    color: #102033;
+    background: #f2c66d;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+  }
   .camino-guide-sources a { color: var(--accent-blue); }
   @media (max-width: 820px) {
     .camino-guide-panel { grid-template-columns: 1fr; }
@@ -2408,15 +2443,16 @@
     Una sola lámina operativa para Max y Marita: salidas sugeridas, agua por etapa, protector solar, vaselina, medias, ajuste del calzado, ampollas, mochila, sellos y emergencias.
   </div>
   <div class="camino-guide-panel">
-    <a href="camino-guia-practica-2026.png" target="_blank" aria-label="Abrir guía práctica del Camino en tamaño completo">
-      <img class="camino-guide-preview" src="camino-guia-practica-2026.png" alt="Guía práctica descargable del Camino de Santiago para Max y Marita">
-    </a>
+    <div class="camino-guide-drive-cover" aria-label="Guía práctica del Camino guardada en Drive privado">
+      <span class="camino-guide-drive-kicker">DRIVE PRIVADO</span>
+      <strong>Guía práctica del Camino</strong>
+      <span>Lista para abrir o descargar con las cuentas autorizadas de Max y Marita.</span>
+    </div>
     <div class="camino-guide-copy">
       <h3>Lo importante, antes de que duelan los pies</h3>
-      <p>La imagen está preparada en alta resolución para descargar, guardar sin conexión y ampliar desde el teléfono. Las cantidades de agua son estimaciones operativas: cada mañana hay que ajustarlas al pronóstico, al calor y a los puntos de recarga confirmados.</p>
+      <p>La guía en alta resolución está guardada en la carpeta privada de Drive para descargar, conservar sin conexión y ampliar desde el teléfono. Las cantidades de agua son estimaciones operativas: cada mañana hay que ajustarlas al pronóstico, al calor y a los puntos de recarga confirmados.</p>
       <div class="camino-guide-actions">
-        <a class="btn-link gold" href="camino-guia-practica-2026.png" download="Camino-Sarria-Santiago-guia-Max-Marita-2026.png">Descargar guía PNG</a>
-        <a class="btn-link" href="camino-guia-practica-2026.png" target="_blank">Abrir en tamaño completo</a>
+        <a class="btn-link gold" href="https://drive.google.com/drive/folders/12WYH5Q48dS6ZgLxrdwbkKR2Zq5eN2H4n?usp=drive_link" target="_blank" rel="noopener noreferrer">Abrir guía en Drive privado</a>
       </div>
       <p><strong>Regla rápida:</strong> una media técnica por pie, un segundo par seco accesible y tres pares por persona para rotar. El calzado debe quedar firme en talón y mediopié, pero nunca apretado; los dedos tienen que moverse.</p>
       <p><strong>Vaselina:</strong> capa fina sobre piel limpia y seca en zonas de roce ya conocidas. No sobre heridas; entre los dedos, priorizar que permanezcan secos.</p>
@@ -2473,7 +2509,7 @@
   <div class="section-title">Documentos <em>sensibles</em></div>
   <div class="drive-panel">
     <p>Carpeta privada para pasaportes, tickets, QR, reservas completas y documentación sensible. Mantener acceso restringido solo a Marita y vos.</p>
-    <a class="btn-link gold" href="https://drive.google.com/drive/folders/12WYH5Q48dS6ZgLxrdwbkKR2Zq5eN2H4n?usp=sharing" target="_blank">Abrir carpeta Drive</a>
+    <a class="btn-link gold" href="https://drive.google.com/drive/folders/12WYH5Q48dS6ZgLxrdwbkKR2Zq5eN2H4n?usp=drive_link" target="_blank">Abrir carpeta Drive</a>
   </div>
   <div class="itinerary-note" style="margin-top:1rem;">
     Si Google Drive queda como "Restringido", tener el link no alcanza para acceder. Solo entran las cuentas agregadas con permiso.
