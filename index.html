@@ -1845,6 +1845,10 @@
     border-top: 4px solid var(--accent-blue);
   }
 
+  .ticket-card.bus {
+    border-top: 4px solid #23877c;
+  }
+
   .ticket-brand {
     display: flex;
     align-items: center;
@@ -1932,6 +1936,152 @@
     font-size: 0.92rem;
   }
 
+  /* CALENDARIO DE RUTA */
+  .calendar-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin: 1rem 0 1.25rem;
+  }
+
+  .calendar-legend span,
+  .cal-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    border-radius: 999px;
+    padding: 0.28rem 0.58rem;
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    line-height: 1.2;
+  }
+
+  .calendar-legend span::before {
+    content: '';
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 50%;
+    background: currentColor;
+  }
+
+  .tag-flight { color: #155c96; background: #e6f1fb; }
+  .tag-train { color: #a13a3a; background: #f9e9e7; }
+  .tag-bus { color: #176d65; background: #e3f3ef; }
+  .tag-walk { color: #5f6f1f; background: #eef3d9; }
+  .tag-ferry { color: #286c83; background: #e5f1f5; }
+  .tag-plan { color: #876315; background: #fff2cc; }
+  .tag-stay { color: #5b6470; background: #edf0f2; }
+
+  .calendar-shell {
+    overflow: hidden;
+    border: 1px solid rgba(16,32,51,0.12);
+    border-radius: 8px;
+    background: rgba(255,255,255,0.58);
+    box-shadow: 0 18px 42px rgba(16,32,51,0.08);
+  }
+
+  .calendar-weekdays,
+  .route-calendar {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+  }
+
+  .calendar-weekdays div {
+    padding: 0.72rem 0.45rem;
+    background: var(--ink);
+    color: #fff;
+    border-right: 1px solid rgba(255,255,255,0.13);
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 0.64rem;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+
+  .cal-day,
+  .cal-empty {
+    min-width: 0;
+    min-height: 176px;
+    padding: 0.72rem;
+    border-right: 1px solid rgba(16,32,51,0.09);
+    border-bottom: 1px solid rgba(16,32,51,0.09);
+  }
+
+  .cal-empty {
+    background: rgba(16,32,51,0.025);
+  }
+
+  .cal-day {
+    display: flex;
+    flex-direction: column;
+    gap: 0.48rem;
+    background: rgba(255,255,255,0.9);
+    border-top: 4px solid var(--green);
+  }
+
+  .cal-day.is-flight { border-top-color: #2b78b7; }
+  .cal-day.is-train { border-top-color: #bd5149; }
+  .cal-day.is-bus { border-top-color: #23877c; }
+  .cal-day.is-walk { border-top-color: #7e9634; }
+  .cal-day.is-plan { border-top-color: #d3a22e; }
+
+  .cal-date {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.45rem;
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+
+  .cal-date strong {
+    font-family: var(--font-display);
+    font-size: 1.45rem;
+    line-height: 1;
+    color: var(--ink);
+  }
+
+  .cal-place {
+    min-height: 2.55rem;
+    font-family: var(--font-display);
+    font-size: 0.98rem;
+    font-weight: 800;
+    line-height: 1.25;
+    color: var(--ink);
+  }
+
+  .cal-time {
+    color: var(--muted);
+    font-size: 0.74rem;
+    line-height: 1.4;
+  }
+
+  .cal-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.32rem;
+    margin-top: auto;
+  }
+
+  .cal-tag {
+    padding: 0.22rem 0.42rem;
+    font-size: 0.53rem;
+    letter-spacing: 0;
+  }
+
+  .calendar-caption {
+    padding: 0.85rem 1rem;
+    color: var(--muted);
+    background: rgba(33,102,165,0.06);
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+
   @media (max-width: 980px) {
     .ticket-wallet {
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1941,6 +2091,17 @@
     .ticket-wallet,
     .drive-panel {
       grid-template-columns: 1fr;
+    }
+
+    .calendar-weekdays,
+    .cal-empty { display: none; }
+    .route-calendar { grid-template-columns: 1fr; }
+    .cal-day { min-height: 0; }
+    .cal-place { min-height: 0; }
+    .cal-date::after {
+      content: attr(data-weekday);
+      margin-left: auto;
+      color: var(--muted);
     }
   }
 </style>
@@ -1986,7 +2147,7 @@
 <nav>
   <a href="#hoy">Hoy</a>
   <a href="#vuelos">Vuelos</a>
-  <a href="#itinerario">Día a día</a>
+  <a href="#itinerario">Calendario</a>
   <a href="#reservas">Reservas</a>
   <a href="#planes">Guía</a>
   <a href="#transporte">Transporte</a>
@@ -2021,17 +2182,17 @@
         <div class="ops-kicker">Bitácora de organización</div>
         <div class="progress-title">Viaje cargando: <em>todas las noches cerradas</em></div>
       </div>
-      <div class="progress-percent">87%</div>
+      <div class="progress-percent">91%</div>
     </div>
     <div class="progress-track" aria-label="Progreso de organización del viaje">
-      <div class="progress-fill" style="width:87%;"></div>
+      <div class="progress-fill" style="width:91%;"></div>
     </div>
     <div class="route-progress" aria-label="Ruta visual del viaje">
       <div class="route-stop done">Buenos Aires</div>
       <div class="route-stop done">Madrid</div>
       <div class="route-stop done">Camino</div>
       <div class="route-stop done">Alicante</div>
-      <div class="route-stop">Bolonia</div>
+      <div class="route-stop done">Bolonia</div>
       <div class="route-stop done">Florencia</div>
       <div class="route-stop done">Roma / Nápoles</div>
       <div class="route-stop done">Madrid</div>
@@ -2045,19 +2206,19 @@
       <div class="passport-stamp">Volver felices</div>
     </div>
     <div class="progress-caption">
-      <strong>Próximo movimiento:</strong> reservar/confirmar el Apennino Shuttle de las 05:30 desde Bolonia hacia Florencia. El vuelo llega a BLQ el 13/08 a las 02:25: hay ventana de espera nocturna, pero conviene no improvisarla.
+      <strong>Otro tramo cerrado:</strong> el Appennino Shuttle sale de BLQ a las 05:30 y llega a Florencia a las 06:50. Queda una espera nocturna de 3 h 05 min desde el aterrizaje; llevar el ticket offline y ubicar la parada antes de salir del aeropuerto.
     </div>
     <div class="progress-metrics">
-      <div class="progress-metric"><div class="num">20/23</div><div class="label">bloques cerrados</div></div>
+      <div class="progress-metric"><div class="num">21/23</div><div class="label">bloques cerrados</div></div>
       <div class="progress-metric"><div class="num">13/08</div><div class="label">llegada BLQ 02:25</div></div>
       <div class="progress-metric"><div class="num">0</div><div class="label">hoteles faltan</div></div>
-      <div class="progress-metric"><div class="num">05:30</div><div class="label">shuttle a mirar</div></div>
+      <div class="progress-metric"><div class="num">05:30</div><div class="label">shuttle confirmado</div></div>
     </div>
     <div class="lodging-strip" aria-label="Próximos bloques por resolver">
       <div class="lodging-chip ok"><div class="lodging-day">09 Ago</div><div class="lodging-place">SCQ → Alicante</div><div class="lodging-state">Renfe comprado</div></div>
       <div class="lodging-chip flex"><div class="lodging-day">09-12 Ago</div><div class="lodging-place">Alicante</div><div class="lodging-state">hotel confirmado</div></div>
       <div class="lodging-chip ok"><div class="lodging-day">12/13 Ago</div><div class="lodging-place">Alicante → Bolonia</div><div class="lodging-state">Air Europa comprado</div></div>
-      <div class="lodging-chip warn"><div class="lodging-day">13 Ago</div><div class="lodging-place">BLQ → Florencia</div><div class="lodging-state">Apennino Shuttle 05:30</div></div>
+      <div class="lodging-chip ok"><div class="lodging-day">13 Ago</div><div class="lodging-place">BLQ → Florencia</div><div class="lodging-state">Appennino Shuttle comprado</div></div>
       <div class="lodging-chip ok"><div class="lodging-day">13-15 Ago</div><div class="lodging-place">Florencia</div><div class="lodging-state">hotel confirmado</div></div>
       <div class="lodging-chip ok"><div class="lodging-day">15 Ago</div><div class="lodging-place">Florencia → Roma</div><div class="lodging-state">Frecciarossa confirmado</div></div>
       <div class="lodging-chip ok"><div class="lodging-day">18 Ago</div><div class="lodging-place">Roma → Nápoles</div><div class="lodging-state">Frecciarossa confirmado</div></div>
@@ -2075,7 +2236,7 @@
   <div class="section-title">Lo que destraba <em>el viaje</em></div>
   <p class="progress-fineprint">Sin duplicar la bitácora: acá quedan solo las acciones vivas. Lo confirmado vive en Reservas y el plan grande vive en Día a día.</p>
   <div class="next-board">
-    <div class="next-card"><div class="step">13 Ago</div><h3>Apennino Shuttle</h3><p>Confirmar el 05:30 desde BLQ a Florencia: parada, equipaje y llegada real.</p></div>
+    <div class="next-card"><div class="step">08 Ago</div><h3>Finisterre</h3><p>Definir excursión, empresa y punto de encuentro para aprovechar el día completo.</p></div>
     <div class="next-card"><div class="step">19 Ago</div><h3>Capri por el día</h3><p>Revisar ferries y clima; reservar solo con ida y vuelta compatibles desde Nápoles.</p></div>
     <div class="next-card"><div class="step">14 Ago</div><h3>Pisa + Cinque Terre</h3><p>Elegir excursión larga desde Florencia, con logística cerrada y horarios claros.</p></div>
     <div class="next-card"><div class="step">Check-ins</div><h3>Ventanas críticas</h3><p>Air Europa, Iberia Express y Plus Ultra. El de Nápoles cierra 45 min antes.</p></div>
@@ -2292,7 +2453,15 @@
         <td>ALC 20:45 → MAD 21:50<br>MAD 00:10 → BLQ 02:25</td>
         <td><span class="status-pill pill-ok">Pagado</span>Trip.com · datos privados en Drive</td>
         <td>Importe oculto</td>
-        <td>Escala nocturna en Madrid: Trip indica recoger equipaje y volver a facturarlo. PDF local: <a class="btn-link" href="docs/vuelos/trip-alc-bolonia.pdf" target="_blank">ver pasaje</a>. En BLQ, mirar <a class="btn-link" href="https://appenninoshuttle.it/" target="_blank">Apennino Shuttle</a> 05:30 a Florencia.</td>
+        <td>Escala nocturna en Madrid: Trip indica recoger equipaje y volver a facturarlo. PDF local: <a class="btn-link" href="docs/vuelos/trip-alc-bolonia.pdf" target="_blank">ver pasaje</a>. El shuttle posterior ya está comprado.</td>
+      </tr>
+      <tr>
+        <td>13 Ago</td>
+        <td><strong>Bolonia BLQ → Florencia</strong><br>Appennino Shuttle · 2 adultos</td>
+        <td>05:30 → 06:50</td>
+        <td><span class="status-pill pill-ok">Comprado</span>Billetes individuales en Drive</td>
+        <td><span class="status-pill pill-ok">Confirmado</span>Importe oculto</td>
+        <td>Bologna Guglielmo Marconi Airport Bus Stop → Firenze Piazzale Montelungo. No reembolsable y modificable. Espera prevista desde el vuelo: 3 h 05 min.</td>
       </tr>
       <tr>
         <td>13-15 Ago</td>
@@ -2399,40 +2568,49 @@
 </section>
 <!-- ITINERARIO -->
 <section id="itinerario">
-  <div class="section-label">Día por día · Italia por Bolonia/Florencia</div>
-  <div class="section-title"><em>Itinerario</em> del Viaje</div>
+  <div class="section-label">Agosto 2026 · 23 días en una mirada</div>
+  <div class="section-title">Calendario <em>del viaje</em></div>
   <div class="itinerary-note">
-    El plan activo: salir de Alicante el 12/08 hacia Florencia o Bolonia según precio y horario. Si entra por Bolonia, el bus Apennino Shuttle pasa a ser pieza crítica.
+    Los horarios que aparecen son salidas, llegadas o ventanas de ingreso relevantes. Las actividades aún no compradas están marcadas como plan, sin mezclarlas con los traslados confirmados.
   </div>
-  <table class="data-table">
-    <thead><tr><th>Día</th><th>Fecha</th><th>Ciudad / recorrido</th><th>Dónde dormimos</th><th>Estado</th></tr></thead>
-    <tbody>
-      <tr><td>1</td><td>Sáb 01 Ago</td><td>Buenos Aires → Madrid</td><td>Noche en vuelo</td><td><span class="status-pill pill-ok">Confirmado</span></td></tr>
-      <tr><td>2</td><td>Dom 02 Ago</td><td>Madrid → Sarria</td><td>Albergue y Pensión il nonno</td><td><span class="status-pill pill-ok">Pagado</span></td></tr>
-      <tr><td>3</td><td>Lun 03 Ago</td><td>Sarria → Portomarín</td><td>Pensión Portomiño</td><td><span class="status-pill pill-ok">Pagado</span></td></tr>
-      <tr><td>4</td><td>Mar 04 Ago</td><td>Portomarín → Palas de Rei</td><td>Casa Camiño II</td><td><span class="status-pill pill-ok">Reservado</span></td></tr>
-      <tr><td>5</td><td>Mié 05 Ago</td><td>Palas de Rei → Arzúa</td><td>Hotel La Puerta de Arzúa</td><td><span class="status-pill pill-ok">Reservado</span></td></tr>
-      <tr><td>6</td><td>Jue 06 Ago</td><td>Arzúa → O Pedrouzo</td><td>Pension 23-Vinte e Tres</td><td><span class="status-pill pill-ok">Pagado</span></td></tr>
-      <tr><td>7</td><td>Vie 07 Ago</td><td>O Pedrouzo → Santiago</td><td>Airbnb · Santiago noche 1</td><td><span class="status-pill pill-ok">Confirmado</span></td></tr>
-      <tr><td>8</td><td>Sáb 08 Ago</td><td>Santiago / Finisterre</td><td>Airbnb · Santiago noche 2</td><td><span class="status-pill pill-ok">Confirmado</span></td></tr>
-      <tr><td>9</td><td>Dom 09 Ago</td><td>Santiago → Alicante</td><td>La Casa del Montaraz · noche 1</td><td><span class="status-pill pill-ok">Tren + hotel</span></td></tr>
-      <tr><td>10</td><td>Lun 10 Ago</td><td>Alicante</td><td>La Casa del Montaraz · noche 2</td><td><span class="status-pill pill-ok">Confirmado</span></td></tr>
-      <tr><td>11</td><td>Mar 11 Ago</td><td>Alicante</td><td>La Casa del Montaraz · noche 3</td><td><span class="status-pill pill-ok">Confirmado</span></td></tr>
-      <tr><td>12</td><td>Mié 12 Ago</td><td>Alicante → Madrid → Bolonia</td><td>Noche en tránsito / llegada BLQ 02:25</td><td><span class="status-pill pill-ok">Vuelo comprado</span></td></tr>
-      <tr><td>13</td><td>Jue 13 Ago</td><td>Bolonia → Florencia + descanso</td><td>Allegroitalia San Gallo · noche 1</td><td><span class="status-pill pill-ok">Hotel confirmado</span></td></tr>
-      <tr><td>14</td><td>Vie 14 Ago</td><td>Excursión Pisa + Cinque Terre</td><td>Allegroitalia San Gallo · noche 2</td><td><span class="status-pill pill-ok">Hotel confirmado</span> · tour pendiente</td></tr>
-      <tr><td>15</td><td>Sáb 15 Ago</td><td>Florencia → Roma · Frecciarossa 9519 · 10:14</td><td>Raeli Hotel Noto · noche 1</td><td><span class="status-pill pill-ok">Tren + hotel confirmados</span></td></tr>
-      <tr><td>16</td><td>Dom 16 Ago</td><td>Roma</td><td>Raeli Hotel Noto · noche 2</td><td><span class="status-pill pill-ok">Confirmado</span></td></tr>
-      <tr><td>17</td><td>Lun 17 Ago</td><td>Roma</td><td>Raeli Hotel Noto · noche 3</td><td><span class="status-pill pill-ok">Confirmado</span></td></tr>
-      <tr><td>18</td><td>Mar 18 Ago</td><td>Roma → Nápoles · Frecciarossa 8335 · 10:20</td><td>Napolit'amo Hotel Medina · noche 1</td><td><span class="status-pill pill-ok">Tren + hotel confirmados</span></td></tr>
-      <tr><td>19</td><td>Mié 19 Ago</td><td>Nápoles / Capri</td><td>Napolit'amo Hotel Medina · noche 2</td><td><span class="status-pill pill-ok">Hotel confirmado</span></td></tr>
-      <tr><td>20</td><td>Jue 20 Ago</td><td>Nápoles → Madrid · I2 1832</td><td>Leonardo Madrid City Center · noche 1</td><td><span class="status-pill pill-ok">Vuelo + hotel</span></td></tr>
-      <tr><td>21</td><td>Vie 21 Ago</td><td>Madrid</td><td>Leonardo Madrid City Center · noche 2</td><td><span class="status-pill pill-ok">Confirmado</span></td></tr>
-      <tr><td>22</td><td>Sáb 22 Ago</td><td>Madrid · vuelo PU501 23:10</td><td>Noche en vuelo</td><td><span class="status-pill pill-ok">Confirmado</span></td></tr>
-    </tbody>
-  </table>
-  <div class="itinerary-note" style="margin-top:2rem;">
-    <strong>Mapa de noches:</strong> 22 noches resueltas: vuelos nocturnos y todos los alojamientos confirmados. Ya no falta ningún hotel.
+
+  <div class="calendar-legend" aria-label="Leyenda de transportes">
+    <span class="tag-flight">Avión</span><span class="tag-train">Tren</span><span class="tag-bus">Bus</span><span class="tag-walk">Caminata</span><span class="tag-ferry">Ferry</span><span class="tag-plan">A confirmar</span><span class="tag-stay">Estadía</span>
+  </div>
+
+  <div class="calendar-shell">
+    <div class="calendar-weekdays" aria-hidden="true"><div>Lunes</div><div>Martes</div><div>Miércoles</div><div>Jueves</div><div>Viernes</div><div>Sábado</div><div>Domingo</div></div>
+    <div class="route-calendar">
+      <div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div>
+
+      <article class="cal-day is-flight"><div class="cal-date" data-weekday="Sábado"><strong>01</strong><span>Día 1</span></div><div class="cal-place">Buenos Aires → Madrid</div><div class="cal-time">PU502 · salida EZE 13:25<br>Noche en vuelo</div><div class="cal-tags"><span class="cal-tag tag-flight">Avión 13:25</span></div></article>
+      <article class="cal-day is-train"><div class="cal-date" data-weekday="Domingo"><strong>02</strong><span>Día 2</span></div><div class="cal-place">Madrid → Sarria</div><div class="cal-time">MAD 06:30 · Renfe 17:03 → 21:02<br>Hotel hasta 22:00</div><div class="cal-tags"><span class="cal-tag tag-flight">Llegada</span><span class="cal-tag tag-train">Tren</span></div></article>
+
+      <article class="cal-day is-walk"><div class="cal-date" data-weekday="Lunes"><strong>03</strong><span>Día 3</span></div><div class="cal-place">Sarria → Portomarín</div><div class="cal-time">22 km · salida temprano<br>Ingreso 14:00–19:00</div><div class="cal-tags"><span class="cal-tag tag-walk">Caminata</span><span class="cal-tag tag-stay">Portomiño</span></div></article>
+      <article class="cal-day is-walk"><div class="cal-date" data-weekday="Martes"><strong>04</strong><span>Día 4</span></div><div class="cal-place">Portomarín → Palas de Rei</div><div class="cal-time">25 km · salida temprano<br>Ingreso 14:00–22:00</div><div class="cal-tags"><span class="cal-tag tag-walk">Caminata</span><span class="cal-tag tag-stay">Casa Camiño II</span></div></article>
+      <article class="cal-day is-walk"><div class="cal-date" data-weekday="Miércoles"><strong>05</strong><span>Día 5</span></div><div class="cal-place">Palas de Rei → Arzúa</div><div class="cal-time">29 km · salida temprano<br>Ingreso 14:00–18:00</div><div class="cal-tags"><span class="cal-tag tag-walk">Caminata</span><span class="cal-tag tag-stay">La Puerta</span></div></article>
+      <article class="cal-day is-walk"><div class="cal-date" data-weekday="Jueves"><strong>06</strong><span>Día 6</span></div><div class="cal-place">Arzúa → O Pedrouzo</div><div class="cal-time">19 km · salida temprano<br>Ingreso 13:00–16:30</div><div class="cal-tags"><span class="cal-tag tag-walk">Caminata</span><span class="cal-tag tag-stay">23-Vinte e Tres</span></div></article>
+      <article class="cal-day is-walk"><div class="cal-date" data-weekday="Viernes"><strong>07</strong><span>Día 7</span></div><div class="cal-place">O Pedrouzo → Santiago</div><div class="cal-time">19/20 km · llegada del Camino<br>Airbnb desde 15:00</div><div class="cal-tags"><span class="cal-tag tag-walk">Caminata</span><span class="cal-tag tag-stay">Santiago</span></div></article>
+      <article class="cal-day is-plan"><div class="cal-date" data-weekday="Sábado"><strong>08</strong><span>Día 8</span></div><div class="cal-place">Santiago / Finisterre</div><div class="cal-time">Excursión de día completo<br>Horario a confirmar</div><div class="cal-tags"><span class="cal-tag tag-plan">Plan</span><span class="cal-tag tag-stay">Santiago</span></div></article>
+      <article class="cal-day is-train"><div class="cal-date" data-weekday="Domingo"><strong>09</strong><span>Día 9</span></div><div class="cal-place">Santiago → Alicante</div><div class="cal-time">Renfe 07:43 → 14:28<br>Hotel desde 14:00</div><div class="cal-tags"><span class="cal-tag tag-train">Tren</span><span class="cal-tag tag-stay">Alicante</span></div></article>
+
+      <article class="cal-day"><div class="cal-date" data-weekday="Lunes"><strong>10</strong><span>Día 10</span></div><div class="cal-place">Alicante</div><div class="cal-time">Día con Marita y su amiga<br>La Casa del Montaraz</div><div class="cal-tags"><span class="cal-tag tag-stay">Estadía</span></div></article>
+      <article class="cal-day"><div class="cal-date" data-weekday="Martes"><strong>11</strong><span>Día 11</span></div><div class="cal-place">Alicante</div><div class="cal-time">Último día completo<br>Preparar vuelo y equipaje</div><div class="cal-tags"><span class="cal-tag tag-stay">Estadía</span></div></article>
+      <article class="cal-day is-flight"><div class="cal-date" data-weekday="Miércoles"><strong>12</strong><span>Día 12</span></div><div class="cal-place">Alicante → Madrid → Bolonia</div><div class="cal-time">UX4050 20:45 · UX1183 00:10<br>Llegada BLQ 02:25</div><div class="cal-tags"><span class="cal-tag tag-flight">Avión</span><span class="cal-tag tag-stay">Noche en tránsito</span></div></article>
+      <article class="cal-day is-bus"><div class="cal-date" data-weekday="Jueves"><strong>13</strong><span>Día 13</span></div><div class="cal-place">Bolonia → Florencia</div><div class="cal-time">Appennino Shuttle 05:30 → 06:50<br>Hotel desde 15:00</div><div class="cal-tags"><span class="cal-tag tag-bus">Bus confirmado</span><span class="cal-tag tag-stay">Florencia</span></div></article>
+      <article class="cal-day is-plan"><div class="cal-date" data-weekday="Viernes"><strong>14</strong><span>Día 14</span></div><div class="cal-place">Pisa + Cinque Terre</div><div class="cal-time">Excursión desde Florencia<br>Horario a confirmar</div><div class="cal-tags"><span class="cal-tag tag-plan">Plan</span><span class="cal-tag tag-stay">Florencia</span></div></article>
+      <article class="cal-day is-train"><div class="cal-date" data-weekday="Sábado"><strong>15</strong><span>Día 15</span></div><div class="cal-place">Florencia → Roma</div><div class="cal-time">FR9519 · 10:14 → 12:10<br>Hotel desde 14:00</div><div class="cal-tags"><span class="cal-tag tag-train">Tren</span><span class="cal-tag tag-stay">Roma</span></div></article>
+      <article class="cal-day"><div class="cal-date" data-weekday="Domingo"><strong>16</strong><span>Día 16</span></div><div class="cal-place">Roma</div><div class="cal-time">Día completo<br>Raeli Hotel Noto</div><div class="cal-tags"><span class="cal-tag tag-stay">Estadía</span></div></article>
+
+      <article class="cal-day"><div class="cal-date" data-weekday="Lunes"><strong>17</strong><span>Día 17</span></div><div class="cal-place">Roma</div><div class="cal-time">Día completo<br>Ajedrez 18:00 opcional</div><div class="cal-tags"><span class="cal-tag tag-stay">Estadía</span></div></article>
+      <article class="cal-day is-train"><div class="cal-date" data-weekday="Martes"><strong>18</strong><span>Día 18</span></div><div class="cal-place">Roma → Nápoles</div><div class="cal-time">FR8335 · 10:20 → 11:33<br>Hotel desde 15:00</div><div class="cal-tags"><span class="cal-tag tag-train">Tren</span><span class="cal-tag tag-stay">Nápoles</span></div></article>
+      <article class="cal-day is-plan"><div class="cal-date" data-weekday="Miércoles"><strong>19</strong><span>Día 19</span></div><div class="cal-place">Nápoles / Capri</div><div class="cal-time">Ferry ida y vuelta<br>Según clima y horarios</div><div class="cal-tags"><span class="cal-tag tag-ferry">Ferry</span><span class="cal-tag tag-plan">A confirmar</span></div></article>
+      <article class="cal-day is-flight"><div class="cal-date" data-weekday="Jueves"><strong>20</strong><span>Día 20</span></div><div class="cal-place">Nápoles → Madrid</div><div class="cal-time">I2 1832 · 14:50 → 17:40<br>Hotel disponible desde 15:00</div><div class="cal-tags"><span class="cal-tag tag-flight">Avión</span><span class="cal-tag tag-stay">Madrid</span></div></article>
+      <article class="cal-day"><div class="cal-date" data-weekday="Viernes"><strong>21</strong><span>Día 21</span></div><div class="cal-place">Madrid</div><div class="cal-time">Día completo · Tax Free<br>Ajedrez 18:30 opcional</div><div class="cal-tags"><span class="cal-tag tag-stay">Estadía</span></div></article>
+      <article class="cal-day is-flight"><div class="cal-date" data-weekday="Sábado"><strong>22</strong><span>Día 22</span></div><div class="cal-place">Madrid → Buenos Aires</div><div class="cal-time">Hotel hasta 12:00<br>PU501 · salida 23:10</div><div class="cal-tags"><span class="cal-tag tag-flight">Avión 23:10</span></div></article>
+      <article class="cal-day is-flight"><div class="cal-date" data-weekday="Domingo"><strong>23</strong><span>Regreso</span></div><div class="cal-place">Buenos Aires</div><div class="cal-time">Llegada a Ezeiza 06:45<br>Fin del viaje</div><div class="cal-tags"><span class="cal-tag tag-flight">Llegada</span></div></article>
+    </div>
+    <div class="calendar-caption"><strong>22 noches resueltas.</strong> Los alojamientos están confirmados; las actividades con amarillo siguen abiertas. Los códigos privados, QR y billetes completos permanecen en Drive.</div>
   </div>
 </section>
 
@@ -2547,7 +2725,7 @@
   <div class="city-plan-grid">
     <div class="city-plan"><div class="city-plan-body"><div class="city-plan-title">Santiago</div><div class="city-plan-meta">07-09 Ago · Airbnb casco antiguo</div><ul class="city-plan-list"><li><strong>Estación:</strong> llegar al tren SCQ→Alicante 30-40 min antes; salida 07:43.</li><li><strong>Finisterre:</strong> excursión de día completo; revisar punto de salida y horario 24h antes.</li><li><strong>Comida:</strong> pulpo, tarta de Santiago, mercado de Abastos.</li><li><strong>Foto:</strong> Obradoiro con mochilas y Faro de Finisterre si hacen excursión.</li></ul><a class="btn-link" href="https://www.civitatis.com/es/santiago-de-compostela/excursion-finisterre-costa-morte/" target="_blank">Finisterre</a></div></div>
     <div class="city-plan"><div class="city-plan-body"><div class="city-plan-title">Alicante</div><div class="city-plan-meta">09-12 Ago · La Casa del Montaraz</div><ul class="city-plan-list"><li><strong>Salida 12/08:</strong> vuelo ALC 20:45. Con equipaje, objetivo aeropuerto 18:15-18:30.</li><li><strong>Hospedaje → ALC:</strong> estimado 14-16 km; taxi/auto 20-30 min sin tráfico. En bus C-6, salir con más margen.</li><li><strong>Hora sugerida:</strong> taxi 17:45-18:00; bus 17:00-17:15 y verificar parada exacta.</li><li><strong>Foto:</strong> Castillo de Santa Bárbara con el puerto de fondo.</li></ul><a class="btn-link" href="https://www.google.com/maps/search/?api=1&query=Carrer+Dr.+Buades+Alicante+to+Alicante+Airport" target="_blank">Ruta a ALC</a></div></div>
-    <div class="city-plan"><div class="city-plan-body"><div class="city-plan-title">Bolonia → Florencia</div><div class="city-plan-meta">13 Ago · llegada BLQ 02:25</div><ul class="city-plan-list"><li><strong>Vuelo:</strong> ALC 20:45 → MAD 21:50; MAD 00:10 → BLQ 02:25.</li><li><strong>Shuttle mirado:</strong> Apennino Shuttle 05:30. Ventana aprox. 3h05 en madrugada.</li><li><strong>Clave:</strong> reservar solo si confirma fecha 13/08, parada en aeropuerto y equipaje.</li><li><strong>Plan B:</strong> Marconi Express/tren cuando arranque el transporte diurno, o descanso cerca de BLQ si el cuerpo pide pausa.</li></ul><a class="btn-link" href="https://appenninoshuttle.it/" target="_blank">Apennino Shuttle</a></div></div>
+    <div class="city-plan"><div class="city-plan-body"><div class="city-plan-title">Bolonia → Florencia</div><div class="city-plan-meta">13 Ago · llegada BLQ 02:25 · shuttle confirmado</div><ul class="city-plan-list"><li><strong>Vuelo:</strong> ALC 20:45 → MAD 21:50; MAD 00:10 → BLQ 02:25.</li><li><strong>Bus:</strong> Appennino Shuttle 05:30 → 06:50, desde Bologna Guglielmo Marconi Airport Bus Stop hasta Firenze Piazzale Montelungo.</li><li><strong>Espera:</strong> 3h05 de madrugada; mantener equipaje y documentos a mano.</li><li><strong>Billetes:</strong> uno por pasajero, no reembolsables y modificables; guardar copia offline desde Drive.</li></ul><a class="btn-link" href="https://appenninoshuttle.it/" target="_blank">Appennino Shuttle</a></div></div>
     <div class="city-plan"><div class="city-plan-body"><div class="city-plan-title">Pisa + Cinque Terre</div><div class="city-plan-meta">14 Ago · excursión desde Florencia</div><ul class="city-plan-list"><li><strong>Margen:</strong> tour largo; dormir bien la noche anterior y salir livianos.</li><li><strong>Clave:</strong> confirmar si incluye tren/barco y cuánto tiempo real hay en cada pueblo.</li><li><strong>Comida:</strong> focaccia/pesto en Liguria; algo simple por tiempos.</li><li><strong>Foto:</strong> Torre de Pisa y Manarola/Riomaggiore al atardecer si el horario acompaña.</li></ul><a class="btn-link" href="https://www.parconazionale5terre.it/" target="_blank">Cinque Terre oficial</a></div></div>
     <div class="city-plan"><div class="city-plan-body"><div class="city-plan-title">Roma</div><div class="city-plan-meta">15-18 Ago · Raeli Hotel Noto · 3 noches</div><ul class="city-plan-list"><li><strong>Tren:</strong> llegar 20-30 min antes a trenes rápidos; validar estación exacta.</li><li><strong>Alertas:</strong> calor, fuentes, entradas horarias; no llenar ambos días.</li><li><strong>Comida:</strong> carbonara, cacio e pepe, supplì.</li><li><strong>Foto:</strong> Coliseo exterior, Fontana di Trevi temprano, Panteón.</li></ul><a class="btn-link" href="https://colosseo.it/" target="_blank">Coliseo</a> <a class="btn-link" href="https://www.museivaticani.va/" target="_blank">Vaticano</a></div></div>
     <div class="city-plan"><div class="city-plan-body"><div class="city-plan-title">Nápoles + Capri</div><div class="city-plan-meta">18-20 Ago · Napolit'amo Hotel Medina</div><ul class="city-plan-list"><li><strong>Tren:</strong> Roma→Nápoles con 20-30 min de margen.</li><li><strong>Capri:</strong> llegar al ferry 30-45 min antes; revisar clima y mar.</li><li><strong>Comida:</strong> pizza napolitana, sfogliatella, café.</li><li><strong>Foto:</strong> Spaccanapoli, Vesubio desde la bahía, Faraglioni si van a Capri.</li></ul><a class="btn-link" href="https://www.capri.com/en/ferry-schedule" target="_blank">Ferries Capri</a></div></div>
@@ -2594,13 +2772,13 @@
 <section id="transporte">
   <div class="section-label">Logística interna</div>
   <div class="section-title">Transporte <em>entre ciudades</em></div>
-  <div class="itinerary-note">El auto no es traslado principal. Alicante → Bolonia ya está comprado; ahora la pieza sensible es BLQ 02:25 → Florencia, idealmente con Apennino Shuttle 05:30 si fecha, parada y equipaje cierran.</div>
+  <div class="itinerary-note">El auto no es traslado principal. Alicante → Bolonia y el Appennino Shuttle 05:30 → 06:50 a Florencia ya están comprados. Los documentos completos quedan en la carpeta privada.</div>
   <div class="transport-item"><div class="transport-icon">✈</div><div class="transport-body"><div class="transport-route">EZE → MAD · PU502</div><div class="transport-meta">01 Ago · confirmado</div><div class="transport-status badge-confirmed">Comprado</div></div></div>
   <div class="transport-item"><div class="transport-icon">🚆</div><div class="transport-body"><div class="transport-route">MAD → Sarria</div><div class="transport-meta">02 Ago · Cercanías + Renfe 04375/12646</div><div class="transport-status badge-confirmed">Comprado</div></div></div>
   <div class="transport-item"><div class="transport-icon">🚶</div><div class="transport-body"><div class="transport-route">Sarria → Santiago</div><div class="transport-meta">03 → 07 Ago · 5 etapas</div><div class="transport-status badge-confirmed">Hospedajes completos</div></div></div>
   <div class="transport-item"><div class="transport-icon">🚆</div><div class="transport-body"><div class="transport-route">Santiago → Alicante</div><div class="transport-meta">09 Ago · 07:43 → 14:28 · Renfe 04364 + 05312</div><div class="transport-status badge-confirmed">Comprado</div></div></div>
   <div class="transport-item"><div class="transport-icon">✈</div><div class="transport-body"><div class="transport-route">Alicante → Madrid → Bolonia</div><div class="transport-meta">12/13 Ago · Air Europa UX4050 + UX1183 · ALC 20:45 → BLQ 02:25</div><div class="transport-status badge-confirmed">Comprado</div></div></div>
-  <div class="transport-item"><div class="transport-icon">🚌</div><div class="transport-body"><div class="transport-route">Bolonia BLQ → Florencia</div><div class="transport-meta">13 Ago · llegada 02:25 · mirar Apennino Shuttle 05:30</div><div class="transport-status badge-pending">Reservar</div></div></div>
+  <div class="transport-item"><div class="transport-icon">🚌</div><div class="transport-body"><div class="transport-route">Bolonia BLQ → Florencia</div><div class="transport-meta">13 Ago · Appennino Shuttle 05:30 → 06:50 · Airport Bus Stop → Piazzale Montelungo</div><div class="transport-status badge-confirmed">Comprado</div></div></div>
   <div class="transport-item"><div class="transport-icon">🚌</div><div class="transport-body"><div class="transport-route">Florencia → Pisa + Cinque Terre → Florencia</div><div class="transport-meta">14 Ago · excursión de día completo a reservar</div><div class="transport-status badge-pending">Reservar tour</div></div></div>
   <div class="transport-item"><div class="transport-icon">🚄</div><div class="transport-body"><div class="transport-route">Florencia → Roma · Frecciarossa 9519</div><div class="transport-meta">15 Ago · Firenze SMN 10:14 → Roma Termini 12:10 · vagón 9 · 9A/10A</div><div class="transport-status badge-confirmed">Comprado</div></div></div>
   <div class="transport-item"><div class="transport-icon">🚄</div><div class="transport-body"><div class="transport-route">Roma → Nápoles · Frecciarossa 8335</div><div class="transport-meta">18 Ago · Roma Termini 10:20 → Napoli Centrale 11:33 · vagón 7 · 3C/3D</div><div class="transport-status badge-confirmed">Comprado</div></div></div>
@@ -2649,6 +2827,11 @@
       <div class="ticket-brand"><span>Air Europa</span><span class="ticket-status">Emitido</span></div>
       <div class="ticket-route"><h3>Alicante → Bolonia</h3><p>UX4050 + UX1183, escala nocturna en Madrid y llegada a BLQ.</p></div>
       <div class="ticket-meta"><div><span>Fecha</span><strong>12/13 Ago</strong></div><div><span>Horario</span><strong>20:45 → 02:25</strong></div></div>
+    </article>
+    <article class="ticket-card bus" data-watermark="BUS">
+      <div class="ticket-brand"><span>Appennino Shuttle</span><span class="ticket-status">Comprado</span></div>
+      <div class="ticket-route"><h3>Bolonia BLQ → Florencia</h3><p>Airport Bus Stop hacia Firenze Piazzale Montelungo · 2 pasajeros.</p></div>
+      <div class="ticket-meta"><div><span>Fecha</span><strong>13 Ago</strong></div><div><span>Horario</span><strong>05:30 → 06:50</strong></div></div>
     </article>
     <article class="ticket-card train" data-watermark="FR">
       <div class="ticket-brand"><span>Trenitalia · Frecciarossa</span><span class="ticket-status">Comprado</span></div>
@@ -2712,7 +2895,6 @@
   <div class="section-label">Pendientes reales</div>
   <div class="section-title">Decisiones <em>abiertas</em></div>
   <div class="decision-card"><div class="decision-date">08 Ago</div><div><div class="decision-title">Finisterre / Costa da Morte</div><div class="decision-meta">Elegir empresa y confirmar punto de salida. Es día completo: no mezclar con otro plan grande.</div></div></div>
-  <div class="decision-card"><div class="decision-date">13 Ago</div><div><div class="decision-title">BLQ → Florencia</div><div class="decision-meta">Vuelo comprado: llega 02:25. Revisar/reservar Apennino Shuttle 05:30; si no cierra, definir plan B diurno desde Bolonia.</div></div></div>
   <div class="decision-card"><div class="decision-date">14 Ago</div><div><div class="decision-title">Excursión Pisa + Cinque Terre</div><div class="decision-meta">Reservar tour de día completo desde Florencia. Confirmar duración, pueblos incluidos, si hay barco/tren y punto de encuentro.</div></div></div>
   <div class="decision-card"><div class="decision-date">18-20 Ago</div><div><div class="decision-title">Capri desde Nápoles</div><div class="decision-meta">Plan base: dormir en Nápoles y cruzar en ferry ida/vuelta. Revisar clima y reservar si conviene.</div></div></div>
 
