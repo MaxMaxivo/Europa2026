@@ -1715,6 +1715,59 @@
     .camino-guide-preview { max-height: 520px; }
   }
 
+  /* TAX FREE + CHESS ROUTE */
+  .taxfree-grid,
+  .chess-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 1.25rem;
+  }
+  .chess-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .taxfree-step,
+  .chess-stop {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    min-height: 210px;
+    padding: 1.1rem;
+    background: rgba(255,255,255,0.78);
+    border: 1px solid rgba(16,32,51,0.11);
+    border-top: 4px solid var(--accent-blue);
+    border-radius: 8px;
+  }
+  .taxfree-step.critical { border-top-color: var(--accent); background: rgba(242,198,109,0.13); }
+  .taxfree-step > span,
+  .chess-date {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: var(--accent-blue);
+  }
+  .taxfree-step h3,
+  .chess-stop h3 { font-size: 1.05rem; line-height: 1.25; }
+  .taxfree-step p,
+  .chess-stop p { color: var(--muted); line-height: 1.55; }
+  .chess-stop.featured { border-top-color: var(--accent); }
+  .chess-stop > div:last-child { margin-top: auto; }
+  .taxfree-callout {
+    margin-top: 1rem;
+    padding: 1rem 1.1rem;
+    border-left: 4px solid var(--accent);
+    background: rgba(17,94,89,0.07);
+    line-height: 1.6;
+  }
+  .source-row { display: flex; flex-wrap: wrap; gap: 0.65rem; margin-top: 1rem; }
+  @media (max-width: 900px) {
+    .taxfree-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 680px) {
+    .taxfree-grid,
+    .chess-grid { grid-template-columns: 1fr; }
+    .taxfree-step,
+    .chess-stop { min-height: 0; }
+  }
   /* TICKET WALLET */
   .local-tax-strip {
     display: grid;
@@ -1939,6 +1992,8 @@
   <a href="#transporte">Transporte</a>
   <a href="#altitud-camino">Camino</a>
   <a href="#guia-camino">Guía práctica</a>
+  <a href="#tax-free">Tax Free</a>
+  <a href="#ajedrez">Ajedrez</a>
   <a href="#documentos-privados">Docs</a>
   <a href="#tickets">Tickets</a>
   <a href="#checklist">Checklist</a>
@@ -1966,10 +2021,10 @@
         <div class="ops-kicker">Bitácora de organización</div>
         <div class="progress-title">Viaje cargando: <em>todas las noches cerradas</em></div>
       </div>
-      <div class="progress-percent">78%</div>
+      <div class="progress-percent">87%</div>
     </div>
     <div class="progress-track" aria-label="Progreso de organización del viaje">
-      <div class="progress-fill" style="width:78%;"></div>
+      <div class="progress-fill" style="width:87%;"></div>
     </div>
     <div class="route-progress" aria-label="Ruta visual del viaje">
       <div class="route-stop done">Buenos Aires</div>
@@ -1993,7 +2048,7 @@
       <strong>Próximo movimiento:</strong> reservar/confirmar el Apennino Shuttle de las 05:30 desde Bolonia hacia Florencia. El vuelo llega a BLQ el 13/08 a las 02:25: hay ventana de espera nocturna, pero conviene no improvisarla.
     </div>
     <div class="progress-metrics">
-      <div class="progress-metric"><div class="num">18/23</div><div class="label">bloques cerrados</div></div>
+      <div class="progress-metric"><div class="num">20/23</div><div class="label">bloques cerrados</div></div>
       <div class="progress-metric"><div class="num">13/08</div><div class="label">llegada BLQ 02:25</div></div>
       <div class="progress-metric"><div class="num">0</div><div class="label">hoteles faltan</div></div>
       <div class="progress-metric"><div class="num">05:30</div><div class="label">shuttle a mirar</div></div>
@@ -2004,6 +2059,8 @@
       <div class="lodging-chip ok"><div class="lodging-day">12/13 Ago</div><div class="lodging-place">Alicante → Bolonia</div><div class="lodging-state">Air Europa comprado</div></div>
       <div class="lodging-chip warn"><div class="lodging-day">13 Ago</div><div class="lodging-place">BLQ → Florencia</div><div class="lodging-state">Apennino Shuttle 05:30</div></div>
       <div class="lodging-chip ok"><div class="lodging-day">13-15 Ago</div><div class="lodging-place">Florencia</div><div class="lodging-state">hotel confirmado</div></div>
+      <div class="lodging-chip ok"><div class="lodging-day">15 Ago</div><div class="lodging-place">Florencia → Roma</div><div class="lodging-state">Frecciarossa confirmado</div></div>
+      <div class="lodging-chip ok"><div class="lodging-day">18 Ago</div><div class="lodging-place">Roma → Nápoles</div><div class="lodging-state">Frecciarossa confirmado</div></div>
       <div class="lodging-chip ok"><div class="lodging-day">15-22 Ago</div><div class="lodging-place">Roma · Nápoles · Madrid</div><div class="lodging-state">hoteles confirmados</div></div>
     </div>
     <div class="progress-fineprint">
@@ -2019,7 +2076,7 @@
   <p class="progress-fineprint">Sin duplicar la bitácora: acá quedan solo las acciones vivas. Lo confirmado vive en Reservas y el plan grande vive en Día a día.</p>
   <div class="next-board">
     <div class="next-card"><div class="step">13 Ago</div><h3>Apennino Shuttle</h3><p>Confirmar el 05:30 desde BLQ a Florencia: parada, equipaje y llegada real.</p></div>
-    <div class="next-card"><div class="step">15 Ago</div><h3>Florencia → Roma</h3><p>Reservar el tren rápido y definir horario de salida hacia Raeli Hotel Noto.</p></div>
+    <div class="next-card"><div class="step">19 Ago</div><h3>Capri por el día</h3><p>Revisar ferries y clima; reservar solo con ida y vuelta compatibles desde Nápoles.</p></div>
     <div class="next-card"><div class="step">14 Ago</div><h3>Pisa + Cinque Terre</h3><p>Elegir excursión larga desde Florencia, con logística cerrada y horarios claros.</p></div>
     <div class="next-card"><div class="step">Check-ins</div><h3>Ventanas críticas</h3><p>Air Europa, Iberia Express y Plus Ultra. El de Nápoles cierra 45 min antes.</p></div>
     <div class="next-card"><div class="step">Privado</div><h3>Carpeta Drive</h3><p>Drive restringido enlazado para pasaportes, tickets, QR y documentación sensible.</p></div>
@@ -2246,6 +2303,13 @@
         <td>Via Lorenzo Il Magnifico 2 · Tel. +39 055 463871 · desayuno incluido · no reembolsable. <strong>Abonar € 28 de impuesto municipal en destino.</strong> <a class="btn-link" href="https://www.google.com/maps/search/?api=1&query=Allegroitalia+San+Gallo+Firenze" target="_blank">Mapa y fotos</a></td>
       </tr>
       <tr>
+        <td>15 Ago</td>
+        <td><strong>Firenze S. M. Novella → Roma Termini</strong><br>Trenitalia Frecciarossa 9519 · Freccia 2X1 Standard</td>
+        <td>10:14 → 12:10<br>Duración 1 h 56 min</td>
+        <td><span class="status-pill pill-ok">Comprado</span>Billete electrónico · códigos privados en Drive</td>
+        <td><span class="status-pill pill-ok">Pagado</span>Importe oculto</td>
+        <td>Vagón 9 · asientos 9A y 10A. Check-out sugerido 09:20; salir del hotel 09:25 y apuntar a la estación 09:45. Acceso a vías con el boleto; las puertas del tren cierran 1 minuto antes. <a class="btn-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=Via+Lorenzo+Il+Magnifico+2+Firenze&amp;destination=Firenze+Santa+Maria+Novella" target="_blank">Hotel → estación</a></td>
+      </tr>      <tr>
         <td>15-18 Ago</td>
         <td><strong><a href="https://www.booking.com/hotel/it/noto.html" target="_blank">Raeli Hotel Noto</a></strong><br>Roma · 3 noches · Habitación Doble Económica</td>
         <td>Entrada desde 14:00<br>Salida hasta 11:00</td>
@@ -2254,6 +2318,13 @@
         <td>Via Calatafimi 10/b, Termini · Tel. +39 06 4890 0522 · desayuno incluido · no reembolsable. <strong>Abonar € 36 de impuesto municipal en destino.</strong> <a class="btn-link" href="https://www.google.com/maps/search/?api=1&query=Raeli+Hotel+Noto+Rome" target="_blank">Mapa y fotos</a></td>
       </tr>
       <tr>
+        <td>18 Ago</td>
+        <td><strong>Roma Termini → Napoli Centrale</strong><br>Trenitalia Frecciarossa 8335 · FrecciaDAYS Standard</td>
+        <td>10:20 → 11:33<br>Duración 1 h 13 min</td>
+        <td><span class="status-pill pill-ok">Comprado</span>2 billetes electrónicos · códigos privados en Drive</td>
+        <td><span class="status-pill pill-ok">Pagado</span>Importe oculto</td>
+        <td>Vagón 7 · Marita 3C · Max 3D. Salir del Hotel Noto cerca de 09:35 y apuntar a Termini 09:50. Desde Napoli Centrale: metro L1 Garibaldi → Municipio más caminata, o taxi; estimar 20-30 min hasta el hotel. Check-in desde 15:00: consultar guardaequipaje. <a class="btn-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=Via+Calatafimi+10b+Roma&amp;destination=Roma+Termini" target="_blank">Hotel → Termini</a> <a class="btn-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=Napoli+Centrale&amp;destination=Via+San+Tommaso+D%27Aquino+15+Napoli" target="_blank">Estación → hotel</a></td>
+      </tr>      <tr>
         <td>18-20 Ago</td>
         <td><strong><a href="https://www.booking.com/hotel/it/napolit-amo.html" target="_blank">Napolit'amo Hotel Medina</a></strong><br>Nápoles · 2 noches · Habitación Doble Clásica</td>
         <td>Entrada 15:00<br>Salida 11:00</td>
@@ -2350,10 +2421,10 @@
       <tr><td>12</td><td>Mié 12 Ago</td><td>Alicante → Madrid → Bolonia</td><td>Noche en tránsito / llegada BLQ 02:25</td><td><span class="status-pill pill-ok">Vuelo comprado</span></td></tr>
       <tr><td>13</td><td>Jue 13 Ago</td><td>Bolonia → Florencia + descanso</td><td>Allegroitalia San Gallo · noche 1</td><td><span class="status-pill pill-ok">Hotel confirmado</span></td></tr>
       <tr><td>14</td><td>Vie 14 Ago</td><td>Excursión Pisa + Cinque Terre</td><td>Allegroitalia San Gallo · noche 2</td><td><span class="status-pill pill-ok">Hotel confirmado</span> · tour pendiente</td></tr>
-      <tr><td>15</td><td>Sáb 15 Ago</td><td>Florencia → Roma</td><td>Raeli Hotel Noto · noche 1</td><td><span class="status-pill pill-ok">Hotel confirmado</span></td></tr>
+      <tr><td>15</td><td>Sáb 15 Ago</td><td>Florencia → Roma · Frecciarossa 9519 · 10:14</td><td>Raeli Hotel Noto · noche 1</td><td><span class="status-pill pill-ok">Tren + hotel confirmados</span></td></tr>
       <tr><td>16</td><td>Dom 16 Ago</td><td>Roma</td><td>Raeli Hotel Noto · noche 2</td><td><span class="status-pill pill-ok">Confirmado</span></td></tr>
       <tr><td>17</td><td>Lun 17 Ago</td><td>Roma</td><td>Raeli Hotel Noto · noche 3</td><td><span class="status-pill pill-ok">Confirmado</span></td></tr>
-      <tr><td>18</td><td>Mar 18 Ago</td><td>Roma → Nápoles</td><td>Napolit'amo Hotel Medina · noche 1</td><td><span class="status-pill pill-ok">Hotel confirmado</span></td></tr>
+      <tr><td>18</td><td>Mar 18 Ago</td><td>Roma → Nápoles · Frecciarossa 8335 · 10:20</td><td>Napolit'amo Hotel Medina · noche 1</td><td><span class="status-pill pill-ok">Tren + hotel confirmados</span></td></tr>
       <tr><td>19</td><td>Mié 19 Ago</td><td>Nápoles / Capri</td><td>Napolit'amo Hotel Medina · noche 2</td><td><span class="status-pill pill-ok">Hotel confirmado</span></td></tr>
       <tr><td>20</td><td>Jue 20 Ago</td><td>Nápoles → Madrid · I2 1832</td><td>Leonardo Madrid City Center · noche 1</td><td><span class="status-pill pill-ok">Vuelo + hotel</span></td></tr>
       <tr><td>21</td><td>Vie 21 Ago</td><td>Madrid</td><td>Leonardo Madrid City Center · noche 2</td><td><span class="status-pill pill-ok">Confirmado</span></td></tr>
@@ -2484,6 +2555,41 @@
   </div>
 </section>
 
+<!-- TAX FREE -->
+<section id="tax-free">
+  <div class="section-label">Compras en España e Italia · salida final por Madrid</div>
+  <div class="section-title">Tax Free <em>sin improvisar</em></div>
+  <div class="itinerary-note"><strong>La salida de la Unión Europea es MAD → EZE el 22/08.</strong> El vuelo Nápoles → Madrid es interno de la UE: no corresponde hacer allí el sellado final.</div>
+  <div class="taxfree-grid">
+    <article class="taxfree-step"><span>01 · EN LA COMPRA</span><h3>Pedirlo en el momento</h3><p>Mostrar pasaporte argentino y solicitar factura más formulario Tax Free. Debe quedar emitido a nombre del viajero que transportará el bien.</p></article>
+    <article class="taxfree-step"><span>02 · DURANTE EL VIAJE</span><h3>Mercadería localizable</h3><p>Guardar formularios, facturas y bienes juntos. No consumir ni despachar los artículos antes del control; Aduana puede pedir verlos.</p></article>
+    <article class="taxfree-step"><span>03 · ESPAÑA</span><h3>DIVA electrónico</h3><p>Las compras españolas se validan en las pantallas DIVA del aeropuerto de salida, siempre antes de facturar el equipaje.</p></article>
+    <article class="taxfree-step"><span>04 · ITALIA</span><h3>Sellado manual en Madrid</h3><p>Los formularios emitidos en Italia no se validan como un DER español: hay que presentarlos en la oficina aduanera para control manual.</p></article>
+    <article class="taxfree-step critical"><span>05 · 22 DE AGOSTO</span><h3>Aeropuerto 19:30</h3><p>Para PU501 de las 23:10, apuntar a llegar 3 h 30 min antes. Primero Tax Free con pasaporte, tarjeta de embarque, formularios y bienes; después, equipaje.</p></article>
+    <article class="taxfree-step"><span>06 · REEMBOLSO</span><h3>Completar el cobro</h3><p>Tras la validación, seguir el proceso de la tienda o del operador. La comisión puede reducir el IVA efectivamente recuperado.</p></article>
+  </div>
+  <div class="taxfree-callout">
+    <strong>Preparar una carpeta el 21/08:</strong> separar España e Italia, revisar que cada formulario coincida con su pasaporte y confirmar la terminal de PU501 48 horas antes. Hoteles, restaurantes, transporte y otros servicios no entran: el régimen es para bienes que salen de la UE en el equipaje personal.
+  </div>
+  <div class="source-row">
+    <a class="btn-link gold" href="https://sede.agenciatributaria.gob.es/Sede/viajeros-trabajadores-desplazados-fronterizos/devoluciones-iva-compras-viajeros/cumplimentacion-requisitos-obtencion-devolucion.html" target="_blank">AEAT · procedimiento</a>
+    <a class="btn-link" href="https://www.aena.es/es/adolfo-suarez-madrid-barajas/servicios-del-aeropuerto/categorias-y-terminales/devolucion-de-iva.html" target="_blank">Aena · puntos y horarios</a>
+    <a class="btn-link" href="https://taxation-customs.ec.europa.eu/taxation/vat/vat-directive/vat-refunds_en" target="_blank">Unión Europea · requisitos</a>
+  </div>
+</section>
+
+<!-- AJEDREZ -->
+<section id="ajedrez">
+  <div class="section-label">Cuatro ciudades · cuatro coincidencias posibles</div>
+  <div class="section-title">Ajedrez <em>en la ruta</em></div>
+  <div class="itinerary-note">Los horarios publicados pueden cambiar en agosto y alrededor de Ferragosto. Contactar antes de ir; varios clubes funcionan como asociaciones y pueden requerir inscripción o reserva.</div>
+  <div class="chess-grid">
+    <article class="chess-stop"><div class="chess-date">JUE 13 · FLORENCIA</div><h3>DLF Firenze Scacchi</h3><p>SMS Rifredi, Via Vittorio Emanuele II 303. Publica apertura los jueves de 16:00 a 19:30. Desde el hotel: aproximadamente 25-30 min a pie o 10-15 min en transporte.</p><div><a class="btn-link" href="https://www.dlffirenzescacchi.it/info-e-contatti" target="_blank">Club y horario</a> <a class="btn-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=Via+Lorenzo+Il+Magnifico+2+Firenze&amp;destination=Via+Vittorio+Emanuele+II+303+Firenze" target="_blank">Cómo llegar</a></div></article>
+    <article class="chess-stop featured"><div class="chess-date">LUN 17 · ROMA</div><h3>Accademia Scacchistica Romana</h3><p>Fundada en 1819 y presentada como el club más antiguo de Italia. Via Luigi Pulci 14, junto a Tiburtina. Los lunes anuncia blitz amistoso a las 18:00; estimar 20-25 min desde Hotel Noto.</p><div><a class="btn-link gold" href="https://www.accademiascacchiroma.it/" target="_blank">Club oficial</a> <a class="btn-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=Via+Calatafimi+10b+Roma&amp;destination=Via+Luigi+Pulci+14+Roma" target="_blank">Cómo llegar</a></div></article>
+    <article class="chess-stop featured"><div class="chess-date">MAR 18 · NÁPOLES</div><h3>Accademia Scacchistica Napoletana</h3><p>Vico Pallonetto Santa Chiara 15. Publica apertura los martes de 18:30 a 22:30. Queda aproximadamente a 12-15 min caminando del Napolit'amo Hotel Medina.</p><div><a class="btn-link gold" href="https://www.accademiascacchinapoli.it/contatti" target="_blank">Club y horario</a> <a class="btn-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=Via+San+Tommaso+D%27Aquino+15+Napoli&amp;destination=Vico+Pallonetto+Santa+Chiara+15+Napoli" target="_blank">Cómo llegar</a></div></article>
+    <article class="chess-stop"><div class="chess-date">VIE 21 · MADRID</div><h3>Ajedrez Chamberí</h3><p>Calle Joaquín María López 12. Las quedadas informales suelen ser los viernes desde las 18:30 y requieren reservar plaza. Desde Leonardo Hotel: aproximadamente 12-15 min a pie.</p><div><a class="btn-link" href="https://www.ajedrezchamberi.es/" target="_blank">Club oficial</a> <a class="btn-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=Alberto+Aguilera+18+Madrid&amp;destination=Joaquin+Maria+Lopez+12+Madrid" target="_blank">Cómo llegar</a></div></article>
+  </div>
+</section>
 <!-- TRANSPORTE INTERNO -->
 <section id="transporte">
   <div class="section-label">Logística interna</div>
@@ -2496,7 +2602,8 @@
   <div class="transport-item"><div class="transport-icon">✈</div><div class="transport-body"><div class="transport-route">Alicante → Madrid → Bolonia</div><div class="transport-meta">12/13 Ago · Air Europa UX4050 + UX1183 · ALC 20:45 → BLQ 02:25</div><div class="transport-status badge-confirmed">Comprado</div></div></div>
   <div class="transport-item"><div class="transport-icon">🚌</div><div class="transport-body"><div class="transport-route">Bolonia BLQ → Florencia</div><div class="transport-meta">13 Ago · llegada 02:25 · mirar Apennino Shuttle 05:30</div><div class="transport-status badge-pending">Reservar</div></div></div>
   <div class="transport-item"><div class="transport-icon">🚌</div><div class="transport-body"><div class="transport-route">Florencia → Pisa + Cinque Terre → Florencia</div><div class="transport-meta">14 Ago · excursión de día completo a reservar</div><div class="transport-status badge-pending">Reservar tour</div></div></div>
-  <div class="transport-item"><div class="transport-icon">🚄</div><div class="transport-body"><div class="transport-route">Florencia → Roma → Nápoles</div><div class="transport-meta">15-18 Ago · trenes rápidos</div><div class="transport-status badge-pending">Reservar</div></div></div>
+  <div class="transport-item"><div class="transport-icon">🚄</div><div class="transport-body"><div class="transport-route">Florencia → Roma · Frecciarossa 9519</div><div class="transport-meta">15 Ago · Firenze SMN 10:14 → Roma Termini 12:10 · vagón 9 · 9A/10A</div><div class="transport-status badge-confirmed">Comprado</div></div></div>
+  <div class="transport-item"><div class="transport-icon">🚄</div><div class="transport-body"><div class="transport-route">Roma → Nápoles · Frecciarossa 8335</div><div class="transport-meta">18 Ago · Roma Termini 10:20 → Napoli Centrale 11:33 · vagón 7 · 3C/3D</div><div class="transport-status badge-confirmed">Comprado</div></div></div>
   <div class="transport-item"><div class="transport-icon">⛴</div><div class="transport-body"><div class="transport-route">Nápoles ↔ Capri</div><div class="transport-meta">18/19 Ago · ferry según clima y horarios</div><div class="transport-status badge-pending">Planear</div></div></div>
   <div class="transport-item"><div class="transport-icon">✈</div><div class="transport-body"><div class="transport-route">Nápoles → Madrid · I2 1832</div><div class="transport-meta">20 Ago · NAP 14:50 → MAD T4 17:40 · Iberia Express</div><div class="transport-status badge-confirmed">Comprado</div></div></div>
   <div class="transport-item"><div class="transport-icon">✈</div><div class="transport-body"><div class="transport-route">MAD → EZE · PU501</div><div class="transport-meta">22 Ago · 23:10</div><div class="transport-status badge-confirmed">Comprado</div></div></div>
@@ -2543,7 +2650,15 @@
       <div class="ticket-route"><h3>Alicante → Bolonia</h3><p>UX4050 + UX1183, escala nocturna en Madrid y llegada a BLQ.</p></div>
       <div class="ticket-meta"><div><span>Fecha</span><strong>12/13 Ago</strong></div><div><span>Horario</span><strong>20:45 → 02:25</strong></div></div>
     </article>
-    <article class="ticket-card flight" data-watermark="✈">
+    <article class="ticket-card train" data-watermark="FR">
+      <div class="ticket-brand"><span>Trenitalia · Frecciarossa</span><span class="ticket-status">Comprado</span></div>
+      <div class="ticket-route"><h3>Florencia → Roma</h3><p>FR 9519 · Firenze S. M. Novella hacia Roma Termini · 2 pasajeros.</p></div>
+      <div class="ticket-meta"><div><span>Fecha / hora</span><strong>15 Ago · 10:14</strong></div><div><span>Asientos</span><strong>Vagón 9 · 9A/10A</strong></div></div>
+    </article>    <article class="ticket-card train" data-watermark="FR">
+      <div class="ticket-brand"><span>Trenitalia · Frecciarossa</span><span class="ticket-status">Comprado</span></div>
+      <div class="ticket-route"><h3>Roma → Nápoles</h3><p>FR 8335 · Roma Termini hacia Napoli Centrale · 2 pasajeros.</p></div>
+      <div class="ticket-meta"><div><span>Fecha / hora</span><strong>18 Ago · 10:20</strong></div><div><span>Asientos</span><strong>Vagón 7 · 3C/3D</strong></div></div>
+    </article>    <article class="ticket-card flight" data-watermark="✈">
       <div class="ticket-brand"><span>Iberia Express</span><span class="ticket-status">Confirmado</span></div>
       <div class="ticket-route"><h3>Nápoles → Madrid</h3><p>I2 1832, directo a Madrid T4. Apellido de Marita corregido.</p></div>
       <div class="ticket-meta"><div><span>Fecha</span><strong>20 Ago</strong></div><div><span>Horario</span><strong>14:50 → 17:40</strong></div></div>
@@ -2581,6 +2696,7 @@
       <div class="check-item"><span class="box-mark"></span><span>Confirmar horarios de trenes/ferries 48 hs antes.</span></div>
       <div class="check-item"><span class="box-mark"></span><span>Guardar teléfonos de hoteles y direcciones en Google Maps.</span></div>
       <div class="check-item"><span class="box-mark"></span><span>Entradas con horario fijo: llegar con margen y plan de traslado.</span></div>
+      <div class="check-item"><span class="box-mark"></span><span>Tax Free: pedir formularios al comprar y seguir la <a href="#tax-free">guía de salida por Madrid</a>.</span></div>
     </div>
     <div class="check-group">
       <h3>Durante el viaje</h3>
@@ -2599,7 +2715,7 @@
   <div class="decision-card"><div class="decision-date">13 Ago</div><div><div class="decision-title">BLQ → Florencia</div><div class="decision-meta">Vuelo comprado: llega 02:25. Revisar/reservar Apennino Shuttle 05:30; si no cierra, definir plan B diurno desde Bolonia.</div></div></div>
   <div class="decision-card"><div class="decision-date">14 Ago</div><div><div class="decision-title">Excursión Pisa + Cinque Terre</div><div class="decision-meta">Reservar tour de día completo desde Florencia. Confirmar duración, pueblos incluidos, si hay barco/tren y punto de encuentro.</div></div></div>
   <div class="decision-card"><div class="decision-date">18-20 Ago</div><div><div class="decision-title">Capri desde Nápoles</div><div class="decision-meta">Plan base: dormir en Nápoles y cruzar en ferry ida/vuelta. Revisar clima y reservar si conviene.</div></div></div>
-  <div class="decision-card"><div class="decision-date">15 Ago</div><div><div class="decision-title">Florencia → Roma</div><div class="decision-meta">Alojamientos completos. Falta reservar el tren rápido a Roma y elegir un horario compatible con el check-out 11:00 y el check-in desde 14:00.</div></div></div>
+
   <div class="decision-card"><div class="decision-date">20 Ago</div><div><div class="decision-title">Check-in I2 1832</div><div class="decision-meta">Vuelo comprado y apellido corregido. Completar check-in/facturación y traslado NAP → aeropuerto.</div></div></div>
 </section>
 <!-- FOTOS -->
