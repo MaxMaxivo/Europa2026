@@ -2082,6 +2082,137 @@
     line-height: 1.5;
   }
 
+  /* CAPITULOS PLEGABLES */
+  .chapter-stack {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem 4rem;
+  }
+
+  .chapter-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 0 0 1rem;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .chapter-toolbar p {
+    color: var(--muted);
+    font-size: 0.82rem;
+  }
+
+  .chapter-actions {
+    display: flex;
+    gap: 0.45rem;
+    flex-shrink: 0;
+  }
+
+  .chapter-action {
+    border: 1px solid rgba(16,32,51,0.15);
+    border-radius: 6px;
+    background: rgba(255,255,255,0.78);
+    color: var(--ink);
+    padding: 0.48rem 0.65rem;
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    font-weight: 800;
+    cursor: pointer;
+  }
+
+  .chapter-action:hover,
+  .chapter-action:focus-visible {
+    border-color: var(--accent-blue);
+    color: var(--accent-blue);
+    outline: none;
+  }
+
+  .chapter {
+    margin-bottom: 0.85rem;
+    overflow: hidden;
+    border: 1px solid rgba(16,32,51,0.12);
+    border-radius: 8px;
+    background: rgba(255,255,255,0.68);
+    box-shadow: 0 12px 30px rgba(16,32,51,0.06);
+  }
+
+  .chapter > summary {
+    display: grid;
+    grid-template-columns: auto minmax(0,1fr) auto;
+    align-items: center;
+    gap: 0.9rem;
+    min-height: 68px;
+    padding: 0.9rem 1rem;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+  }
+
+  .chapter > summary::-webkit-details-marker { display: none; }
+
+  .chapter > summary:hover {
+    background: rgba(33,102,165,0.045);
+  }
+
+  .chapter-icon {
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(31,122,90,0.11);
+    color: var(--green);
+    font-size: 1rem;
+  }
+
+  .chapter-heading strong,
+  .chapter-heading span { display: block; }
+  .chapter-heading strong {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    color: var(--ink);
+  }
+  .chapter-heading span {
+    margin-top: 0.16rem;
+    color: var(--muted);
+    font-size: 0.76rem;
+    line-height: 1.35;
+  }
+
+  .chapter-toggle {
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    border: 1px solid rgba(16,32,51,0.14);
+    border-radius: 50%;
+    color: var(--accent-blue);
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    font-weight: 800;
+  }
+
+  .chapter[open] > summary {
+    border-bottom: 1px solid rgba(16,32,51,0.1);
+    background: rgba(31,122,90,0.045);
+  }
+  .chapter[open] .chapter-toggle { transform: rotate(45deg); }
+
+  .chapter-content > section {
+    max-width: none;
+    padding: 2.4rem 1.25rem !important;
+  }
+  .chapter-content > section + section {
+    border-top: 1px dashed rgba(16,32,51,0.13);
+  }
+
+  .chapter-stack > #itinerario {
+    max-width: none;
+    padding: 3.2rem 0 !important;
+  }
+
   @media (max-width: 980px) {
     .ticket-wallet {
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2103,6 +2234,14 @@
       margin-left: auto;
       color: var(--muted);
     }
+    .chapter-stack { padding: 0 1rem 3rem; }
+    .chapter-toolbar { align-items: flex-start; }
+    .chapter-toolbar p { display: none; }
+    .chapter-action { padding: 0.46rem 0.55rem; }
+    .chapter > summary { min-height: 62px; padding: 0.75rem; }
+    .chapter-heading span { font-size: 0.7rem; }
+    .chapter-content > section { padding: 2rem 0.8rem !important; }
+    .chapter-stack > #itinerario { padding: 2.4rem 0 !important; }
   }
 </style>
 </head>
@@ -3097,6 +3236,95 @@
     urls.forEach(u => window.open(u, '_blank'));
   }
 
+  function setupTravelChapters() {
+    if (document.getElementById('chapter-stack')) return;
+
+    const firstSection = document.getElementById('hoy');
+    const calendar = document.getElementById('itinerario');
+    if (!firstSection || !calendar) return;
+
+    const storageKey = 'europa2026-chapters-v1';
+    let savedState = {};
+    try { savedState = JSON.parse(localStorage.getItem(storageKey) || '{}'); } catch (_) {}
+
+    const stack = document.createElement('div');
+    stack.id = 'chapter-stack';
+    stack.className = 'chapter-stack';
+    firstSection.parentNode.insertBefore(stack, firstSection);
+
+    const toolbar = document.createElement('div');
+    toolbar.className = 'chapter-toolbar';
+    toolbar.innerHTML = `
+      <p>Calendario visible y capítulos plegables para llegar rápido a cada dato.</p>
+      <div class="chapter-actions">
+        <button class="chapter-action" type="button" data-chapter-action="open" title="Expandir todos los capítulos">＋ Todo</button>
+        <button class="chapter-action" type="button" data-chapter-action="close" title="Cerrar todos los capítulos">− Todo</button>
+      </div>`;
+    stack.appendChild(toolbar);
+
+    const chapters = [
+      { key:'next', title:'Hoy / próximos pasos', subtitle:'Acciones que todavía destraban el viaje', icon:'→', sections:['hoy'], open:true },
+      { key:'route', title:'Ruta y reservas', subtitle:'Vuelos, alojamientos, transporte y tickets', icon:'⇄', sections:['vuelos','reservas','transporte','tickets','estado-vuelos'] },
+      { key:'camino', title:'Camino de Santiago', subtitle:'Desnivel, guía práctica y lista de control', icon:'⌁', sections:['altitud-camino','guia-camino','checklist'] },
+      { key:'guide', title:'Guía del viaje', subtitle:'Planes por ciudad, Tax Free y ajedrez', icon:'◎', sections:['planes','tax-free','ajedrez'] },
+      { key:'docs', title:'Documentación y pendientes', subtitle:'Drive privado, decisiones, fotos y enlaces', icon:'□', sections:['documentos-privados','decisiones','fotos','novedades'] }
+    ];
+
+    function persist() {
+      const state = {};
+      stack.querySelectorAll('details[data-chapter]').forEach(item => { state[item.dataset.chapter] = item.open; });
+      try { localStorage.setItem(storageKey, JSON.stringify(state)); } catch (_) {}
+    }
+
+    function buildChapter(config) {
+      const details = document.createElement('details');
+      details.className = 'chapter';
+      details.dataset.chapter = config.key;
+      details.open = Object.prototype.hasOwnProperty.call(savedState, config.key) ? Boolean(savedState[config.key]) : Boolean(config.open);
+
+      const summary = document.createElement('summary');
+      summary.innerHTML = `<span class="chapter-icon" aria-hidden="true">${config.icon}</span><span class="chapter-heading"><strong>${config.title}</strong><span>${config.subtitle}</span></span><span class="chapter-toggle" aria-hidden="true">＋</span>`;
+      details.appendChild(summary);
+
+      const content = document.createElement('div');
+      content.className = 'chapter-content';
+      config.sections.forEach(id => {
+        const section = document.getElementById(id);
+        if (section) content.appendChild(section);
+      });
+      details.appendChild(content);
+
+      details.addEventListener('toggle', () => {
+        if (details.open && window.matchMedia('(max-width: 640px)').matches) {
+          stack.querySelectorAll('details[data-chapter][open]').forEach(other => {
+            if (other !== details) other.open = false;
+          });
+        }
+        persist();
+      });
+      return details;
+    }
+
+    stack.appendChild(buildChapter(chapters[0]));
+    stack.appendChild(calendar);
+    chapters.slice(1).forEach(config => stack.appendChild(buildChapter(config)));
+
+    toolbar.querySelector('[data-chapter-action="open"]').addEventListener('click', () => {
+      stack.querySelectorAll('details[data-chapter]').forEach(item => { item.open = true; });
+      persist();
+    });
+    toolbar.querySelector('[data-chapter-action="close"]').addEventListener('click', () => {
+      stack.querySelectorAll('details[data-chapter]').forEach(item => { item.open = false; });
+      persist();
+    });
+
+    if (location.hash) {
+      const target = document.querySelector(location.hash);
+      const parentChapter = target && target.closest('details.chapter');
+      if (parentChapter) parentChapter.open = true;
+    }
+  }
+
 
   function setupMobileAccordions() {
     document.querySelectorAll('.data-table, .mission-table').forEach(table => {
@@ -3125,11 +3353,17 @@
     });
   }
 
+  setupTravelChapters();
   setupMobileAccordions();
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       const target = document.querySelector(a.getAttribute('href'));
-      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      if (target) {
+        e.preventDefault();
+        const parentChapter = target.closest('details.chapter');
+        if (parentChapter) parentChapter.open = true;
+        requestAnimationFrame(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+      }
     });
   });
 </script>
