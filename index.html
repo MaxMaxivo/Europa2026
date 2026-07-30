@@ -605,6 +605,11 @@
     line-height: 1;
   }
 
+  .progress-percent.is-complete {
+    color: var(--accent);
+    animation: happyPulse 1.25s ease-in-out infinite;
+  }
+
   .progress-track {
     height: 16px;
     border: 1px solid rgba(107,92,69,0.25);
@@ -619,6 +624,122 @@
     height: 100%;
     background: linear-gradient(90deg, var(--accent-blue), var(--accent-olive), var(--accent-gold));
     border-radius: inherit;
+  }
+
+  .progress-fill.is-complete {
+    box-shadow: 0 0 0 4px rgba(31,122,90,0.10), 0 0 22px rgba(31,122,90,0.32);
+    animation: fullTripPulse 1.5s ease-in-out infinite;
+  }
+
+  .distance-loader {
+    margin-top: 1.15rem;
+    padding: 1rem 1.1rem;
+    border: 1px solid rgba(33,102,165,0.16);
+    border-radius: 8px;
+    background: rgba(255,255,255,0.68);
+  }
+
+  .distance-head {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.7rem;
+  }
+
+  .distance-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .distance-subtitle {
+    margin-top: 0.2rem;
+    color: var(--muted);
+    font-size: 0.78rem;
+  }
+
+  .distance-value {
+    font-family: var(--font-mono);
+    color: var(--accent-blue);
+    font-size: 1rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .distance-track {
+    height: 10px;
+    border-radius: 999px;
+    overflow: hidden;
+    background: rgba(33,102,165,0.10);
+  }
+
+  .distance-fill {
+    width: 0;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--accent-blue), var(--accent), var(--accent-gold));
+    transition: width 1.2s ease;
+    position: relative;
+  }
+
+  .distance-fill::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.62) 48%, transparent 72%);
+    transform: translateX(-100%);
+    animation: routeShine 2.6s ease-in-out infinite;
+  }
+
+  .nearby-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.85rem;
+  }
+
+  .nearby-card {
+    border: 1px solid rgba(16,32,51,0.10);
+    border-left: 4px solid var(--accent);
+    border-radius: 8px;
+    padding: 0.95rem;
+    background: #fff;
+  }
+
+  .nearby-card.transit { border-left-color: var(--accent-blue); }
+  .nearby-card.honest { border-left-color: var(--accent-gold); }
+
+  .nearby-place {
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    text-transform: uppercase;
+    color: var(--accent-blue);
+    margin-bottom: 0.4rem;
+  }
+
+  .nearby-card h3 {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    line-height: 1.2;
+    margin-bottom: 0.35rem;
+  }
+
+  .nearby-card p {
+    color: var(--muted);
+    font-size: 0.82rem;
+    line-height: 1.45;
+    margin-bottom: 0.55rem;
+  }
+
+  .nearby-time {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.57rem;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: rgba(31,122,90,0.08);
+    padding: 0.28rem 0.45rem;
+    border-radius: 4px;
   }
 
   .progress-caption {
@@ -1331,7 +1452,7 @@
   }
 
   .trip-progress::after {
-    content: 'Bitácora en marcha';
+    content: '100% · listo para salir';
     color: rgba(16,32,51,0.38);
     animation: softPulse 2.2s ease-in-out infinite;
   }
@@ -1499,6 +1620,31 @@
   @keyframes softPulse {
     0%, 100% { opacity: 0.45; }
     50% { opacity: 0.85; }
+  }
+
+  @keyframes happyPulse {
+    0%, 100% { opacity: 0.7; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.08); }
+  }
+
+  @keyframes fullTripPulse {
+    0%, 100% { filter: saturate(1); }
+    50% { filter: saturate(1.35) brightness(1.08); }
+  }
+
+  @media (max-width: 900px) {
+    .nearby-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  @media (max-width: 640px) {
+    .distance-head { align-items: flex-start; flex-direction: column; gap: 0.45rem; }
+    .nearby-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .progress-percent.is-complete,
+    .progress-fill.is-complete,
+    .distance-fill::after { animation: none; }
   }
 
   .mobile-row-toggle {
@@ -2289,6 +2435,7 @@
   <a href="#itinerario">Calendario</a>
   <a href="#reservas">Reservas</a>
   <a href="#planes">Guía</a>
+  <a href="#cerca">A 5 min</a>
   <a href="#transporte">Transporte</a>
   <a href="#altitud-camino">Camino</a>
   <a href="#guia-camino">Guía práctica</a>
@@ -2319,12 +2466,24 @@
     <div class="progress-head">
       <div>
         <div class="ops-kicker">Bitácora de organización</div>
-        <div class="progress-title">Viaje cargando: <em>todas las noches cerradas</em></div>
+        <div class="progress-title">Viaje listo: <em>ahora empieza lo mejor</em></div>
       </div>
-      <div class="progress-percent">96%</div>
+      <div class="progress-percent is-complete">100%</div>
     </div>
     <div class="progress-track" aria-label="Progreso de organización del viaje">
-      <div class="progress-fill" style="width:96%;"></div>
+      <div class="progress-fill is-complete" style="width:100%;"></div>
+    </div>
+    <div class="distance-loader" aria-live="polite">
+      <div class="distance-head">
+        <div>
+          <div class="distance-title">Kilómetros europeos</div>
+          <div class="distance-subtitle" id="distance-stage">Empieza cuando aterricen en Madrid · recorrido estimado</div>
+        </div>
+        <div class="distance-value"><span id="distance-done">0</span> / ≈ 5.885 km</div>
+      </div>
+      <div class="distance-track" aria-label="Kilómetros recorridos desde Madrid">
+        <div class="distance-fill" id="distance-fill"></div>
+      </div>
     </div>
     <div class="route-progress" aria-label="Ruta visual del viaje">
       <div class="route-stop done">Buenos Aires</div>
@@ -2345,13 +2504,13 @@
       <div class="passport-stamp">Volver felices</div>
     </div>
     <div class="progress-caption">
-      <strong>La ruta ya está casi lista:</strong> Finisterre y el circuito Pisa–Cinque Terre tienen transporte confirmado. La prioridad operativa es completar PAQ Mochila antes del 02 Ago a las 20:00 y verificar el alojamiento de primera recogida.
+      <strong>100% y con ganas:</strong> la estructura del viaje está cerrada. El 31 Jul toca elegir el ferry a Capri; el resto ya está listo para dejar de organizarlo y empezar a vivirlo.
     </div>
     <div class="progress-metrics">
-      <div class="progress-metric"><div class="num">23/24</div><div class="label">bloques cerrados</div></div>
+      <div class="progress-metric"><div class="num">100%</div><div class="label">viaje listo</div></div>
       <div class="progress-metric"><div class="num">13/08</div><div class="label">llegada BLQ 02:25</div></div>
       <div class="progress-metric"><div class="num">0</div><div class="label">hoteles faltan</div></div>
-      <div class="progress-metric"><div class="num">02/08 · 20:00</div><div class="label">límite PAQ Mochila</div></div>
+      <div class="progress-metric"><div class="num">31 Jul</div><div class="label">ferry a Capri</div></div>
     </div>
     <div class="lodging-strip" aria-label="Próximos bloques por resolver">
       <div class="lodging-chip ok"><div class="lodging-day">09 Ago</div><div class="lodging-place">SCQ → Alicante</div><div class="lodging-state">Renfe comprado</div></div>
@@ -2375,8 +2534,8 @@
   <div class="section-title">Lo que destraba <em>el viaje</em></div>
   <p class="progress-fineprint">Sin duplicar la bitácora: acá quedan solo las acciones vivas. Lo confirmado vive en Reservas y el plan grande vive en Día a día.</p>
   <div class="next-board">
-    <div class="next-card"><div class="step">Antes del 02 Ago · 20:00</div><h3>PAQ Mochila</h3><p>Cargar todos los alojamientos y verificar por qué el origen figura como “ALBERGUE MAYOR” en vez de Il Nonno.</p></div>
-    <div class="next-card"><div class="step">19 Ago</div><h3>Capri por el día</h3><p>Revisar ferries y clima; reservar solo con ida y vuelta compatibles desde Nápoles.</p></div>
+    <div class="next-card"><div class="step">Antes del 02 Ago · 20:00</div><h3>PAQ Mochila</h3><p>Cargar todos los alojamientos. Los 100 m entre Albergue Mayor e Il Nonno los hacen ustedes: tema resuelto.</p></div>
+    <div class="next-card"><div class="step">31 Jul · mañana</div><h3>Ferry a Capri</h3><p>Elegir ida y vuelta compatibles desde Nápoles. Última compra linda antes de cambiar organización por viaje.</p></div>
     <div class="next-card"><div class="step">02 Ago</div><h3>Locker Sol</h3><p>Guardar offline el PIN y el acceso privado. La reserva cubre dos lockers durante todo el día.</p></div>
     <div class="next-card"><div class="step">Check-ins</div><h3>Ventanas críticas</h3><p>Air Europa, Iberia Express y Plus Ultra. El de Nápoles cierra 45 min antes.</p></div>
     <div class="next-card"><div class="step">Privado</div><h3>Carpeta Drive</h3><p>Drive restringido enlazado para pasaportes, tickets, QR y documentación sensible.</p></div>
@@ -2537,7 +2696,7 @@
         <td>Inicio 03 Ago<br>Carga límite: 02 Ago 20:00</td>
         <td><span class="status-pill pill-private">Privado</span>Código y etiqueta en Drive</td>
         <td><span class="status-pill pill-ok">Pagado</span>Alojamientos por completar</td>
-        <td><strong>Atención:</strong> la reserva indica origen “ALBERGUE MAYOR”, pero el hospedaje registrado es Il Nonno. Verificar el primer retiro y cargar todas las recogidas/entregas antes del límite.</td>
+        <td>La reserva inicia en Albergue Mayor. Está a unos 100 m de Il Nonno: ustedes llevan las mochilas hasta allí. Solo falta cargar las recogidas y entregas antes del límite.</td>
       </tr>
             <tr>
         <td>03-04 Ago</td>
@@ -2931,6 +3090,32 @@
     <article class="chess-stop"><div class="chess-date">VIE 21 · MADRID</div><h3>Ajedrez Chamberí</h3><p>Calle Joaquín María López 12. Las quedadas informales suelen ser los viernes desde las 18:30 y requieren reservar plaza. Desde Leonardo Hotel: aproximadamente 12-15 min a pie.</p><div><a class="btn-link" href="https://www.ajedrezchamberi.es/" target="_blank">Club oficial</a> <a class="btn-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=Alberto+Aguilera+18+Madrid&amp;destination=Joaquin+Maria+Lopez+12+Madrid" target="_blank">Cómo llegar</a></div></article>
   </div>
 </section>
+
+<!-- DEMASIADO CERCA PARA NO IR -->
+<section id="cerca">
+  <div class="section-label">Radio corto · hasta 5 minutos a pie</div>
+  <div class="section-title">Demasiado cerca <em>para dejarlo pasar</em></div>
+  <div class="itinerary-note">Tiempos peatonales aproximados desde el alojamiento o punto operativo. Abrir la ruta el mismo día: obras, accesos y equipaje pueden cambiar un par de minutos.</div>
+  <div class="nearby-grid">
+    <article class="nearby-card transit"><div class="nearby-place">Madrid · Locker Sol</div><h3>Puerta del Sol y Kilómetro Cero</h3><p>La foto que inaugura el viaje europeo está prácticamente a la vuelta. También sirve para ubicar el centro real de Madrid.</p><span class="nearby-time">≈ 2-3 min</span> <a class="btn-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=Calle+Tetuan+4+Madrid&amp;destination=Kilometro+Cero+Puerta+del+Sol+Madrid&amp;travelmode=walking" target="_blank">Caminar</a></article>
+    <article class="nearby-card"><div class="nearby-place">Sarria · Il Nonno</div><h3>Santa Mariña y Rúa Maior</h3><p>Una primera iglesia del Camino, la calle peregrina y el ambiente de salida sin sumar esfuerzo al día.</p><span class="nearby-time">≈ 2-4 min</span> <a class="btn-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=Il+Nonno+Sarria&amp;destination=Igrexa+de+Santa+Marina+de+Sarria&amp;travelmode=walking" target="_blank">Caminar</a></article>
+    <article class="nearby-card"><div class="nearby-place">Portomarín · Portomiño</div><h3>Iglesia de San Nicolás</h3><p>La movieron piedra por piedra antes de inundar el antiguo pueblo. Es la visita indiscutible de Portomarín.</p><span class="nearby-time">≈ 4-5 min</span> <a class="btn-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=Pension+Portomino+Portomarin&amp;destination=Iglesia+de+San+Nicolas+Portomarin&amp;travelmode=walking" target="_blank">Caminar</a></article>
+    <article class="nearby-card"><div class="nearby-place">Palas de Rei · Casa Camiño II</div><h3>Pulpo sin desvío</h3><p>Pulpería Casa Camiño está a pasos. Es el momento fácil para probar pulpo y comer temprano antes de descansar.</p><span class="nearby-time">≈ 1 min</span> <a class="btn-link" href="https://www.google.com/maps/search/?api=1&amp;query=Pulperia+Casa+Camino+Palas+de+Rei" target="_blank">Ver lugar</a></article>
+    <article class="nearby-card honest"><div class="nearby-place">Arzúa · La Puerta</div><h3>El Camino rural de Teiraboa</h3><p>No hay un gran monumento dentro del radio estricto. La ventaja real es salir, estirar junto al Camino y volver a descansar.</p><span class="nearby-time">≈ 1-4 min</span> <a class="btn-link" href="https://www.google.com/maps/search/?api=1&amp;query=Teiraboa+Arzua+Camino+de+Santiago" target="_blank">Ver zona</a></article>
+    <article class="nearby-card"><div class="nearby-place">O Pedrouzo · 23-Vinte e Tres</div><h3>Iglesia de Santa Eulalia</h3><p>Está al lado de la pensión. Una visita mínima, un posible sello y una foto tranquila antes de la etapa final.</p><span class="nearby-time">≈ 1 min</span> <a class="btn-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=Pension+23+Vinte+e+Tres&amp;destination=Igrexa+de+Santa+Eulalia+de+Arca&amp;travelmode=walking" target="_blank">Caminar</a></article>
+    <article class="nearby-card"><div class="nearby-place">Santiago · Airbnb</div><h3>Parque de Belvís</h3><p>Un respiro verde con vistas al casco histórico, ideal al llegar cansados o para una caminata corta sin multitudes.</p><span class="nearby-time">≈ 4-5 min · estimado</span> <a class="btn-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=Rua+do+Bispo+Teodomiro+10+Santiago&amp;destination=Parque+de+Belvis+Santiago&amp;travelmode=walking" target="_blank">Caminar</a></article>
+    <article class="nearby-card transit"><div class="nearby-place">Fisterra · parada Monbus</div><h3>Puerto y paseo marítimo</h3><p>Antes de pensar en el faro, asómense al puerto: barcas, mar y algo rápido para comer sin comprometer el regreso.</p><span class="nearby-time">≈ 3-5 min</span> <a class="btn-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=Estacion+de+Autobuses+de+Fisterra&amp;destination=Puerto+de+Fisterra&amp;travelmode=walking" target="_blank">Caminar</a></article>
+    <article class="nearby-card honest"><div class="nearby-place">Alicante · Casa del Montaraz</div><h3>Una pausa de barrio</h3><p>Las Plazas y cafeterías cercanas sí entran en cinco minutos. Los grandes atractivos empiezan bastante más lejos: no hace falta apurarlos.</p><span class="nearby-time">≈ 2-4 min</span> <a class="btn-link" href="https://www.google.com/maps/search/?api=1&amp;query=Las+Plazas+Carrer+Doctor+Buades+Alicante" target="_blank">Ver cerca</a></article>
+    <article class="nearby-card honest transit"><div class="nearby-place">Bolonia · aeropuerto BLQ</div><h3>La mejor decisión es no alejarse</h3><p>Con llegada 02:25 y bus 05:30, lo imperdible es ubicar la parada, hidratarse, cargar el teléfono y conservar energía.</p><span class="nearby-time">Dentro de la terminal</span> <a class="btn-link" href="https://www.bologna-airport.it/en/" target="_blank">Aeropuerto</a></article>
+    <article class="nearby-card"><div class="nearby-place">Florencia · San Gallo</div><h3>Piazza della Libertà</h3><p>El Arco de Triunfo y la antigua Porta San Gallo forman una postal urbana inmediata, ideal al llegar o al volver.</p><span class="nearby-time">≈ 2-4 min</span> <a class="btn-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=Allegroitalia+San+Gallo+Firenze&amp;destination=Piazza+della+Liberta+Firenze&amp;travelmode=walking" target="_blank">Caminar</a></article>
+    <article class="nearby-card transit"><div class="nearby-place">Pisa · estación Centrale</div><h3>Tuttomondo de Keith Haring</h3><p>El mural está junto a la iglesia de Sant'Antonio Abate y entra perfecto antes de avanzar hacia la Torre.</p><span class="nearby-time">≈ 3-4 min</span> <a class="btn-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=Pisa+Centrale&amp;destination=Tuttomondo+by+Keith+Haring&amp;travelmode=walking" target="_blank">Caminar</a></article>
+    <article class="nearby-card transit"><div class="nearby-place">La Spezia · estación Centrale</div><h3>Entrada al casco por Via del Prione</h3><p>Piazza Saint Bon y el comienzo del eje peatonal sirven para entrar directo a la ciudad sin perder tiempo.</p><span class="nearby-time">≈ 4-5 min</span> <a class="btn-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=La+Spezia+Centrale&amp;destination=Piazza+Saint+Bon+La+Spezia&amp;travelmode=walking" target="_blank">Caminar</a></article>
+    <article class="nearby-card"><div class="nearby-place">Roma · Hotel Noto</div><h3>Termas de Diocleciano</h3><p>Un conjunto romano enorme, literalmente a tres minutos. Aunque no entren, vale mirar el complejo y Piazza della Repubblica.</p><span class="nearby-time">≈ 3 min</span> <a class="btn-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=Raeli+Hotel+Noto+Rome&amp;destination=Terme+di+Diocleziano+Roma&amp;travelmode=walking" target="_blank">Caminar</a></article>
+    <article class="nearby-card"><div class="nearby-place">Nápoles · Hotel Medina</div><h3>Castel Nuovo y Via Toledo</h3><p>Dos señales fuertes de Nápoles a cuatro minutos: el castillo para la foto y Via Toledo para entrar en el ritmo de la ciudad.</p><span class="nearby-time">≈ 4 min</span> <a class="btn-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=Napolitamo+Hotel+Medina&amp;destination=Castel+Nuovo+Napoli&amp;travelmode=walking" target="_blank">Caminar</a></article>
+    <article class="nearby-card"><div class="nearby-place">Madrid · Leonardo</div><h3>Fundación Casa de México</h3><p>Está prácticamente al lado, en Alberto Aguilera 20. Revisar la agenda: suele tener exposiciones y actividades culturales.</p><span class="nearby-time">Menos de 1 min</span> <a class="btn-link" href="https://www.casademexico.es/" target="_blank">Ver agenda</a></article>
+  </div>
+</section>
+
 <!-- TRANSPORTE INTERNO -->
 <section id="transporte">
   <div class="section-label">Logística interna</div>
@@ -2939,7 +3124,7 @@
   <div class="transport-item"><div class="transport-icon">✈</div><div class="transport-body"><div class="transport-route">EZE → MAD · PU502</div><div class="transport-meta">01 Ago · confirmado</div><div class="transport-status badge-confirmed">Comprado</div></div></div>
   <div class="transport-item"><div class="transport-icon">🚆</div><div class="transport-body"><div class="transport-route">MAD → Sarria</div><div class="transport-meta">02 Ago · Cercanías + Renfe 04375/12646</div><div class="transport-status badge-confirmed">Comprado</div></div></div>
   <div class="transport-item"><div class="transport-icon">🚶</div><div class="transport-body"><div class="transport-route">Sarria → Santiago</div><div class="transport-meta">03 → 07 Ago · 5 etapas</div><div class="transport-status badge-confirmed">Hospedajes completos</div></div></div>
-  <div class="transport-item"><div class="transport-icon">▣</div><div class="transport-body"><div class="transport-route">PAQ Mochila · Sarria → Santiago</div><div class="transport-meta">03 → 07 Ago · CORREOS · 2 mochilas · alojamientos a completar antes del 02 Ago 20:00</div><div class="transport-status badge-pending">Verificar origen</div></div></div>
+  <div class="transport-item"><div class="transport-icon">▣</div><div class="transport-body"><div class="transport-route">PAQ Mochila · Sarria → Santiago</div><div class="transport-meta">03 → 07 Ago · CORREOS · 2 mochilas · primera entrega manual de 100 m</div><div class="transport-status badge-pending">Cargar hoteles</div></div></div>
   <div class="transport-item"><div class="transport-icon">🚌</div><div class="transport-body"><div class="transport-route">Santiago ↔ Fisterra</div><div class="transport-meta">08 Ago · Monbus 09:00 → 11:10 · regreso 16:45 → 18:48</div><div class="transport-status badge-confirmed">Comprado</div></div></div>
   <div class="transport-item"><div class="transport-icon">🚆</div><div class="transport-body"><div class="transport-route">Santiago → Alicante</div><div class="transport-meta">09 Ago · 07:43 → 14:28 · Renfe 04364 + 05312</div><div class="transport-status badge-confirmed">Comprado</div></div></div>
   <div class="transport-item"><div class="transport-icon">✈</div><div class="transport-body"><div class="transport-route">Alicante → Madrid → Bolonia</div><div class="transport-meta">12/13 Ago · Air Europa UX4050 + UX1183 · ALC 20:45 → BLQ 02:25</div><div class="transport-status badge-confirmed">Comprado</div></div></div>
@@ -3063,7 +3248,7 @@
       <h3>Reservas críticas</h3>
       <div class="check-item"><span class="box-mark"></span><span>Check-in ida y regreso apenas abra la aerolínea.</span></div>
       <div class="check-item"><span class="box-mark"></span><span>Confirmar horarios de trenes/ferries 48 hs antes.</span></div>
-      <div class="check-item"><span class="box-mark"></span><span>Antes del 02 Ago 20:00: cargar alojamientos en PAQ Mochila y verificar “ALBERGUE MAYOR” vs. Il Nonno.</span></div>
+      <div class="check-item"><span class="box-mark"></span><span>Antes del 02 Ago 20:00: cargar todos los alojamientos en PAQ Mochila. Llevar las mochilas 100 m desde Il Nonno hasta Albergue Mayor.</span></div>
       <div class="check-item"><span class="box-mark"></span><span>Guardar teléfonos de hoteles y direcciones en Google Maps.</span></div>
       <div class="check-item"><span class="box-mark"></span><span>Entradas con horario fijo: llegar con margen y plan de traslado.</span></div>
       <div class="check-item"><span class="box-mark"></span><span>Tax Free: pedir formularios al comprar y seguir la <a href="#tax-free">guía de salida por Madrid</a>.</span></div>
@@ -3081,7 +3266,7 @@
 <section id="decisiones">
   <div class="section-label">Pendientes reales</div>
   <div class="section-title">Decisiones <em>abiertas</em></div>
-  <div class="decision-card"><div class="decision-date">02 Ago · 20:00</div><div><div class="decision-title">Completar PAQ Mochila</div><div class="decision-meta">Introducir cada alojamiento de recogida y entrega. Verificar con CORREOS el origen “ALBERGUE MAYOR”, porque la primera reserva registrada es Il Nonno.</div></div></div>
+  <div class="decision-card"><div class="decision-date">02 Ago · 20:00</div><div><div class="decision-title">Completar PAQ Mochila</div><div class="decision-meta">Introducir cada alojamiento de recogida y entrega. El primer traslado Il Nonno → Albergue Mayor son unos 100 m y lo hacen ustedes.</div></div></div>
   <div class="decision-card"><div class="decision-date">18-20 Ago</div><div><div class="decision-title">Capri desde Nápoles</div><div class="decision-meta">Plan base: dormir en Nápoles y cruzar en ferry ida/vuelta. Revisar clima y reservar si conviene.</div></div></div>
 
   <div class="decision-card"><div class="decision-date">20 Ago</div><div><div class="decision-title">Check-in I2 1832</div><div class="decision-meta">Vuelo comprado y apellido corregido. Completar check-in/facturación y traslado NAP → aeropuerto.</div></div></div>
@@ -3261,6 +3446,69 @@
   updateCountdown();
   setInterval(updateCountdown, 30000);
 
+  const europeanRoute = [
+    { start:'2026-08-02T06:30:00+02:00', end:'2026-08-02T21:02:00+02:00', km:520, label:'Madrid → Sarria' },
+    { start:'2026-08-03T06:00:00+02:00', end:'2026-08-03T14:00:00+02:00', km:22, label:'Sarria → Portomarín' },
+    { start:'2026-08-04T06:00:00+02:00', end:'2026-08-04T14:30:00+02:00', km:25, label:'Portomarín → Palas de Rei' },
+    { start:'2026-08-05T05:30:00+02:00', end:'2026-08-05T16:00:00+02:00', km:29, label:'Palas de Rei → Arzúa' },
+    { start:'2026-08-06T06:00:00+02:00', end:'2026-08-06T14:00:00+02:00', km:19, label:'Arzúa → O Pedrouzo' },
+    { start:'2026-08-07T06:00:00+02:00', end:'2026-08-07T14:00:00+02:00', km:20, label:'O Pedrouzo → Santiago' },
+    { start:'2026-08-08T09:00:00+02:00', end:'2026-08-08T18:48:00+02:00', km:176, label:'Santiago ↔ Fisterra' },
+    { start:'2026-08-09T07:43:00+02:00', end:'2026-08-09T14:28:00+02:00', km:885, label:'Santiago → Alicante' },
+    { start:'2026-08-12T18:00:00+02:00', end:'2026-08-12T20:00:00+02:00', km:20, label:'Alicante → aeropuerto' },
+    { start:'2026-08-12T20:45:00+02:00', end:'2026-08-12T21:50:00+02:00', km:355, label:'Alicante → Madrid' },
+    { start:'2026-08-13T00:10:00+02:00', end:'2026-08-13T02:25:00+02:00', km:1295, label:'Madrid → Bolonia' },
+    { start:'2026-08-13T05:30:00+02:00', end:'2026-08-13T06:50:00+02:00', km:105, label:'Bolonia → Florencia' },
+    { start:'2026-08-14T07:00:00+02:00', end:'2026-08-14T21:29:00+02:00', km:315, label:'Florencia → Pisa → La Spezia → Florencia' },
+    { start:'2026-08-15T10:14:00+02:00', end:'2026-08-15T12:10:00+02:00', km:270, label:'Florencia → Roma' },
+    { start:'2026-08-18T10:20:00+02:00', end:'2026-08-18T11:33:00+02:00', km:225, label:'Roma → Nápoles' },
+    { start:'2026-08-19T08:00:00+02:00', end:'2026-08-19T19:00:00+02:00', km:64, label:'Nápoles ↔ Capri · horario a cerrar' },
+    { start:'2026-08-20T14:50:00+02:00', end:'2026-08-20T17:40:00+02:00', km:1515, label:'Nápoles → Madrid' },
+    { start:'2026-08-20T17:40:00+02:00', end:'2026-08-22T21:00:00+02:00', km:25, label:'Últimos pasos por Madrid' }
+  ];
+
+  function updateDistanceOdometer() {
+    const doneEl = document.getElementById('distance-done');
+    const fillEl = document.getElementById('distance-fill');
+    const stageEl = document.getElementById('distance-stage');
+    if (!doneEl || !fillEl || !stageEl) return;
+
+    const now = Date.now();
+    const total = europeanRoute.reduce((sum, leg) => sum + leg.km, 0);
+    let travelled = 0;
+    let stage = 'Empieza cuando aterricen en Madrid · recorrido estimado';
+
+    for (const leg of europeanRoute) {
+      const start = new Date(leg.start).getTime();
+      const end = new Date(leg.end).getTime();
+      if (now >= end) {
+        travelled += leg.km;
+        stage = `Último tramo: ${leg.label}`;
+        continue;
+      }
+      if (now >= start) {
+        const ratio = Math.max(0, Math.min(1, (now - start) / (end - start)));
+        travelled += leg.km * ratio;
+        stage = `En movimiento: ${leg.label}`;
+      } else if (travelled > 0) {
+        stage = `Próximo: ${leg.label}`;
+      }
+      break;
+    }
+
+    if (now >= new Date(europeanRoute[europeanRoute.length - 1].end).getTime()) {
+      travelled = total;
+      stage = 'Ruta europea completada · Madrid otra vez';
+    }
+
+    doneEl.textContent = Math.round(travelled).toLocaleString('es-AR');
+    fillEl.style.width = `${Math.max(0, Math.min(100, travelled / total * 100))}%`;
+    stageEl.textContent = stage;
+  }
+
+  updateDistanceOdometer();
+  setInterval(updateDistanceOdometer, 60000);
+
   function openAll502() {
     const urls = [
       'https://www.flightradar24.com/data/flights/pu502',
@@ -3313,7 +3561,7 @@
       { key:'next', title:'Hoy / próximos pasos', subtitle:'Acciones que todavía destraban el viaje', icon:'→', sections:['hoy'], open:true },
       { key:'route', title:'Ruta y reservas', subtitle:'Vuelos, alojamientos, transporte y tickets', icon:'⇄', sections:['vuelos','reservas','transporte','tickets','estado-vuelos'] },
       { key:'camino', title:'Camino de Santiago', subtitle:'Desnivel, guía práctica y lista de control', icon:'⌁', sections:['altitud-camino','guia-camino','checklist'] },
-      { key:'guide', title:'Guía del viaje', subtitle:'Planes por ciudad, Tax Free y ajedrez', icon:'◎', sections:['planes','tax-free','ajedrez'] },
+      { key:'guide', title:'Guía del viaje', subtitle:'Planes por ciudad, lugares a 5 minutos, Tax Free y ajedrez', icon:'◎', sections:['planes','cerca','tax-free','ajedrez'] },
       { key:'docs', title:'Documentación y pendientes', subtitle:'Drive privado, decisiones, fotos y enlaces', icon:'□', sections:['documentos-privados','decisiones','fotos','novedades'] }
     ];
 
